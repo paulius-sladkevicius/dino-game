@@ -1,0 +1,914 @@
+[
+  {
+    "id": "s4-k01",
+    "skyrius": 4,
+    "tipas": "kova",
+    "tekstas": "Tarpeklyje mažas pterodaktiliukas sėdi ant akmens ir nesiruošia skristi. Jo kairysis sparnas apsivėlęs pilkais pelenais. Jis bando juo mostelėti, bet sparnas nepaklūsta ir tik silpnai suvirpa. Pterodaktiliukas liūdnai cypteli ir žiūri į dangų.",
+    "klausimas": "Kodėl pterodaktiliukas neskrenda?",
+    "atsakymai": [
+      {
+        "tekstas": "Jis nori miegoti.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Jis nori sėdėti ant akmens.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Jis bijo aukščio.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Jam trukdo dulkės.",
+        "teisingas": true
+      }
+    ],
+    "uzuomina": "apsivėlęs pilkais pelenais",
+    "zodis": "sparnas"
+  },
+  {
+    "id": "s4-k02",
+    "skyrius": 4,
+    "tipas": "kova",
+    "tekstas": "Rytą stegozauras atėjo prie siauro tako. Pirmiausia jis apuostė akmenis, paskui atsigėrė iš upelio. Tik tada jis ėmė lėtai kopti į kalną. Jo uodegos dygliai blizgėjo saulėje kaip ledo varvekliai.",
+    "klausimas": "Ką stegozauras padarė pirmiausia?",
+    "atsakymai": [
+      {
+        "tekstas": "Nuėjo miegoti.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Užkopė į kalną.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Pauostė uolas.",
+        "teisingas": true
+      },
+      {
+        "tekstas": "Atsigėrė vandens.",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "Pirmiausia",
+    "zodis": "kalnas"
+  },
+  {
+    "id": "s4-k03",
+    "skyrius": 4,
+    "tipas": "kova",
+    "tekstas": "Pterodaktiliuko mama moko jį skraidyti. Mažylis jau moka plasnoti sparnais ir šokinėti nuo akmenėlių. Bet nuo aukštos uolos jis dar nešoka, nes bijo nukristi. Mama kantriai laukia šalia ir drąsina mažylį.",
+    "klausimas": "Ko pterodaktiliukas dar bijo?",
+    "atsakymai": [
+      {
+        "tekstas": "Plasnoti sparnais.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Šuolio nuo skardžio.",
+        "teisingas": true
+      },
+      {
+        "tekstas": "Šokinėti nuo akmenėlių.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Savo mamos.",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "dar nešoka",
+    "zodis": "uola"
+  },
+  {
+    "id": "s4-k04",
+    "skyrius": 4,
+    "tipas": "kova",
+    "tekstas": "Tarpeklyje staiga kažkas garsiai sugriaudėjo. Nuo kalno nusirito keli dideli rieduliai ir užvertė siaurą taką. Stegozauras sustojo ir piktai suprunkštė per šnerves. Dabar jam teks ieškoti kito kelio per kalnus.",
+    "klausimas": "Kodėl stegozaurui reikia kito kelio?",
+    "atsakymai": [
+      {
+        "tekstas": "Jį išgąsdino griaustinis.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Kalne labai šalta.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Akmenys užtvėrė praėjimą.",
+        "teisingas": true
+      },
+      {
+        "tekstas": "Jis nori pasivaikščioti po kalnus.",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "užvertė siaurą taką",
+    "zodis": "riedulys"
+  },
+  {
+    "id": "s4-k05",
+    "skyrius": 4,
+    "tipas": "kova",
+    "tekstas": "Pterodaktiliukas rado tris blizgančius akmenėlius tarp uolų. Pirmą jis paslėpė siaurame plyšyje, antrą įmetė į upelį, o trečią atnešė Pteriukui. Pteriukas apsidžiaugė ir garsiai padėkojo draugui. Tas akmenėlis buvo žalias kaip lapas.",
+    "klausimas": "Kur atsidūrė antrasis akmenėlis?",
+    "atsakymai": [
+      {
+        "tekstas": "Nukrito ant tako.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Atiteko Pteriukui.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Nugrimzdo vandenyje.",
+        "teisingas": true
+      },
+      {
+        "tekstas": "Liko plyšyje tarp uolų.",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "antrą įmetė",
+    "zodis": "akmenėlis"
+  },
+  {
+    "id": "s4-k06",
+    "skyrius": 4,
+    "tipas": "kova",
+    "tekstas": "Stegozauras ėda tik minkštus ir sultingus lapus. Kietų spyglių jis neliečia, o žolės nemėgsta. Šiandien tarpeklyje auga tik spygliuočiai ir dygūs krūmai. Stegozauras suniurzga ir alkanas eina toliau.",
+    "klausimas": "Kodėl stegozauras čia neėda?",
+    "atsakymai": [
+      {
+        "tekstas": "Jam labiau patinka žolė.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Lapai per minkšti.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Nėra jam tinkamo maisto.",
+        "teisingas": true
+      },
+      {
+        "tekstas": "Jis visai nealkanas.",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "tik minkštus ir sultingus lapus",
+    "zodis": "lapas"
+  },
+  {
+    "id": "s4-k07",
+    "skyrius": 4,
+    "tipas": "kova",
+    "tekstas": "Pteriukas ir pterodaktiliukas lenktyniauja iki krioklio ir atgal. Pterodaktiliukas startavo pirmas, bet pakeliui sustojo pagauti riebaus vabalo. Pteriukas skrido tiesiai ir nė karto nesustojo. Jis grįžo pirmas ir išdidžiai suklykė.",
+    "klausimas": "Kodėl pterodaktiliukas pralaimėjo?",
+    "atsakymai": [
+      {
+        "tekstas": "Jam skaudėjo sparną.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Jis skrido per lėtai.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Jis gaudė maistą.",
+        "teisingas": true
+      },
+      {
+        "tekstas": "Jis startavo vėliau.",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "pagauti riebaus vabalo",
+    "zodis": "krioklys"
+  },
+  {
+    "id": "s4-k08",
+    "skyrius": 4,
+    "tipas": "kova",
+    "tekstas": "Kiautas sako, kad per tarpeklį galima eiti tik dieną. Naktį tarp uolų slankioja rūkas, ir nieko nesimato. Saulė jau leidžiasi už kalnų, todėl draugai dar neina. Jie kuria laužą ir statosi palapinę.",
+    "klausimas": "Kodėl draugai dar neina per tarpeklį?",
+    "atsakymai": [
+      {
+        "tekstas": "Tarpeklyje per daug saulės.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Greitai sutems.",
+        "teisingas": true
+      },
+      {
+        "tekstas": "Jie labai pavargo.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Pteriukas nori valgyti.",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "Saulė jau leidžiasi",
+    "zodis": "palapinė"
+  },
+  {
+    "id": "s4-k09",
+    "skyrius": 4,
+    "tipas": "kova",
+    "tekstas": "Per tarpeklį nutiestas senas lianų tiltas. Kai papučia vėjas, jis supasi į šalis. Stegozauras stovi prie tilto ir nedrįsta žengti nė žingsnio. Jis per sunkus, ir senas tiltas gali neišlaikyti.",
+    "klausimas": "Kodėl stegozauras neina tiltu?",
+    "atsakymai": [
+      {
+        "tekstas": "Jis labai daug sveria.",
+        "teisingas": true
+      },
+      {
+        "tekstas": "Jis laukia draugų.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Jam nepatinka šaltas vėjas.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Jis nori miegoti.",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "per sunkus",
+    "zodis": "tiltas"
+  },
+  {
+    "id": "s4-k10",
+    "skyrius": 4,
+    "tipas": "kova",
+    "tekstas": "Mažas pterodaktiliukas skrenda per vėjuotą tarpeklį. Pirma vėjas jį nunešė prie krioklio, paskui apsuko ratu virš tilto. Galiausiai jis nusileido ant aukštos uolos ir susigūžė. Jo sparneliai drebėjo nuo šalčio.",
+    "klausimas": "Kas nutiko po to, kai vėjas jį apsuko ratu?",
+    "atsakymai": [
+      {
+        "tekstas": "Jis atsitūpė ant akmens.",
+        "teisingas": true
+      },
+      {
+        "tekstas": "Jis įkrito į vandenį.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Jis nuskrido prie krioklio.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Vėjas apsuko jį ratu.",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "Galiausiai",
+    "zodis": "vėjas"
+  },
+  {
+    "id": "s4-k11",
+    "skyrius": 4,
+    "tipas": "kova",
+    "tekstas": "Ant tilto sėdi pterodaktiliukas ir drebančiu balsu cypia. Jis ne piktas, tik išsigandęs, nes vėjas jį vos nenupūtė į tarpeklį. Jei jį švelniai paglostysi, jis neskris ant tavęs ir nekąs.",
+    "klausimas": "Kaip jaučiasi pterodaktiliukas?",
+    "atsakymai": [
+      {
+        "tekstas": "Jam nuobodu.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Jis labai linksmas.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Jam baisu.",
+        "teisingas": true
+      },
+      {
+        "tekstas": "Jis piktas.",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "išsigandęs",
+    "zodis": "pterodaktilis"
+  },
+  {
+    "id": "s4-k12",
+    "skyrius": 4,
+    "tipas": "kova",
+    "tekstas": "Stegozauras rado kitą kelią per tarpeklį. Jis ėjo palei upelį, kol priėjo seklią brastą. Ten vanduo siekė tik iki kelių, todėl jis lengvai perbrido. Kitame krante jis papurtė kojas ir nudžiugo.",
+    "klausimas": "Kodėl stegozaurui pavyko pereiti?",
+    "atsakymai": [
+      {
+        "tekstas": "Ten buvo negilu.",
+        "teisingas": true
+      },
+      {
+        "tekstas": "Jis moka plaukti.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Vanduo buvo šiltas.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Jis rado tiltą.",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "tik iki kelių",
+    "zodis": "upelis"
+  },
+  {
+    "id": "s4-k13",
+    "skyrius": 4,
+    "tipas": "kova",
+    "tekstas": "Pteriukas sugalvojo gudrų planą. Pirmiausia jis pririnks raudonų uogų, paskui padės jas ant tilto. Kai alkanas pterodaktiliukas atskris pasivaišinti, draugai perskaitys jam tekstą. Tada jis prisimins savo žodį ir nurims.",
+    "klausimas": "Ką Pteriukas darys pirmiausia?",
+    "atsakymai": [
+      {
+        "tekstas": "Atskris pas pterodaktiliuką.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Padės uogas ant tilto.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Perskaitys tekstą.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Surinks skanių vaisių.",
+        "teisingas": true
+      }
+    ],
+    "uzuomina": "Pirmiausia",
+    "zodis": "planas"
+  },
+  {
+    "id": "s4-k14",
+    "skyrius": 4,
+    "tipas": "kova",
+    "tekstas": "Stegozauras jau prisiminė vieną žodį ir šiek tiek nurimo. Bet antrojo žodžio jis dar neprisiminė, todėl vis dar mosuoja uodega. Prie jo kol kas geriau neiti, reikia dar paskaityti.",
+    "klausimas": "Ar stegozauras jau visai ramus?",
+    "atsakymai": [
+      {
+        "tekstas": "Ne, jis labai išsigandęs.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Taip, visai nurimo.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Taip, jis miega.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Ne, dar truputį pyksta.",
+        "teisingas": true
+      }
+    ],
+    "uzuomina": "dar neprisiminė",
+    "zodis": "uodega"
+  },
+  {
+    "id": "s4-k15",
+    "skyrius": 4,
+    "tipas": "kova",
+    "tekstas": "Tarpeklyje vėjas staugia taip garsiai, kad nieko negirdėti. Mažasis pterodaktiliukas šaukia savo draugus, bet jie neatsiliepia. Pteriukas užsidengia ausis sparnais. Jo draugai skraido visai netoli, už didelės pilkos uolos.",
+    "klausimas": "Kodėl draugai neatsiliepia?",
+    "atsakymai": [
+      {
+        "tekstas": "Jie išskrido labai toli.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Jie kietai miega.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Per stiprus triukšmas.",
+        "teisingas": true
+      },
+      {
+        "tekstas": "Jie supyko ant jo.",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "staugia taip garsiai",
+    "zodis": "draugas"
+  },
+  {
+    "id": "s4-k16",
+    "skyrius": 4,
+    "tipas": "kova",
+    "tekstas": "Ryte stegozauras ėjo per nuvirtusį medį, kuris jungia tarpeklio kraštus. Pusiaukelėje kamienas sutraškėjo, ir jis sustingo. Tada Pteriukas parodė, kur kamienas storiausias. Stegozauras atsargiai perėjo į kitą pusę.",
+    "klausimas": "Kodėl stegozauras sustingo vidury kelio?",
+    "atsakymai": [
+      {
+        "tekstas": "Jam buvo šalta.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Pamatė Pteriuką.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Jis norėjo pailsėti.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Išgirdo baisų garsą.",
+        "teisingas": true
+      }
+    ],
+    "uzuomina": "sutraškėjo",
+    "zodis": "kamienas"
+  },
+  {
+    "id": "s4-k17",
+    "skyrius": 4,
+    "tipas": "kova",
+    "tekstas": "Prie krioklio visada drėgna, nes vanduo taško į visas puses. Akmenys čia slidūs ir apaugę samanomis. Vienas neatsargus žingsnis – ir gali nučiuožti žemyn. Todėl stegozauras žengia labai lėtai ir atsargiai.",
+    "klausimas": "Kodėl stegozauras eina lėtai?",
+    "atsakymai": [
+      {
+        "tekstas": "Jam patinka samanos.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Bijo paslysti ir nukristi.",
+        "teisingas": true
+      },
+      {
+        "tekstas": "Jis labai pavargęs.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Jis nori pasižiūrėti į krioklį.",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "slidūs",
+    "zodis": "samanos"
+  },
+  {
+    "id": "s4-k18",
+    "skyrius": 4,
+    "tipas": "kova",
+    "tekstas": "Pterodaktiliukas nori nuskristi už krioklio, kur laukia mama. Ten jo lizdas, bet vanduo krinta labai stipriai. Jis dar neperskrido, nes bijo sušlapti sparnus. Pteriukas sako, kad reikia palaukti.",
+    "klausimas": "Ar pterodaktiliukas jau namie?",
+    "atsakymai": [
+      {
+        "tekstas": "Dar ne, jis neskrido.",
+        "teisingas": true
+      },
+      {
+        "tekstas": "Taip, seniai grįžo.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Taip, jau lizde.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Ne, jis pasiklydo kalnuose.",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "dar neperskrido",
+    "zodis": "lizdas"
+  },
+  {
+    "id": "s4-k19",
+    "skyrius": 4,
+    "tipas": "kova",
+    "tekstas": "Stegozauras rado po kriokliu tamsų urvą. Pirmiausia į vidų įlindo Pteriukas, paskui įėjo [Vardas] su žibintuvėliu. Stegozauras netilpo, tad liko lauke ir saugojo įėjimą. Viduje ant sienų blizgėjo gintarai.",
+    "klausimas": "Kodėl stegozauras neįėjo į urvą?",
+    "atsakymai": [
+      {
+        "tekstas": "Jis norėjo lauke pailsėti.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Jis nemėgsta urvų.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Jis per didelis.",
+        "teisingas": true
+      },
+      {
+        "tekstas": "Jis bijo tamsos.",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "netilpo",
+    "zodis": "urvas"
+  },
+  {
+    "id": "s4-k20",
+    "skyrius": 4,
+    "tipas": "kova",
+    "tekstas": "Pterodaktiliukas pasiruošė skristi ir išskleidė sparnus. Bet vėjas pūtė iš priekio, todėl jis nepakilo nė per sprindį. Jis palaukė, kol vėjas nurims, ir tik tada lengvai pakilo.",
+    "klausimas": "Kas padėjo pterodaktiliukui pakilti?",
+    "atsakymai": [
+      {
+        "tekstas": "Stiprus vėjas.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Jis buvo kantrus.",
+        "teisingas": true
+      },
+      {
+        "tekstas": "Dideli sparnai.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Pteriuko pagalba.",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "palaukė",
+    "zodis": "sprindis"
+  },
+  {
+    "id": "s4-k21",
+    "skyrius": 4,
+    "tipas": "kova",
+    "tekstas": "Ant plokščios uolos sėdi trys pterodaktiliukai. Pirmas valgo žuvį, antras valosi sparnus. Trečias nei valgo, nei valosi, tik žiūri į tolį ir dainuoja. Jo daina skamba per visą tarpeklį.",
+    "klausimas": "Ką veikia trečias pterodaktiliukas?",
+    "atsakymai": [
+      {
+        "tekstas": "Jis valgo žuvį.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Jis valosi sparnus.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Jis gieda ir stebi.",
+        "teisingas": true
+      },
+      {
+        "tekstas": "Jis miega lizde.",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "nei valgo, nei valosi",
+    "zodis": "žuvis"
+  },
+  {
+    "id": "s4-k22",
+    "skyrius": 4,
+    "tipas": "kova",
+    "tekstas": "Vakare stegozauras lėtai užkopė į kalno viršūnę. Iš pradžių jis žiūrėjo, kaip už tarpeklio leidžiasi saulė. Paskui jis atsigulė ant šiltos plokščios uolos. Kai pasirodė žvaigždės, jis jau garsiai knarkė.",
+    "klausimas": "Ką stegozauras veikė pačioje pabaigoje?",
+    "atsakymai": [
+      {
+        "tekstas": "Kopė į kalną.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Jis valgė lapus.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Jis miegojo.",
+        "teisingas": true
+      },
+      {
+        "tekstas": "Žiūrėjo į saulę.",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "knarkė",
+    "zodis": "žvaigždė"
+  },
+  {
+    "id": "s4-k23",
+    "skyrius": 4,
+    "tipas": "kova",
+    "tekstas": "Pterodaktiliukas nuolat sukasi aplink Pteriuką ir graudžiai cypia. Pteriukas atidžiai pažiūrėjo ir pamatė, kad jo kojoje įstrigo spyglys. Kai Pteriukas spyglį ištraukė, pterodaktiliukas linksmai suplasnojo ir nuskrido. Draugai jam pamojavo.",
+    "klausimas": "Kodėl pterodaktiliukas cypė?",
+    "atsakymai": [
+      {
+        "tekstas": "Jam skaudėjo.",
+        "teisingas": true
+      },
+      {
+        "tekstas": "Jis buvo alkanas.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Jam buvo linksma.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Jis norėjo žaisti.",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "įstrigo spyglys",
+    "zodis": "spyglys"
+  },
+  {
+    "id": "s4-k24",
+    "skyrius": 4,
+    "tipas": "kova",
+    "tekstas": "Iki tarpeklio galo liko visai nedaug. Pteriukas mato audros debesis ir sako, kad dar ne laikas eiti toliau. Pirma reikia rasti, kur pasislėpti nuo lietaus ir žaibų. Netoliese tarp uolų juoduoja plyšys.",
+    "klausimas": "Ką reikia padaryti pirmiausia?",
+    "atsakymai": [
+      {
+        "tekstas": "Žiūrėti į debesis.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Pasiekti tarpeklio galą.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Eiti toliau per tarpeklį.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Surasti saugią slėptuvę.",
+        "teisingas": true
+      }
+    ],
+    "uzuomina": "Pirma reikia",
+    "zodis": "debesis"
+  },
+  {
+    "id": "s4-b01",
+    "skyrius": 4,
+    "tipas": "bosas",
+    "tekstas": "Virš tarpeklio sklando didžiulis pterodaktilis Audrasparnis. Kai jis suplasnoja sparnais, kyla toks vėjas, kad akmenys rieda žemyn. Pelenai jį taip supykdė, kad jis nenori leisti niekam praeiti. Mažieji pterodaktiliukai slepiasi plyšiuose ir bijo išlįsti.",
+    "klausimas": "Kodėl akmenys rieda žemyn?",
+    "atsakymai": [
+      {
+        "tekstas": "Juos stumdo mažas Pteriukas.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Juos stumia oro gūsiai.",
+        "teisingas": true
+      },
+      {
+        "tekstas": "Kalnas labai senas.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Juos meta pelenai.",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "kyla toks vėjas",
+    "zodis": "akmuo"
+  },
+  {
+    "id": "s4-b02",
+    "skyrius": 4,
+    "tipas": "bosas",
+    "tekstas": "Audrasparnis pirmiausia nusileido ant aukščiausios uolos. Paskui jis taip garsiai suklykė, kad visi maži pterodaktiliukai išsislapstė po akmenimis. Galiausiai jis piktai pažvelgė į Pteriuką ir išskleidė sparnus. Pteriukas susigūžė, bet neatsitraukė.",
+    "klausimas": "Kodėl mažieji pterodaktiliukai pasislėpė?",
+    "atsakymai": [
+      {
+        "tekstas": "Juos išgąsdino klyksmas.",
+        "teisingas": true
+      },
+      {
+        "tekstas": "Jie norėjo žaisti.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Pradėjo lyti lietus.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Juos pasikvietė Pteriukas.",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "garsiai suklykė",
+    "zodis": "uola"
+  },
+  {
+    "id": "s4-b03",
+    "skyrius": 4,
+    "tipas": "bosas",
+    "tekstas": "Pteriukas paaiškino, kad Audrasparnis ne blogas. Jis tik pamiršo visus savo žodžius ir dabar negali pasakyti, ko nori. Todėl jis klykia ir pyksta, o ne kalbasi. Jam reikia padėti, o ne bėgti nuo jo.",
+    "klausimas": "Kodėl Audrasparnis klykia?",
+    "atsakymai": [
+      {
+        "tekstas": "Jis užmiršo, kaip šnekėti.",
+        "teisingas": true
+      },
+      {
+        "tekstas": "Jam patinka klykti.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Jis nori išgąsdinti visus.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Jis labai blogas.",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "pamiršo visus savo žodžius",
+    "zodis": "žodis"
+  },
+  {
+    "id": "s4-b04",
+    "skyrius": 4,
+    "tipas": "bosas",
+    "tekstas": "[Vardas] garsiai perskaitė Audrasparniui pirmą puslapį. Jis nustojo klykti ir lėtai nusileido ant plokščios uolos. Po antro puslapio jo akys sušvelnėjo, o sparnai nebedrebėjo. Atrodė, kad jis jau kažką prisimena ir tuoj prabils.",
+    "klausimas": "Kas nutiko po pirmo puslapio?",
+    "atsakymai": [
+      {
+        "tekstas": "Pterodaktilis nutilo.",
+        "teisingas": true
+      },
+      {
+        "tekstas": "Jis išskrido toli į kalnus.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Jis viską prisiminė.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Jo akys sušvelnėjo.",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "nustojo klykti",
+    "zodis": "puslapis"
+  },
+  {
+    "id": "s4-b05",
+    "skyrius": 4,
+    "tipas": "bosas",
+    "tekstas": "Audrasparnis pagaliau prisiminė visus savo žodžius. Jis nuleido galvą ir tyliai pasakė, kad nenorėjo nieko gąsdinti. Tiesiog be žodžių jam buvo labai vieniša ir liūdna. Dabar jis saugo tarpeklį ir padeda mažiesiems pterodaktiliukams mokytis skraidyti.",
+    "klausimas": "Kodėl Audrasparnis anksčiau pyko?",
+    "atsakymai": [
+      {
+        "tekstas": "Jis norėjo gąsdinti.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Jis buvo alkanas.",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Jam trūko draugų.",
+        "teisingas": true
+      },
+      {
+        "tekstas": "Jam skaudėjo galvą.",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "vieniša",
+    "zodis": "tarpeklis"
+  },
+  {
+    "id": "s4-z01",
+    "skyrius": 4,
+    "tipas": "sankryza",
+    "tekstas": "Kairėje – lobis, bet jį saugo pterodaktiliukas ir stegozauras. Dešinėje tik vienas pterodaktiliukas.",
+    "klausimas": "Kur eisi?",
+    "atsakymai": [
+      {
+        "tekstas": "← kairėn",
+        "kelias": "lobis"
+      },
+      {
+        "tekstas": "dešinėn →",
+        "kelias": "trumpas"
+      }
+    ]
+  },
+  {
+    "id": "s4-z02",
+    "skyrius": 4,
+    "tipas": "sankryza",
+    "tekstas": "Kairėje – trumpas takas, jame laukia vienas stegozauras. Dešinėje – lobis, bet jį saugo du dinozaurai.",
+    "klausimas": "Kur eisi?",
+    "atsakymai": [
+      {
+        "tekstas": "← kairėn",
+        "kelias": "trumpas"
+      },
+      {
+        "tekstas": "dešinėn →",
+        "kelias": "lobis"
+      }
+    ]
+  },
+  {
+    "id": "s4-z03",
+    "skyrius": 4,
+    "tipas": "sankryza",
+    "tekstas": "Kairėje – lobis, jį saugo stegozauras ir pterodaktiliukas. Dešinėje – tik vienas mažas pterodaktiliukas.",
+    "klausimas": "Kur eisi?",
+    "atsakymai": [
+      {
+        "tekstas": "← kairėn",
+        "kelias": "lobis"
+      },
+      {
+        "tekstas": "dešinėn →",
+        "kelias": "trumpas"
+      }
+    ]
+  },
+  {
+    "id": "s4-d01",
+    "skyrius": 4,
+    "tipas": "durys",
+    "tekstas": "Ant uolos iškalta: „Kuo daugiau iš manęs imi, tuo aš didesnė darausi. Kas aš?“",
+    "klausimas": "",
+    "atsakymai": [
+      {
+        "tekstas": "uola",
+        "teisingas": false
+      },
+      {
+        "tekstas": "kalva",
+        "teisingas": false
+      },
+      {
+        "tekstas": "upė",
+        "teisingas": false
+      },
+      {
+        "tekstas": "duobė",
+        "teisingas": true
+      }
+    ],
+    "uzuomina": "daugiau iš manęs imi"
+  },
+  {
+    "id": "s4-d02",
+    "skyrius": 4,
+    "tipas": "durys",
+    "tekstas": "Ant tilto lentos išraižyta: „Lovoje guli, o niekada nemiega. Bėga, o iš lovos neišbėga. Kas tai?“",
+    "klausimas": "",
+    "atsakymai": [
+      {
+        "tekstas": "upė",
+        "teisingas": true
+      },
+      {
+        "tekstas": "ežeras",
+        "teisingas": false
+      },
+      {
+        "tekstas": "kelias",
+        "teisingas": false
+      },
+      {
+        "tekstas": "gyvatė",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "Lovoje guli"
+  },
+  {
+    "id": "s4-d03",
+    "skyrius": 4,
+    "tipas": "durys",
+    "tekstas": "Krioklio urve parašyta: „Kai dinozaurai vaikščiojo po žemę, buvau medžio sula. Dabar esu kietas ir geltonas kaip saulė, o viduje kartais saugau vabzdį. Kas aš?“",
+    "klausimas": "",
+    "atsakymai": [
+      {
+        "tekstas": "ledas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "medus",
+        "teisingas": false
+      },
+      {
+        "tekstas": "gintaras",
+        "teisingas": true
+      },
+      {
+        "tekstas": "kaulas",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "medžio sula"
+  }
+]

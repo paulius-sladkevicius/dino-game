@@ -1,0 +1,27 @@
+{
+  "numeris": 5,
+  "pavadinimas": "Ugnikalnio papėdė",
+  "priesai": {
+    "mazas": {
+      "vardas": "Kompsognatas",
+      "piesinys": "kompsognatas"
+    },
+    "vidutinis": {
+      "vardas": "Brachiozauras",
+      "piesinys": "brachiozauras"
+    }
+  },
+  "bosas": {
+    "vardas": "Ankilozauras Šarvuotis",
+    "piesinys": "ankilozauras"
+  },
+  "sales": [
+    "Karštųjų akmenų laukas",
+    "Garuojantys šaltiniai",
+    "Pelenų giraitė"
+  ],
+  "puslapis": {
+    "pavadinimas": "Ugnikalnio papėdė",
+    "tekstas": "Ugnikalnio papėdėje buvo karšta, o ore sklandė pilki pelenai. [Vardas] ir Pteriukas padėjo išsigandusiems kompsognatams ir alkaniems brachiozaurams prisiminti žodžius. Ankilozauras Šarvuotis nieko neleido prie savo lizdo, bet perskaitytas tekstas jį nuramino. Iš kiaušinio išsirito mažas ankilozauriukas, o Šarvuotis padovanojo gintarą. Pteriuko sparnai vėl sužibo mėlynai, ir kelias į ugnikalnio viršūnę atsivėrė."
+  }
+}

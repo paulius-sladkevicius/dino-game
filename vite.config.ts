@@ -12,9 +12,9 @@ export default defineConfig({
       injectRegister: false,
       includeAssets: ['ikonos/ikona.svg', 'ikonos/apple-touch-icon.png'],
       manifest: {
-        name: 'Dingusios raidės',
-        short_name: 'Raidės',
-        description: 'Skaitymo nuotykis pirmokui',
+        name: 'Dino ekspedicija',
+        short_name: 'Dino',
+        description: 'Skaitymo nuotykis su dinozaurais',
         lang: 'lt',
         start_url: './',
         scope: './',

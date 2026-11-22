@@ -1,0 +1,27 @@
+{
+  "numeris": 2,
+  "pavadinimas": "Pelkių takas",
+  "priesai": {
+    "mazas": {
+      "vardas": "Pterodaktiliukas",
+      "piesinys": "pterodaktilis"
+    },
+    "vidutinis": {
+      "vardas": "Ankilozauras",
+      "piesinys": "ankilozauras"
+    }
+  },
+  "bosas": {
+    "vardas": "Brachiozauras Ilgakaklis",
+    "piesinys": "brachiozauras"
+  },
+  "sales": [
+    "Samanų kupstai",
+    "Nendrių takas",
+    "Rūko ežerėlis"
+  ],
+  "puslapis": {
+    "pavadinimas": "Pelkių takas",
+    "tekstas": "Pelkių takas buvo slidus, o rūkas – tirštas kaip košė. Pterodaktiliukai cypė nendrėse, o ankilozaurai pyko ir mosavo uodegomis. [Vardas] skaitė, ir užkerėti dinozaurai vienas po kito prisiminė savo žodžius. Brachiozauras Ilgakaklis nuleido kaklą kaip tiltą per ežerėlį. Dabar Pteriuko uodega vėl mėlyna!"
+  }
+}

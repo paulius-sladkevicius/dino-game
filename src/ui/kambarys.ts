@@ -8,6 +8,7 @@ import { h, svg } from './dom';
 import { visasEkranasGalimas, visasEkranasIjungtas } from './garsai';
 import { burtoMygtukas, hud, ziezirbosBurbulas } from './kova';
 import { scena, type ScenosObjektas } from './scena';
+import { priesoPiesinys, TEMA } from './tema';
 import { skaitomasTekstas } from './skaitymas';
 
 const R = '#24233f';
@@ -71,7 +72,10 @@ export function ekranasKambarys(z: Zaidimas): HTMLElement {
   const juda = z.ejimas !== null;
 
   let objektas: ScenosObjektas | null = null;
-  if (veiksmas.tipas === 'kova') objektas = { tipas: 'deme', rusis: (kamb.tipas === 'lobis' ? kamb.sargas : kamb.priesas) ?? 'mazas' };
+  if (veiksmas.tipas === 'kova') {
+    const rusis = (kamb.tipas === 'lobis' ? kamb.sargas : kamb.priesas) ?? 'mazas';
+    objektas = { tipas: 'deme', rusis, piesinys: priesoPiesinys(z.t, b.skyrius, sale.id, rusis) };
+  }
   else if (kamb.tipas === 'lobis') objektas = { tipas: 'skrynia', atidaryta: sb.lobisPaimtas };
   else if (kamb.tipas === 'slaptas') objektas = { tipas: 'kaukas' };
 
@@ -142,7 +146,7 @@ export function ekranasKambarys(z: Zaidimas): HTMLElement {
 
   const galimaPirmyn = veiksmas.tipas !== 'sankryza' && (veiksmas.tipas !== 'nieko' || kr.pirmyn.length === 1);
   const pirmynTekstas =
-    veiksmas.tipas === 'galas' ? 'Išeiti' : veiksmas.tipas === 'kova' ? 'Eiti prie Dėmės' : veiksmas.tipas === 'lobis' ? 'Prie skrynios' : veiksmas.tipas === 'dovana' ? 'Prie kauko' : 'Eiti';
+    veiksmas.tipas === 'galas' ? 'Išeiti' : veiksmas.tipas === 'kova' ? 'Eiti prie dinozauro' : veiksmas.tipas === 'lobis' ? 'Prie skrynios' : veiksmas.tipas === 'dovana' ? 'Prie Kiauto' : 'Eiti';
   const valdymas = h(
     'div',
     { class: 'ejimo-valdymas' },
@@ -172,7 +176,7 @@ export function ekranasKambarys(z: Zaidimas): HTMLElement {
     h(
       'div',
       { class: 'mygtuku-eile irankiai' },
-      h('button', { type: 'button', class: 'antrinis ikonos-mygtukas', 'aria-label': 'Knyga', onclick: () => z.atidaryti('knyga') }, svg(knygosIkona(30))),
+      h('button', { type: 'button', class: 'antrinis ikonos-mygtukas', 'aria-label': TEMA.knyga, onclick: () => z.atidaryti('knyga') }, svg(knygosIkona(30))),
       h(
         'button',
         { type: 'button', class: 'antrinis ikonos-mygtukas', 'aria-label': 'Žemėlapis', 'data-zemelapis': '1', onclick: () => z.rodytiLangus([{ tipas: 'zemelapis' }]) },

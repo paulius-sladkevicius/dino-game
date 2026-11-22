@@ -26,9 +26,22 @@ export function skaitomasTekstas(
   tekstas: string,
   n: SkaitymoNustatymai,
   paryskinti: { zodis?: [number, number] | null; sakinys?: [number, number] | null } = {},
+  /** Gudrybė „Skiemenys“: `skaidomas` – žodžio pradžia (simbolis), `liesti` – paspaudus žodį. */
+  skiemenu?: { skaidomas: number | null; liesti?: (pradzia: number) => void },
 ): HTMLElement[] {
   return zetonai(tekstas).map((z) => {
-    const el = z.tipas === 'zodis' ? zodis(z.tekstas, n) : h('span', null, z.tekstas);
+    let el: HTMLElement;
+    if (z.tipas !== 'zodis') el = h('span', null, z.tekstas);
+    else if (skiemenu?.skaidomas === z.pradzia)
+      el = h('span', { class: 'zodis suskaidytas' }, skiemenys(z.tekstas).map((sk, i) => h('span', { class: i % 2 ? 'sk sk2' : 'sk sk1' }, (i ? '-' : '') + sk)));
+    else el = zodis(z.tekstas, n);
+    if (z.tipas === 'zodis' && skiemenu?.liesti && skiemenu.skaidomas === null) {
+      const liesti = skiemenu.liesti;
+      el.classList.add('lieciamas');
+      el.setAttribute('role', 'button');
+      el.setAttribute('tabindex', '0');
+      el.addEventListener('click', () => liesti(z.pradzia));
+    }
     const kerta = (r?: [number, number] | null) => !!r && z.pradzia < r[1] && z.pabaiga > r[0];
     if (kerta(paryskinti.sakinys)) el.classList.add('pazymetas-sakinys');
     if (z.tipas === 'zodis' && kerta(paryskinti.zodis)) el.classList.add('pazymetas-zodis');

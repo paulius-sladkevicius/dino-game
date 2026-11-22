@@ -67,10 +67,21 @@ export interface Sale {
   pradzia: string;
 }
 
+/** Dinozauro piešinys (žr. src/ui/art.ts). */
+export type DinoPiesinys =
+  | 'kompsognatas'
+  | 'stegozauras'
+  | 'triceratopsas'
+  | 'pterodaktilis'
+  | 'brachiozauras'
+  | 'ankilozauras'
+  | 'tiranozauras';
+
 export interface Skyrius {
   numeris: number;
   pavadinimas: string;
-  bosas: { vardas: string; uzduotys: string[] };
+  priesai: { mazas: { vardas: string; piesinys: DinoPiesinys }; vidutinis: { vardas: string; piesinys: DinoPiesinys } };
+  bosas: { vardas: string; piesinys: DinoPiesinys; uzduotys: string[] };
   sales: Sale[];
   puslapis: { pavadinimas: string; tekstas: string };
 }
@@ -98,6 +109,8 @@ export interface SalesBusena {
   iveikti: string[];
   durysAtidarytos: boolean;
   lobisPaimtas: boolean;
+  /** Slapto urvo dovana jau paimta. */
+  dovanaPaimta: boolean;
   baigta: boolean;
   zvaigzdutes: 0 | 1 | 2 | 3;
   /** Šio ėjimo per salę duomenys. */
@@ -126,6 +139,8 @@ export type Vieta =
 
 export interface Busena {
   versija: 1;
+  /** Dabartinis lygis (skyrius), 1–6. */
+  skyrius: number;
   vardas: string;
   kreipinys: string;
   sirdeles: number;
@@ -137,7 +152,6 @@ export interface Busena {
   vieta: Vieta;
   paskutinisLauzas: { kur: 'lauzas'; sale: string } | { kur: 'bosoLauzas' };
   sales: Record<string, SalesBusena>;
-  bosasNugaletas: boolean;
   puslapiai: number[];
   zodziai: string[];
   pabege: PabegesZodis[];

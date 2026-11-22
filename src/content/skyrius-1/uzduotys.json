@@ -3,337 +3,63 @@
     "id": "s1-k01",
     "skyrius": 1,
     "tipas": "kova",
-    "tekstas": "Iš lubų vis krenta šalti lašai. Po jais atsirado didelė bala. Joje plaukioja varlė.",
-    "klausimas": "Iš ko atsirado bala?",
+    "tekstas": "Mažas kompsognatas slepiasi tarp paparčių. Jis dreba ir neišlenda, nes netoliese trypia didelis stegozauras.",
+    "klausimas": "Kaip jaučiasi kompsognatas?",
     "atsakymai": [
-      {
-        "tekstas": "iš vandens",
-        "teisingas": true
-      },
-      {
-        "tekstas": "iš lubų",
-        "teisingas": false
-      },
-      {
-        "tekstas": "iš kauko arbatos",
-        "teisingas": false
-      },
-      {
-        "tekstas": "iš rašalo",
-        "teisingas": false
-      }
-    ],
-    "uzuomina": "lašai",
-    "zodis": "bala"
-  },
-  {
-    "id": "s1-k02",
-    "skyrius": 1,
-    "tipas": "kova",
-    "tekstas": "[Draugas] atsiuntė laišką: „Rytoj mano gimtadienis. Ateik pas mane!“",
-    "klausimas": "Kodėl [Draugas] kviečia?",
-    "atsakymai": [
-      {
-        "tekstas": "Bus šventė.",
-        "teisingas": true
-      },
-      {
-        "tekstas": "Reikia laiško.",
-        "teisingas": false
-      },
-      {
-        "tekstas": "Jis serga.",
-        "teisingas": false
-      },
-      {
-        "tekstas": "Rytoj pamokos.",
-        "teisingas": false
-      }
-    ],
-    "uzuomina": "gimtadienis",
-    "zodis": "laiškas"
-  },
-  {
-    "id": "s1-k03",
-    "skyrius": 1,
-    "tipas": "kova",
-    "tekstas": "Ant sienos kabo senas žibintas. Jo stiklas geltonas, todėl visas kambarys atrodo auksinis.",
-    "klausimas": "Kas kambaryje šviečia?",
-    "atsakymai": [
-      {
-        "tekstas": "lempa",
-        "teisingas": true
-      },
-      {
-        "tekstas": "siena",
-        "teisingas": false
-      },
-      {
-        "tekstas": "stiklas",
-        "teisingas": false
-      },
-      {
-        "tekstas": "saulė",
-        "teisingas": false
-      }
-    ],
-    "uzuomina": "žibintas",
-    "zodis": "žibintas"
-  },
-  {
-    "id": "s1-k04",
-    "skyrius": 1,
-    "tipas": "kova",
-    "tekstas": "Kaukas Puplys užsidėjo raudoną kepurę ir pasiėmė kirvį. Jis eina į mišką.",
-    "klausimas": "Ką Puplys darys miške?",
-    "atsakymai": [
-      {
-        "tekstas": "kirs medžius",
-        "teisingas": true
-      },
-      {
-        "tekstas": "ieškos kepurės",
-        "teisingas": false
-      },
-      {
-        "tekstas": "rinks uogas",
-        "teisingas": false
-      },
-      {
-        "tekstas": "miegos",
-        "teisingas": false
-      }
-    ],
-    "uzuomina": "kirvį",
-    "zodis": "kirvis"
-  },
-  {
-    "id": "s1-k05",
-    "skyrius": 1,
-    "tipas": "kova",
-    "tekstas": "Po grybu slepiasi pelė. Ji dreba ir neišlenda, nes netoliese tupi katinas.",
-    "klausimas": "Kaip jaučiasi pelė?",
-    "atsakymai": [
-      {
-        "tekstas": "bijo",
-        "teisingas": true
-      },
       {
         "tekstas": "džiaugiasi",
         "teisingas": false
       },
       {
-        "tekstas": "pyksta",
+        "tekstas": "bijo",
+        "teisingas": true
+      },
+      {
+        "tekstas": "slepiasi",
         "teisingas": false
       },
       {
-        "tekstas": "juokiasi",
+        "tekstas": "miega",
         "teisingas": false
       }
     ],
     "uzuomina": "dreba",
-    "zodis": "pelė"
+    "zodis": "papartis"
   },
   {
-    "id": "s1-k06",
+    "id": "s1-k02",
     "skyrius": 1,
     "tipas": "kova",
-    "tekstas": "Šikšnosparnis visą dieną kabo aukštyn kojomis. Kai sutemsta, jis išskrenda medžioti.",
-    "klausimas": "Kada šikšnosparnis medžioja?",
+    "tekstas": "Kompsognato nugara tokios pat spalvos kaip paparčių lapai. Todėl jo beveik nesimato.",
+    "klausimas": "Kokios spalvos kompsognato nugara?",
     "atsakymai": [
       {
-        "tekstas": "naktį",
+        "tekstas": "žalia",
         "teisingas": true
       },
       {
-        "tekstas": "dieną",
+        "tekstas": "raudona",
         "teisingas": false
       },
       {
-        "tekstas": "ryte",
+        "tekstas": "balta",
         "teisingas": false
       },
       {
-        "tekstas": "per pietus",
+        "tekstas": "geltona",
         "teisingas": false
       }
     ],
-    "uzuomina": "sutemsta",
-    "zodis": "šikšnosparnis"
+    "uzuomina": "paparčių lapai",
+    "zodis": "lapas"
   },
   {
-    "id": "s1-k07",
+    "id": "s1-k03",
     "skyrius": 1,
     "tipas": "kova",
-    "tekstas": "Ant akmens sėdėjo žalia varlė. Staiga ji šoko ir pliumpt – dingo bangose.",
-    "klausimas": "Kur dabar yra varlė?",
+    "tekstas": "Pievoje ganosi stegozauras. Jo uodegoje yra du dygliai kairėje ir du dešinėje.",
+    "klausimas": "Kiek iš viso dyglių turi stegozauras?",
     "atsakymai": [
-      {
-        "tekstas": "vandenyje",
-        "teisingas": true
-      },
-      {
-        "tekstas": "ant akmens",
-        "teisingas": false
-      },
-      {
-        "tekstas": "ant medžio",
-        "teisingas": false
-      },
-      {
-        "tekstas": "danguje",
-        "teisingas": false
-      }
-    ],
-    "uzuomina": "bangose",
-    "zodis": "varlė"
-  },
-  {
-    "id": "s1-k08",
-    "skyrius": 1,
-    "tipas": "kova",
-    "tekstas": "Sraigė ropoja labai lėtai. Kol ji perėjo taką, kaukas spėjo išvirti arbatą ir ją išgerti.",
-    "klausimas": "Kiek laiko sraigė ėjo per taką?",
-    "atsakymai": [
-      {
-        "tekstas": "ilgai",
-        "teisingas": true
-      },
-      {
-        "tekstas": "greitai",
-        "teisingas": false
-      },
-      {
-        "tekstas": "akimirką",
-        "teisingas": false
-      },
-      {
-        "tekstas": "minutę",
-        "teisingas": false
-      }
-    ],
-    "uzuomina": "lėtai",
-    "zodis": "sraigė"
-  },
-  {
-    "id": "s1-k09",
-    "skyrius": 1,
-    "tipas": "kova",
-    "tekstas": "Žiežirba turi mažus sparnus. Kai jis jais plasnoja, iš uodegos byra kibirkštys.",
-    "klausimas": "Ką gali Žiežirba?",
-    "atsakymai": [
-      {
-        "tekstas": "skraidyti",
-        "teisingas": true
-      },
-      {
-        "tekstas": "plaukioti",
-        "teisingas": false
-      },
-      {
-        "tekstas": "ropoti",
-        "teisingas": false
-      },
-      {
-        "tekstas": "kasti",
-        "teisingas": false
-      }
-    ],
-    "uzuomina": "plasnoja",
-    "zodis": "sparnai"
-  },
-  {
-    "id": "s1-k10",
-    "skyrius": 1,
-    "tipas": "kova",
-    "tekstas": "[Vardas] rado raktą su raudonu kaspinu. Šalia stovi užrakinta skrynia.",
-    "klausimas": "Ką [Vardas] galės padaryti?",
-    "atsakymai": [
-      {
-        "tekstas": "atidaryti dėžę",
-        "teisingas": true
-      },
-      {
-        "tekstas": "surišti kaspiną",
-        "teisingas": false
-      },
-      {
-        "tekstas": "pamesti raktą",
-        "teisingas": false
-      },
-      {
-        "tekstas": "užrakinti duris",
-        "teisingas": false
-      }
-    ],
-    "uzuomina": "skrynia",
-    "zodis": "raktas"
-  },
-  {
-    "id": "s1-k11",
-    "skyrius": 1,
-    "tipas": "kova",
-    "tekstas": "Pilka pelė rado sūrio gabalėlį. Ji nutempė jį į urvą savo vaikams.",
-    "klausimas": "Kam pelė nešė maistą?",
-    "atsakymai": [
-      {
-        "tekstas": "mažyliams",
-        "teisingas": true
-      },
-      {
-        "tekstas": "katinui",
-        "teisingas": false
-      },
-      {
-        "tekstas": "kaukams",
-        "teisingas": false
-      },
-      {
-        "tekstas": "kaimynams",
-        "teisingas": false
-      }
-    ],
-    "uzuomina": "vaikams",
-    "zodis": "sūris"
-  },
-  {
-    "id": "s1-k12",
-    "skyrius": 1,
-    "tipas": "kova",
-    "tekstas": "Prie laužo sėdi kaukas. Jis ištiesė rankas į ugnį ir trina delnus.",
-    "klausimas": "Kodėl kaukas sėdi prie laužo?",
-    "atsakymai": [
-      {
-        "tekstas": "Jam šalta.",
-        "teisingas": true
-      },
-      {
-        "tekstas": "Jis verda.",
-        "teisingas": false
-      },
-      {
-        "tekstas": "Jam karšta.",
-        "teisingas": false
-      },
-      {
-        "tekstas": "Jis miega.",
-        "teisingas": false
-      }
-    ],
-    "uzuomina": "trina",
-    "zodis": "laužas"
-  },
-  {
-    "id": "s1-k13",
-    "skyrius": 1,
-    "tipas": "kova",
-    "tekstas": "Ant lubų kabo šikšnosparniai. Vienas, du, trys – ir dar vienas pačiame kampe.",
-    "klausimas": "Kiek šikšnosparnių kabo?",
-    "atsakymai": [
-      {
-        "tekstas": "keturi",
-        "teisingas": true
-      },
       {
         "tekstas": "trys",
         "teisingas": false
@@ -343,381 +69,304 @@
         "teisingas": false
       },
       {
-        "tekstas": "septyni",
+        "tekstas": "aštuoni",
+        "teisingas": false
+      },
+      {
+        "tekstas": "keturi",
+        "teisingas": true
+      }
+    ],
+    "uzuomina": "du dygliai",
+    "zodis": "dyglys"
+  },
+  {
+    "id": "s1-k04",
+    "skyrius": 1,
+    "tipas": "kova",
+    "tekstas": "[Vardas] išsitraukia saują uogų. Alkanas kompsognatas tuoj nustoja cypti ir prisiartina.",
+    "klausimas": "Ko nori kompsognatas?",
+    "atsakymai": [
+      {
+        "tekstas": "miegoti",
+        "teisingas": false
+      },
+      {
+        "tekstas": "cypti",
+        "teisingas": false
+      },
+      {
+        "tekstas": "valgyti",
+        "teisingas": true
+      },
+      {
+        "tekstas": "maudytis",
         "teisingas": false
       }
     ],
-    "uzuomina": "dar vienas",
-    "zodis": "šikšnosparnis"
+    "uzuomina": "Alkanas",
+    "zodis": "uoga"
+  },
+  {
+    "id": "s1-k05",
+    "skyrius": 1,
+    "tipas": "kova",
+    "tekstas": "Stegozauras eina lėtai ir sunkiai. Po jo kojomis traška sausos šakelės.",
+    "klausimas": "Kuris žodis reiškia tą patį kaip „lėtai“?",
+    "atsakymai": [
+      {
+        "tekstas": "greitai",
+        "teisingas": false
+      },
+      {
+        "tekstas": "pamažu",
+        "teisingas": true
+      },
+      {
+        "tekstas": "sunkiai",
+        "teisingas": false
+      },
+      {
+        "tekstas": "garsiai",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "lėtai",
+    "zodis": "šakelė"
+  },
+  {
+    "id": "s1-k06",
+    "skyrius": 1,
+    "tipas": "kova",
+    "tekstas": "Kompsognatas atbėgo ten, kur vanduo čiurlena per akmenis. Jis atsigėrė ir nusiprausė snukutį.",
+    "klausimas": "Kur atbėgo kompsognatas?",
+    "atsakymai": [
+      {
+        "tekstas": "prie upelio",
+        "teisingas": true
+      },
+      {
+        "tekstas": "prie laužo",
+        "teisingas": false
+      },
+      {
+        "tekstas": "į urvą",
+        "teisingas": false
+      },
+      {
+        "tekstas": "ant kalnelio",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "čiurlena",
+    "zodis": "vanduo"
+  },
+  {
+    "id": "s1-k07",
+    "skyrius": 1,
+    "tipas": "kova",
+    "tekstas": "Stegozauras pyksta ir trypia kojomis. Bet išgirdęs savo žodį, milžinas nusišypso.",
+    "klausimas": "Kaip jaučiasi stegozauras pabaigoje?",
+    "atsakymai": [
+      {
+        "tekstas": "piktas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "nusiminęs",
+        "teisingas": false
+      },
+      {
+        "tekstas": "alkanas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "linksmas",
+        "teisingas": true
+      }
+    ],
+    "uzuomina": "nusišypso",
+    "zodis": "žodis"
+  },
+  {
+    "id": "s1-k08",
+    "skyrius": 1,
+    "tipas": "kova",
+    "tekstas": "Po papartėliu guli trys balti kiaušiniai. Šalia sėdi kompsognatė ir niekur nenueina.",
+    "klausimas": "Kodėl kompsognatė niekur nenueina?",
+    "atsakymai": [
+      {
+        "tekstas": "nori miegoti",
+        "teisingas": false
+      },
+      {
+        "tekstas": "ieško kiaušinių",
+        "teisingas": false
+      },
+      {
+        "tekstas": "saugo lizdą",
+        "teisingas": true
+      },
+      {
+        "tekstas": "bijo lietaus",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "kiaušiniai",
+    "zodis": "kiaušinis"
+  },
+  {
+    "id": "s1-k09",
+    "skyrius": 1,
+    "tipas": "kova",
+    "tekstas": "Upelis platus, o vanduo šaltas. Laimei, per jį eina akmenų takelis, tad kojos lieka sausos.",
+    "klausimas": "Kuris žodis priešingas žodžiui „šaltas“?",
+    "atsakymai": [
+      {
+        "tekstas": "ledinis",
+        "teisingas": false
+      },
+      {
+        "tekstas": "šiltas",
+        "teisingas": true
+      },
+      {
+        "tekstas": "šlapias",
+        "teisingas": false
+      },
+      {
+        "tekstas": "platus",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "šaltas",
+    "zodis": "akmuo"
+  },
+  {
+    "id": "s1-k10",
+    "skyrius": 1,
+    "tipas": "kova",
+    "tekstas": "Stegozauras stovi brastoje ir geria. Vanduo jam tik iki kelių.",
+    "klausimas": "Koks upelis brastoje?",
+    "atsakymai": [
+      {
+        "tekstas": "negilus",
+        "teisingas": true
+      },
+      {
+        "tekstas": "bedugnis",
+        "teisingas": false
+      },
+      {
+        "tekstas": "labai gilus",
+        "teisingas": false
+      },
+      {
+        "tekstas": "užšalęs",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "iki kelių",
+    "zodis": "brasta"
+  },
+  {
+    "id": "s1-k11",
+    "skyrius": 1,
+    "tipas": "kova",
+    "tekstas": "Ant kranto guli kompsognatas. Jis visas šlapias ir dreba, nes įkrito į upelį.",
+    "klausimas": "Kur ką tik buvo kompsognatas?",
+    "atsakymai": [
+      {
+        "tekstas": "palapinėje",
+        "teisingas": false
+      },
+      {
+        "tekstas": "medyje",
+        "teisingas": false
+      },
+      {
+        "tekstas": "ant kranto",
+        "teisingas": false
+      },
+      {
+        "tekstas": "vandenyje",
+        "teisingas": true
+      }
+    ],
+    "uzuomina": "įkrito",
+    "zodis": "krantas"
+  },
+  {
+    "id": "s1-k12",
+    "skyrius": 1,
+    "tipas": "kova",
+    "tekstas": "Upelyje plaukia trys žuvys, o paskui jas dar dvi. Kompsognatas žiūri į jas alkanomis akimis.",
+    "klausimas": "Kiek žuvų plaukia upelyje?",
+    "atsakymai": [
+      {
+        "tekstas": "trys",
+        "teisingas": false
+      },
+      {
+        "tekstas": "šešios",
+        "teisingas": false
+      },
+      {
+        "tekstas": "penkios",
+        "teisingas": true
+      },
+      {
+        "tekstas": "keturios",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "dar dvi",
+    "zodis": "žuvis"
+  },
+  {
+    "id": "s1-k13",
+    "skyrius": 1,
+    "tipas": "kova",
+    "tekstas": "Upelio vanduo toks skaidrus, kad matosi dugnas. Ant dugno blizga geltonas akmenukas – tai gintaras!",
+    "klausimas": "Koks vanduo upelyje?",
+    "atsakymai": [
+      {
+        "tekstas": "drumstas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "švarus",
+        "teisingas": true
+      },
+      {
+        "tekstas": "purvinas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "geltonas",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "matosi dugnas",
+    "zodis": "gintaras"
   },
   {
     "id": "s1-k14",
     "skyrius": 1,
     "tipas": "kova",
-    "tekstas": "Urvo vanduo ledinis. Kaukas įkišo į jį pirštą ir tuoj pat ištraukė.",
-    "klausimas": "Ką pajuto kaukas?",
+    "tekstas": "Stegozauras nori pereiti upelį, bet bijo slidžių akmenų. Pteriukas sako: „Eik lėtai ir nepaslysi!“",
+    "klausimas": "Ko bijo stegozauras?",
     "atsakymai": [
       {
-        "tekstas": "šaltį",
+        "tekstas": "nukristi",
         "teisingas": true
       },
       {
-        "tekstas": "šilumą",
+        "tekstas": "vandens",
         "teisingas": false
       },
       {
-        "tekstas": "pirštą",
-        "teisingas": false
-      },
-      {
-        "tekstas": "skonį",
-        "teisingas": false
-      }
-    ],
-    "uzuomina": "ledinis",
-    "zodis": "vanduo"
-  },
-  {
-    "id": "s1-k15",
-    "skyrius": 1,
-    "tipas": "kova",
-    "tekstas": "Mėlynas voras visą naktį mezgė tinklą. Ryte jame jau kabojo trys musės.",
-    "klausimas": "Kodėl voras mezga tinklą?",
-    "atsakymai": [
-      {
-        "tekstas": "medžioja",
-        "teisingas": true
-      },
-      {
-        "tekstas": "miega",
-        "teisingas": false
-      },
-      {
-        "tekstas": "puošiasi",
-        "teisingas": false
-      },
-      {
-        "tekstas": "žaidžia",
-        "teisingas": false
-      }
-    ],
-    "uzuomina": "musės",
-    "zodis": "voras"
-  },
-  {
-    "id": "s1-k16",
-    "skyrius": 1,
-    "tipas": "kova",
-    "tekstas": "Kaukas Puplys suvalgė tris blynus ir dar paprašė ketvirto.",
-    "klausimas": "Koks buvo Puplys?",
-    "atsakymai": [
-      {
-        "tekstas": "alkanas",
-        "teisingas": true
-      },
-      {
-        "tekstas": "sotus",
-        "teisingas": false
-      },
-      {
-        "tekstas": "liūdnas",
-        "teisingas": false
-      },
-      {
-        "tekstas": "piktas",
-        "teisingas": false
-      }
-    ],
-    "uzuomina": "paprašė",
-    "zodis": "blynas"
-  },
-  {
-    "id": "s1-k17",
-    "skyrius": 1,
-    "tipas": "kova",
-    "tekstas": "Varlė šoko į balą. Pliaukšt! Purvini lašai aptaškė visą kauko kepurę.",
-    "klausimas": "Kokia dabar kepurė?",
-    "atsakymai": [
-      {
-        "tekstas": "nešvari",
-        "teisingas": true
-      },
-      {
-        "tekstas": "nauja",
-        "teisingas": false
-      },
-      {
-        "tekstas": "raudona",
-        "teisingas": false
-      },
-      {
-        "tekstas": "sausa",
-        "teisingas": false
-      }
-    ],
-    "uzuomina": "Purvini",
-    "zodis": "kepurė"
-  },
-  {
-    "id": "s1-k18",
-    "skyrius": 1,
-    "tipas": "kova",
-    "tekstas": "Žiežirbos ugnis silpna. Jis šviečia ne ryškiau už mažą žvakę.",
-    "klausimas": "Kaip šviečia Žiežirba?",
-    "atsakymai": [
-      {
-        "tekstas": "blankiai",
-        "teisingas": true
-      },
-      {
-        "tekstas": "ryškiai",
-        "teisingas": false
-      },
-      {
-        "tekstas": "akinamai",
-        "teisingas": false
-      },
-      {
-        "tekstas": "mėlynai",
-        "teisingas": false
-      }
-    ],
-    "uzuomina": "silpna",
-    "zodis": "žvakė"
-  },
-  {
-    "id": "s1-k19",
-    "skyrius": 1,
-    "tipas": "kova",
-    "tekstas": "Namie [Šeima] įjungė orkaitę. Virtuvėje kvepia obuoliais ir cinamonu.",
-    "klausimas": "Ką veikia [Šeima]?",
-    "atsakymai": [
-      {
-        "tekstas": "kepa",
-        "teisingas": true
-      },
-      {
-        "tekstas": "skalbia",
-        "teisingas": false
-      },
-      {
-        "tekstas": "miega",
-        "teisingas": false
-      },
-      {
-        "tekstas": "piešia",
-        "teisingas": false
-      }
-    ],
-    "uzuomina": "orkaitę",
-    "zodis": "obuolys"
-  },
-  {
-    "id": "s1-k20",
-    "skyrius": 1,
-    "tipas": "kova",
-    "tekstas": "[Vardas] užlipo ant seno kelmo ir pažvelgė toli toli. Iš ten buvo matyti visas urvas.",
-    "klausimas": "Ko [Vardas] norėjo?",
-    "atsakymai": [
-      {
-        "tekstas": "apsidairyti",
-        "teisingas": true
-      },
-      {
-        "tekstas": "pailsėti",
-        "teisingas": false
-      },
-      {
-        "tekstas": "pasivaikščioti",
-        "teisingas": false
-      },
-      {
-        "tekstas": "pasislėpti",
-        "teisingas": false
-      }
-    ],
-    "uzuomina": "pažvelgė",
-    "zodis": "kelmas"
-  },
-  {
-    "id": "s1-k21",
-    "skyrius": 1,
-    "tipas": "kova",
-    "tekstas": "Rašalo lašas nukrito ant Knygos. Raidės po juo išsiliejo, ir žodžio perskaityti nebegalima.",
-    "klausimas": "Kas nutiko žodžiui?",
-    "atsakymai": [
-      {
-        "tekstas": "Jis išnyko.",
-        "teisingas": true
-      },
-      {
-        "tekstas": "Jis paraudo.",
-        "teisingas": false
-      },
-      {
-        "tekstas": "Jis nukrito.",
-        "teisingas": false
-      },
-      {
-        "tekstas": "Jis išaugo.",
-        "teisingas": false
-      }
-    ],
-    "uzuomina": "nebegalima",
-    "zodis": "rašalas"
-  },
-  {
-    "id": "s1-k22",
-    "skyrius": 1,
-    "tipas": "kova",
-    "tekstas": "Kaukas sudėjo sausas šakas, brūkštelėjo degtuku ir papūtė. Netrukus pasidarė šilta ir šviesu.",
-    "klausimas": "Ką padarė kaukas?",
-    "atsakymai": [
-      {
-        "tekstas": "užkūrė laužą",
-        "teisingas": true
-      },
-      {
-        "tekstas": "nulaužė šaką",
-        "teisingas": false
-      },
-      {
-        "tekstas": "užgesino žvakę",
-        "teisingas": false
-      },
-      {
-        "tekstas": "pastatė namą",
-        "teisingas": false
-      }
-    ],
-    "uzuomina": "degtuku",
-    "zodis": "degtukas"
-  },
-  {
-    "id": "s1-k23",
-    "skyrius": 1,
-    "tipas": "kova",
-    "tekstas": "Raudona sraigė lipo siena aukštyn. Pusiaukelėje ji pavargo ir užmigo savo namelyje.",
-    "klausimas": "Kur miega sraigė?",
-    "atsakymai": [
-      {
-        "tekstas": "kiaute",
-        "teisingas": true
-      },
-      {
-        "tekstas": "lovoje",
-        "teisingas": false
-      },
-      {
-        "tekstas": "ant grindų",
-        "teisingas": false
-      },
-      {
-        "tekstas": "viršuje",
-        "teisingas": false
-      }
-    ],
-    "uzuomina": "namelyje",
-    "zodis": "siena"
-  },
-  {
-    "id": "s1-k24",
-    "skyrius": 1,
-    "tipas": "kova",
-    "tekstas": "Šikšnosparnis pabudo, kai saulė nusileido ir danguje sužibo pirmos žvaigždės.",
-    "klausimas": "Kada pabudo šikšnosparnis?",
-    "atsakymai": [
-      {
-        "tekstas": "vakare",
-        "teisingas": true
-      },
-      {
-        "tekstas": "auštant",
-        "teisingas": false
-      },
-      {
-        "tekstas": "per pietus",
-        "teisingas": false
-      },
-      {
-        "tekstas": "saulėtą dieną",
-        "teisingas": false
-      }
-    ],
-    "uzuomina": "nusileido",
-    "zodis": "žvaigždė"
-  },
-  {
-    "id": "s1-k25",
-    "skyrius": 1,
-    "tipas": "kova",
-    "tekstas": "Kaukai pripylė katilą vandens, įmetė bulvių, morkų ir svogūnų. Dabar jie maišo ir laukia.",
-    "klausimas": "Ką verda kaukai?",
-    "atsakymai": [
-      {
-        "tekstas": "sriubą",
-        "teisingas": true
-      },
-      {
-        "tekstas": "arbatą",
-        "teisingas": false
-      },
-      {
-        "tekstas": "kompotą",
-        "teisingas": false
-      },
-      {
-        "tekstas": "košę",
-        "teisingas": false
-      }
-    ],
-    "uzuomina": "bulvių",
-    "zodis": "katilas"
-  },
-  {
-    "id": "s1-k26",
-    "skyrius": 1,
-    "tipas": "kova",
-    "tekstas": "Prie upelio samanos žalios ir minkštos. Kaukai ant jų guli kaip ant pagalvės.",
-    "klausimas": "Kam kaukai naudoja samanas?",
-    "atsakymai": [
-      {
-        "tekstas": "poilsiui",
-        "teisingas": true
-      },
-      {
-        "tekstas": "valgymui",
-        "teisingas": false
-      },
-      {
-        "tekstas": "piešimui",
-        "teisingas": false
-      },
-      {
-        "tekstas": "plaukimui",
-        "teisingas": false
-      }
-    ],
-    "uzuomina": "guli",
-    "zodis": "samanos"
-  },
-  {
-    "id": "s1-k27",
-    "skyrius": 1,
-    "tipas": "kova",
-    "tekstas": "Voras sėdi tamsiame kampe ir nejuda. Tik kai musė prilekia arčiau, jis šokteli.",
-    "klausimas": "Ko laukia voras?",
-    "atsakymai": [
-      {
-        "tekstas": "grobio",
-        "teisingas": true
-      },
-      {
-        "tekstas": "šviesos",
-        "teisingas": false
-      },
-      {
-        "tekstas": "kampo",
+        "tekstas": "Pteriuko",
         "teisingas": false
       },
       {
@@ -725,230 +374,500 @@
         "teisingas": false
       }
     ],
-    "uzuomina": "musė",
-    "zodis": "musė"
+    "uzuomina": "slidžių",
+    "zodis": "upelis"
   },
   {
-    "id": "s1-k28",
+    "id": "s1-k15",
     "skyrius": 1,
     "tipas": "kova",
-    "tekstas": "[Augintinis] sėdi prie lango ir žiūri į kelią. Jis nevalgo, kol tu negrįžti namo.",
-    "klausimas": "Ką jaučia [Augintinis]?",
+    "tekstas": "Prie brastos auga aukšta nendrė. Joje paslėpta kuprinė, o kuprinėje – žibintuvėlis.",
+    "klausimas": "Kam reikalingas žibintuvėlis?",
     "atsakymai": [
       {
-        "tekstas": "ilgesį",
+        "tekstas": "valgyti",
+        "teisingas": false
+      },
+      {
+        "tekstas": "miegoti",
+        "teisingas": false
+      },
+      {
+        "tekstas": "plaukti",
+        "teisingas": false
+      },
+      {
+        "tekstas": "šviesti",
+        "teisingas": true
+      }
+    ],
+    "uzuomina": "žibintuvėlis",
+    "zodis": "kuprinė"
+  },
+  {
+    "id": "s1-k16",
+    "skyrius": 1,
+    "tipas": "kova",
+    "tekstas": "Pteriukas skrenda virš upelio ir šaukia: „Žiūrėk, ten pėdsakai!“ Jie veda tiesiai į giraitę.",
+    "klausimas": "Kur yra Pteriukas?",
+    "atsakymai": [
+      {
+        "tekstas": "upelyje",
+        "teisingas": false
+      },
+      {
+        "tekstas": "medyje",
+        "teisingas": false
+      },
+      {
+        "tekstas": "ore",
         "teisingas": true
       },
       {
-        "tekstas": "alkį",
-        "teisingas": false
-      },
-      {
-        "tekstas": "džiaugsmą",
-        "teisingas": false
-      },
-      {
-        "tekstas": "baimę",
+        "tekstas": "urve",
         "teisingas": false
       }
     ],
-    "uzuomina": "negrįžti",
-    "zodis": "langas"
+    "uzuomina": "skrenda virš",
+    "zodis": "giraitė"
   },
   {
-    "id": "s1-k29",
+    "id": "s1-k17",
     "skyrius": 1,
     "tipas": "kova",
-    "tekstas": "Mažas ežys susirietė į kamuoliuką. Dabar matyti tik aštrios adatos, kyšančios į visas puses.",
-    "klausimas": "Kodėl ežį sunku paliesti?",
+    "tekstas": "Giraitėje auga seni, labai aukšti medžiai. Jų viršūnės siekia debesis.",
+    "klausimas": "Kuris žodis priešingas žodžiui „aukšti“?",
     "atsakymai": [
       {
-        "tekstas": "Jis dygus.",
+        "tekstas": "seni",
+        "teisingas": false
+      },
+      {
+        "tekstas": "žemi",
         "teisingas": true
       },
       {
-        "tekstas": "Jis apvalus.",
+        "tekstas": "dideli",
         "teisingas": false
       },
       {
-        "tekstas": "Jis mažas.",
-        "teisingas": false
-      },
-      {
-        "tekstas": "Jis slidus.",
+        "tekstas": "ilgi",
         "teisingas": false
       }
     ],
-    "uzuomina": "aštrios",
-    "zodis": "ežys"
+    "uzuomina": "aukšti",
+    "zodis": "medis"
   },
   {
-    "id": "s1-k30",
+    "id": "s1-k18",
     "skyrius": 1,
     "tipas": "kova",
-    "tekstas": "Pro plyšį lubose įkrito siauras šviesos spindulys. Lauke, matyt, šviečia saulė, o čia vis dar tamsu.",
-    "klausimas": "Koks oras lauke?",
+    "tekstas": "Iš medžio drevės kyšo maža galvutė. Tai kompsognatas pasislėpė nuo lietaus.",
+    "klausimas": "Kur pasislėpė kompsognatas?",
     "atsakymai": [
       {
-        "tekstas": "giedra",
+        "tekstas": "skylėje",
         "teisingas": true
       },
       {
-        "tekstas": "lietus",
+        "tekstas": "urve",
         "teisingas": false
       },
       {
-        "tekstas": "tamsu",
+        "tekstas": "palapinėje",
         "teisingas": false
       },
       {
-        "tekstas": "sninga",
+        "tekstas": "lizde",
         "teisingas": false
       }
     ],
-    "uzuomina": "saulė",
-    "zodis": "spindulys"
+    "uzuomina": "drevės",
+    "zodis": "drevė"
   },
   {
-    "id": "s1-b01",
+    "id": "s1-k19",
     "skyrius": 1,
-    "tipas": "bosas",
-    "tekstas": "Didžioji Dėmė turi tris akis. Dvi žiūri į tave, o trečia – į duris.",
-    "klausimas": "Kiek akių nežiūri į tave?",
+    "tipas": "kova",
+    "tekstas": "Stegozauras graužia žalius lapus nuo apatinių šakų. Aukštų šakų jis nepasiekia.",
+    "klausimas": "Kodėl stegozauras negraužia aukštų šakų?",
     "atsakymai": [
       {
-        "tekstas": "viena",
+        "tekstas": "nėra alkanas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "per sunkus",
+        "teisingas": false
+      },
+      {
+        "tekstas": "nemato jų",
+        "teisingas": false
+      },
+      {
+        "tekstas": "per žemas",
+        "teisingas": true
+      }
+    ],
+    "uzuomina": "nepasiekia",
+    "zodis": "šaka"
+  },
+  {
+    "id": "s1-k20",
+    "skyrius": 1,
+    "tipas": "kova",
+    "tekstas": "Ant šakos tupi Pteriukas. Jis pilkas nuo pelenų, bet jo akys blizga linksmai.",
+    "klausimas": "Kaip jaučiasi Pteriukas?",
+    "atsakymai": [
+      {
+        "tekstas": "liūdi",
+        "teisingas": false
+      },
+      {
+        "tekstas": "pyksta",
+        "teisingas": false
+      },
+      {
+        "tekstas": "džiaugiasi",
         "teisingas": true
       },
       {
-        "tekstas": "dvi",
+        "tekstas": "nuobodžiauja",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "linksmai",
+    "zodis": "pelenai"
+  },
+  {
+    "id": "s1-k21",
+    "skyrius": 1,
+    "tipas": "kova",
+    "tekstas": "Ant samanų matyti didelis pėdsakas su trimis pirštais. Jį paliko triceratopsas Trikampis.",
+    "klausimas": "Kiek pirštų turi Trikampio koja?",
+    "atsakymai": [
+      {
+        "tekstas": "du",
         "teisingas": false
       },
       {
         "tekstas": "trys",
-        "teisingas": false
-      },
-      {
-        "tekstas": "penkios",
-        "teisingas": false
-      }
-    ],
-    "uzuomina": "trečia",
-    "zodis": "akis"
-  },
-  {
-    "id": "s1-b02",
-    "skyrius": 1,
-    "tipas": "bosas",
-    "tekstas": "Dėmė pavogė raudoną raidę ir prarijo ją. Dabar jos pilve kažkas šviečia raudonai.",
-    "klausimas": "Kur dabar raidė?",
-    "atsakymai": [
-      {
-        "tekstas": "viduje",
         "teisingas": true
       },
       {
-        "tekstas": "ant grindų",
+        "tekstas": "penki",
         "teisingas": false
       },
       {
-        "tekstas": "danguje",
-        "teisingas": false
-      },
-      {
-        "tekstas": "Knygoje",
+        "tekstas": "šeši",
         "teisingas": false
       }
     ],
-    "uzuomina": "prarijo",
-    "zodis": "raidė"
+    "uzuomina": "trimis pirštais",
+    "zodis": "pėdsakas"
   },
   {
-    "id": "s1-b03",
+    "id": "s1-k22",
     "skyrius": 1,
-    "tipas": "bosas",
-    "tekstas": "Dėmės šešėlis šliaužia po stalu, paskui po kėde. Jis vengia lango, pro kurį krenta šviesa.",
-    "klausimas": "Kokias vietas mėgsta šešėlis?",
+    "tipas": "kova",
+    "tekstas": "Aukštai medyje yra lizdas su penkiais kiaušiniais. Iš dviejų jau išsirito mažyliai.",
+    "klausimas": "Iš kiek kiaušinių mažyliai dar neišlindo?",
     "atsakymai": [
       {
-        "tekstas": "tamsias",
+        "tekstas": "trijų",
         "teisingas": true
       },
       {
-        "tekstas": "šviesias",
+        "tekstas": "penkių",
         "teisingas": false
       },
       {
-        "tekstas": "šlapias",
+        "tekstas": "dviejų",
         "teisingas": false
       },
       {
-        "tekstas": "šiltas",
+        "tekstas": "keturių",
         "teisingas": false
       }
     ],
-    "uzuomina": "vengia",
-    "zodis": "šešėlis"
+    "uzuomina": "Iš dviejų",
+    "zodis": "lizdas"
   },
   {
-    "id": "s1-b04",
+    "id": "s1-k23",
     "skyrius": 1,
-    "tipas": "bosas",
-    "tekstas": "Kai Žiežirba priskrenda arčiau, Dėmė susitraukia ir cypteli. Ji traukiasi į patį tamsiausią kampą.",
-    "klausimas": "Ką jaučia Dėmė, kai Žiežirba arti?",
+    "tipas": "kova",
+    "tekstas": "Saulė leidžiasi už medžių, ir giraitėje darosi tamsu. Laikas kurti laužą.",
+    "klausimas": "Koks dabar paros metas?",
     "atsakymai": [
       {
-        "tekstas": "baimę",
-        "teisingas": true
-      },
-      {
-        "tekstas": "džiaugsmą",
+        "tekstas": "rytas",
         "teisingas": false
       },
       {
-        "tekstas": "alkį",
-        "teisingas": false
-      },
-      {
-        "tekstas": "šilumą",
-        "teisingas": false
-      }
-    ],
-    "uzuomina": "susitraukia",
-    "zodis": "Žiežirba"
-  },
-  {
-    "id": "s1-b05",
-    "skyrius": 1,
-    "tipas": "bosas",
-    "tekstas": "[Vardas] perskaitė paskutinį žodį. Dėmė sudrebėjo ir subyrėjo į raides. Jos sudėjo žodį, kuris šildo ir šviečia.",
-    "klausimas": "Koks žodis grįžo?",
-    "atsakymai": [
-      {
-        "tekstas": "ugnis",
-        "teisingas": true
-      },
-      {
-        "tekstas": "ledas",
-        "teisingas": false
-      },
-      {
-        "tekstas": "raidė",
+        "tekstas": "vidurdienis",
         "teisingas": false
       },
       {
         "tekstas": "naktis",
         "teisingas": false
+      },
+      {
+        "tekstas": "vakaras",
+        "teisingas": true
       }
     ],
-    "uzuomina": "šildo",
-    "zodis": "ugnis"
+    "uzuomina": "Saulė leidžiasi",
+    "zodis": "laužas"
+  },
+  {
+    "id": "s1-k24",
+    "skyrius": 1,
+    "tipas": "kova",
+    "tekstas": "Kompsognatas rado milžinišką riešutą. Jis stumia jį snukiu, bet riešutas neskyla.",
+    "klausimas": "Kuris žodis reiškia tą patį kaip „milžiniškas“?",
+    "atsakymai": [
+      {
+        "tekstas": "mažytėlis",
+        "teisingas": false
+      },
+      {
+        "tekstas": "skanus",
+        "teisingas": false
+      },
+      {
+        "tekstas": "didžiulis",
+        "teisingas": true
+      },
+      {
+        "tekstas": "apvalus",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "milžinišką",
+    "zodis": "riešutas"
+  },
+  {
+    "id": "s1-b01",
+    "skyrius": 1,
+    "tipas": "bosas",
+    "tekstas": "Triceratopsas Trikampis turi du ragus virš akių ir dar vieną ant nosies. Jis pyksta ir pučia pro šnerves.",
+    "klausimas": "Kiek iš viso ragų turi Trikampis?",
+    "atsakymai": [
+      {
+        "tekstas": "vienas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "keturi",
+        "teisingas": false
+      },
+      {
+        "tekstas": "trys",
+        "teisingas": true
+      },
+      {
+        "tekstas": "penki",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "dar vieną",
+    "zodis": "ragas"
+  },
+  {
+    "id": "s1-b02",
+    "skyrius": 1,
+    "tipas": "bosas",
+    "tekstas": "Trikampis trypia kojomis taip, kad dreba žemė. Paparčiai linksta, o kompsognatai išsilaksto.",
+    "klausimas": "Kaip jaučiasi kompsognatai?",
+    "atsakymai": [
+      {
+        "tekstas": "linksmi",
+        "teisingas": false
+      },
+      {
+        "tekstas": "bijo",
+        "teisingas": true
+      },
+      {
+        "tekstas": "alkani",
+        "teisingas": false
+      },
+      {
+        "tekstas": "mieguisti",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "išsilaksto",
+    "zodis": "žemė"
+  },
+  {
+    "id": "s1-b03",
+    "skyrius": 1,
+    "tipas": "bosas",
+    "tekstas": "Pteriukas šnabžda: „Trikampis ne piktas, jis tik pamiršo savo žodį.“ [Vardas] atsiverčia dienoraštį ir pradeda skaityti.",
+    "klausimas": "Kas nutiko Trikampiui?",
+    "atsakymai": [
+      {
+        "tekstas": "neatsimena žodžio",
+        "teisingas": true
+      },
+      {
+        "tekstas": "nori valgyti",
+        "teisingas": false
+      },
+      {
+        "tekstas": "skauda koją",
+        "teisingas": false
+      },
+      {
+        "tekstas": "lizdas sugriautas",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "pamiršo",
+    "zodis": "dienoraštis"
+  },
+  {
+    "id": "s1-b04",
+    "skyrius": 1,
+    "tipas": "bosas",
+    "tekstas": "Trikampis pakelia galvą ir klauso. Jo akys nebe raudonos, o uodega ramiai siūbuoja.",
+    "klausimas": "Koks dabar Trikampis?",
+    "atsakymai": [
+      {
+        "tekstas": "piktas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "išsigandęs",
+        "teisingas": false
+      },
+      {
+        "tekstas": "raudonas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "nurimęs",
+        "teisingas": true
+      }
+    ],
+    "uzuomina": "ramiai",
+    "zodis": "uodega"
+  },
+  {
+    "id": "s1-b05",
+    "skyrius": 1,
+    "tipas": "bosas",
+    "tekstas": "Kai [Vardas] perskaito paskutinį žodį, Trikampis atsigula ant samanų. Jis kelis kartus žiovauja ir užsimerkia, o Pteriukas nusijuokia.",
+    "klausimas": "Ko dabar norisi Trikampiui?",
+    "atsakymai": [
+      {
+        "tekstas": "valgio",
+        "teisingas": false
+      },
+      {
+        "tekstas": "paparčių",
+        "teisingas": false
+      },
+      {
+        "tekstas": "miego",
+        "teisingas": true
+      },
+      {
+        "tekstas": "kovos",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "žiovauja",
+    "zodis": "samanos"
+  },
+  {
+    "id": "s1-d01",
+    "skyrius": 1,
+    "tipas": "durys",
+    "tekstas": "Ant akmens iškalta: „Be kojų bėga, be burnos čiurlena. Kas aš?“",
+    "klausimas": "",
+    "atsakymai": [
+      {
+        "tekstas": "upelis",
+        "teisingas": true
+      },
+      {
+        "tekstas": "vėjas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "akmuo",
+        "teisingas": false
+      },
+      {
+        "tekstas": "papartis",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "čiurlena",
+    "zodis": "upelis"
+  },
+  {
+    "id": "s1-d02",
+    "skyrius": 1,
+    "tipas": "durys",
+    "tekstas": "Ant uolos iškalta: „Be sparnų skrenda, be kojų bėga, lietų neša. Kas aš?“",
+    "klausimas": "",
+    "atsakymai": [
+      {
+        "tekstas": "paukštis",
+        "teisingas": false
+      },
+      {
+        "tekstas": "upelis",
+        "teisingas": false
+      },
+      {
+        "tekstas": "akmuo",
+        "teisingas": false
+      },
+      {
+        "tekstas": "debesis",
+        "teisingas": true
+      }
+    ],
+    "uzuomina": "lietų neša",
+    "zodis": "debesis"
+  },
+  {
+    "id": "s1-d03",
+    "skyrius": 1,
+    "tipas": "durys",
+    "tekstas": "Ant medžio kamieno išraižyta: „Geltonas kaip medus, kietas kaip akmuo, o viduje – senovės musytė. Kas aš?“",
+    "klausimas": "",
+    "atsakymai": [
+      {
+        "tekstas": "medus",
+        "teisingas": false
+      },
+      {
+        "tekstas": "akmuo",
+        "teisingas": false
+      },
+      {
+        "tekstas": "gintaras",
+        "teisingas": true
+      },
+      {
+        "tekstas": "kiaušinis",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "musytė",
+    "zodis": "gintaras"
   },
   {
     "id": "s1-z01",
     "skyrius": 1,
     "tipas": "sankryza",
-    "tekstas": "Kairėje lobis ir dvi Dėmės. Dešinėje tik viena Dėmė.",
+    "tekstas": "Kairėje paparčiuose slepiasi lobis, bet jį saugo du dinozaurai. Dešinėje takelis trumpas, ten tik vienas dinozauras.",
     "klausimas": "Kur eisi?",
     "atsakymai": [
       {
@@ -965,7 +884,7 @@
     "id": "s1-z02",
     "skyrius": 1,
     "tipas": "sankryza",
-    "tekstas": "Kairėje tik viena Dėmė. Dešinėje lobis ir dvi Dėmės.",
+    "tekstas": "Kairėje trumpas takas per brastą, ten laukia vienas dinozauras. Dešinėje lobis, bet jį saugo du dinozaurai.",
     "klausimas": "Kur eisi?",
     "atsakymai": [
       {
@@ -982,7 +901,7 @@
     "id": "s1-z03",
     "skyrius": 1,
     "tipas": "sankryza",
-    "tekstas": "Kairėje blizga skrynia. Ją saugo dvi Dėmės. Dešinėje – trumpas kelias.",
+    "tekstas": "Kairėje po senuoju medžiu guli lobis, tik jį saugo du dinozaurai. Dešinėje vienas dinozauras ir trumpas kelias.",
     "klausimas": "Kur eisi?",
     "atsakymai": [
       {
@@ -994,83 +913,5 @@
         "kelias": "trumpas"
       }
     ]
-  },
-  {
-    "id": "s1-d01",
-    "skyrius": 1,
-    "tipas": "durys",
-    "tekstas": "Ant durų parašyta: „Dieną manęs nematyti, o naktį šviečiu danguje. Kas aš?“",
-    "klausimas": "",
-    "atsakymai": [
-      {
-        "tekstas": "mėnulis",
-        "teisingas": true
-      },
-      {
-        "tekstas": "saulė",
-        "teisingas": false
-      },
-      {
-        "tekstas": "debesis",
-        "teisingas": false
-      },
-      {
-        "tekstas": "lempa",
-        "teisingas": false
-      }
-    ],
-    "uzuomina": "naktį"
-  },
-  {
-    "id": "s1-d02",
-    "skyrius": 1,
-    "tipas": "durys",
-    "tekstas": "Ant durų parašyta: „Be rankų, be kojų, o vartus atidaro. Kas aš?“",
-    "klausimas": "",
-    "atsakymai": [
-      {
-        "tekstas": "vėjas",
-        "teisingas": true
-      },
-      {
-        "tekstas": "vėžys",
-        "teisingas": false
-      },
-      {
-        "tekstas": "vilkas",
-        "teisingas": false
-      },
-      {
-        "tekstas": "vanduo",
-        "teisingas": false
-      }
-    ],
-    "uzuomina": "vartus"
-  },
-  {
-    "id": "s1-d03",
-    "skyrius": 1,
-    "tipas": "durys",
-    "tekstas": "Ant durų parašyta: „Žiemą ir vasarą vienos spalvos. Kas aš?“",
-    "klausimas": "",
-    "atsakymai": [
-      {
-        "tekstas": "eglė",
-        "teisingas": true
-      },
-      {
-        "tekstas": "liepa",
-        "teisingas": false
-      },
-      {
-        "tekstas": "beržas",
-        "teisingas": false
-      },
-      {
-        "tekstas": "klevas",
-        "teisingas": false
-      }
-    ],
-    "uzuomina": "Žiemą ir vasarą"
   }
 ]

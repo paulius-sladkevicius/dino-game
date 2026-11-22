@@ -1,0 +1,27 @@
+{
+  "numeris": 3,
+  "pavadinimas": "Ežerų kraštas",
+  "priesai": {
+    "mazas": {
+      "vardas": "Kompsognatas",
+      "piesinys": "kompsognatas"
+    },
+    "vidutinis": {
+      "vardas": "Triceratopsas",
+      "piesinys": "triceratopsas"
+    }
+  },
+  "bosas": {
+    "vardas": "Stegozauras Dygliauodegis",
+    "piesinys": "stegozauras"
+  },
+  "sales": [
+    "Nendrių pakrantė",
+    "Rūko įlanka",
+    "Akmenų sala"
+  ],
+  "puslapis": {
+    "pavadinimas": "Ežerų kraštas",
+    "tekstas": "Ežerų krašte tvyrojo tirštas rūkas. [Vardas] ir Pteriukas plaukė plaustu nuo vienos salos prie kitos. Kompsognatai ir triceratopsai prisiminė savo žodžius ir vėl ėmė žaisti prie vandens. Stegozauras Dygliauodegis nebesaugo ežero ir leidžia visiems atsigerti. Pteriuko sparnai nusidažė mėlyna ežero spalva."
+  }
+}

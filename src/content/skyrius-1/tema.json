@@ -1,0 +1,27 @@
+{
+  "numeris": 1,
+  "pavadinimas": "Paparčių slėnis",
+  "priesai": {
+    "mazas": {
+      "vardas": "Kompsognatas",
+      "piesinys": "kompsognatas"
+    },
+    "vidutinis": {
+      "vardas": "Stegozauras",
+      "piesinys": "stegozauras"
+    }
+  },
+  "bosas": {
+    "vardas": "Triceratopsas Trikampis",
+    "piesinys": "triceratopsas"
+  },
+  "sales": [
+    "Paparčių pieva",
+    "Upelio brasta",
+    "Senųjų medžių giraitė"
+  ],
+  "puslapis": {
+    "pavadinimas": "Paparčių slėnis",
+    "tekstas": "Laiko mašina nusileido Paparčių slėnyje, tarp aukštų paparčių. Ten [Vardas] sutiko mažą pilką pterozauriuką Pteriuką. Pelenų užkerėti kompsognatai ir stegozaurai buvo pamiršę žodžius, bet išgirdę tekstus vienas po kito nurimo. Net triceratopsas Trikampis prisiminė savo žodį ir užmigo ant samanų. O Pteriuko sparnų galiukai vėl nusidažė žaliai!"
+  }
+}

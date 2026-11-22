@@ -36,7 +36,14 @@ describe('scenarijaus skaičiai', () => {
     expect(R.BURTAI.sviesele.mana).toBe(1);
     expect(R.BURTAI.gydymas.mana).toBe(3);
     expect(R.BURTAI.gydymas.sirdeles).toBe(2);
-    expect(Object.keys(R.BURTAI)).toEqual(['sviesele', 'gydymas']);
+    // 1 skyriuje tik šie du, toliau – po vieną naują kas skyrių.
+    const nuo = Object.fromEntries(Object.entries(R.BURTAI).map(([k, v]) => [k, v.nuo]));
+    expect(nuo).toEqual({ sviesele: 1, gydymas: 1, skiemenys: 2, skydas: 3, perskilimas: 4, ugnies: 5 });
+    expect(R.BURTAI.skiemenys.mana).toBe(1);
+    expect(R.BURTAI.skydas.mana).toBe(2);
+    expect(R.BURTAI.perskilimas.mana).toBe(3);
+    expect(R.BURTAI.ugnies.mana).toBe(5);
+    expect(R.SKYRIU_SKAICIUS).toBe(6);
   });
 
   it('įrangos lentelė (Lygis / Kardas / Šalmas / Šarvai / Batai / Kada pasirodo)', () => {

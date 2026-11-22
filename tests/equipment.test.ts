@@ -18,10 +18,10 @@ const seka = (...xs: number[]): Rng => {
 };
 
 describe('įrangos pavadinimai ir aprašai', () => {
-  it('derina giminę ir skaičių', () => {
-    expect(daiktoPavadinimas('kardas', 0)).toBe('Medinis kardas');
+  it('derina giminę ir skaičių (plaktukas, šalmas, liemenė, batai)', () => {
+    expect(daiktoPavadinimas('kardas', 0)).toBe('Medinis plaktukas');
     expect(daiktoPavadinimas('salmas', 2)).toBe('Geležinis šalmas');
-    expect(daiktoPavadinimas('sarvai', 1)).toBe('Variniai šarvai');
+    expect(daiktoPavadinimas('sarvai', 1)).toBe('Varinė liemenė');
     expect(daiktoPavadinimas('batai', 5)).toBe('Deimantiniai batai');
   });
 
@@ -30,10 +30,10 @@ describe('įrangos pavadinimai ir aprašai', () => {
       'Geležinis šalmas. Viena klaida salėje neatima širdelės.',
     );
     expect(daiktoAprasas('salmas', 4)).toBe('Dvi klaidos salėje neatima širdelės.');
-    expect(daiktoAprasas('kardas', 1)).toBe('Už nugalėtą priešą gausi 1 maną.');
-    expect(daiktoAprasas('kardas', 3)).toBe('Už nugalėtą priešą gausi 2 manas.');
+    expect(daiktoAprasas('kardas', 1)).toBe('Už nuramintą dinozaurą gausi 1 gintaro lašą.');
+    expect(daiktoAprasas('kardas', 3)).toBe('Už nuramintą dinozaurą gausi 2 gintaro lašus.');
     expect(daiktoAprasas('sarvai', 5)).toBe('Gali turėti iki 8 širdelių.');
-    expect(daiktoAprasas('batai', 1)).toBe('Gali turėti iki 11 manų.');
+    expect(daiktoAprasas('batai', 1)).toBe('Gali nešti iki 11 gintaro lašų.');
   });
 
   it('rodyklė aukštyn / žemyn / lygu', () => {

@@ -1,8 +1,8 @@
 {
-  "name": "dingusios-raides",
+  "name": "dino-ekspedicija",
   "private": true,
   "version": "1.0.0",
-  "description": "Naršyklinis skaitymo žaidimas pirmokui „Dingusios raidės“",
+  "description": "Naršyklinis skaitymo žaidimas „Dino ekspedicija“",
   "type": "module",
   "scripts": {
     "dev": "vite",

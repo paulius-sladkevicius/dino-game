@@ -1,0 +1,914 @@
+[
+  {
+    "id": "s3-k01",
+    "skyrius": 3,
+    "tipas": "kova",
+    "tekstas": "Prie ežero kranto tupi mažas kompsognatas. Jis žiūri į vandenį ir laižosi. Nuo pat ryto jis nieko nevalgė, todėl pilvas garsiai burbuliuoja. Gal ežere plaukioja skanių žuvyčių?",
+    "klausimas": "Ko labiausiai nori kompsognatas?",
+    "atsakymai": [
+      {
+        "tekstas": "ėsti",
+        "teisingas": true
+      },
+      {
+        "tekstas": "žiūrėti",
+        "teisingas": false
+      },
+      {
+        "tekstas": "bėgti",
+        "teisingas": false
+      },
+      {
+        "tekstas": "miegoti",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "burbuliuoja",
+    "zodis": "ežeras"
+  },
+  {
+    "id": "s3-k02",
+    "skyrius": 3,
+    "tipas": "kova",
+    "tekstas": "Pakrantėje stovi didelis triceratopsas. Ant jo nugaros sėdi du paukščiai, o ant galvos – dar vienas. Triceratopsas pyksta ir purto ragus, bet paukščiai laikosi tvirtai ir nenuskrenda.",
+    "klausimas": "Kiek paukščių tupi ant triceratopso?",
+    "atsakymai": [
+      {
+        "tekstas": "šeši",
+        "teisingas": false
+      },
+      {
+        "tekstas": "trys",
+        "teisingas": true
+      },
+      {
+        "tekstas": "du",
+        "teisingas": false
+      },
+      {
+        "tekstas": "penki",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "dar vienas",
+    "zodis": "paukštis"
+  },
+  {
+    "id": "s3-k03",
+    "skyrius": 3,
+    "tipas": "kova",
+    "tekstas": "Saulė jau nusileido už ežero, ir vanduo patamsėjo. Danguje sužibo pirmos žvaigždės. Mažas kompsognatas susisuko į kamuoliuką po papartėliu ir užsimerkė. Šiandien jis daug lakstė.",
+    "klausimas": "Kada tai vyksta?",
+    "atsakymai": [
+      {
+        "tekstas": "rytą",
+        "teisingas": false
+      },
+      {
+        "tekstas": "vakare",
+        "teisingas": true
+      },
+      {
+        "tekstas": "per pietus",
+        "teisingas": false
+      },
+      {
+        "tekstas": "dieną",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "nusileido",
+    "zodis": "žvaigždė"
+  },
+  {
+    "id": "s3-k04",
+    "skyrius": 3,
+    "tipas": "kova",
+    "tekstas": "Kompsognatas ieško savo kiaušinio. Jis apžiūrėjo urvą ir paparčius, bet nieko nerado. O kiaušinis guli tarp nendrių, visai prie pat vandens. Pteriukas jį pamatė iš viršaus.",
+    "klausimas": "Kur yra kiaušinis?",
+    "atsakymai": [
+      {
+        "tekstas": "ant uolos",
+        "teisingas": false
+      },
+      {
+        "tekstas": "paparčiuose",
+        "teisingas": false
+      },
+      {
+        "tekstas": "pakrantėje",
+        "teisingas": true
+      },
+      {
+        "tekstas": "urvo gilumoje",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "prie pat vandens",
+    "zodis": "kiaušinis"
+  },
+  {
+    "id": "s3-k05",
+    "skyrius": 3,
+    "tipas": "kova",
+    "tekstas": "Prie ežero atėjo du draugai. Vienas turi tris didelius ragus, o kitas nešioja kietą kiautą. Tas su kiautu nėrė giliai, o raguotasis liko ant kranto. Jis vandens nemėgsta.",
+    "klausimas": "Kas nėrė į ežerą?",
+    "atsakymai": [
+      {
+        "tekstas": "vėžlys",
+        "teisingas": true
+      },
+      {
+        "tekstas": "triceratopsas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "stegozauras",
+        "teisingas": false
+      },
+      {
+        "tekstas": "ankilozauras",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "su kiautu",
+    "zodis": "kiautas"
+  },
+  {
+    "id": "s3-k06",
+    "skyrius": 3,
+    "tipas": "kova",
+    "tekstas": "Lizde prie nendrių gulėjo penki kiaušiniai. Šiandien du jau sutrūkinėjo, ir iš jų išlindo maži kompsognatukai. Kiti dar ramiai miega. Mama sėdi šalia ir saugo lizdą.",
+    "klausimas": "Kiek kiaušinių dar nesutrūkinėjo?",
+    "atsakymai": [
+      {
+        "tekstas": "penki",
+        "teisingas": false
+      },
+      {
+        "tekstas": "keturi",
+        "teisingas": false
+      },
+      {
+        "tekstas": "vienas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "trys",
+        "teisingas": true
+      }
+    ],
+    "uzuomina": "Kiti dar",
+    "zodis": "lizdas"
+  },
+  {
+    "id": "s3-k07",
+    "skyrius": 3,
+    "tipas": "kova",
+    "tekstas": "Kai saulė pakilo virš kalnų, triceratopsas atėjo atsigerti. Jis gėrė ilgai, kol ežere atsispindėjo šviesus dangus. Paskui nuėjo ganytis į pievą, kur žydi geltonos gėlės.",
+    "klausimas": "Kada triceratopsas atėjo prie ežero?",
+    "atsakymai": [
+      {
+        "tekstas": "vidurdienį",
+        "teisingas": false
+      },
+      {
+        "tekstas": "rytą",
+        "teisingas": true
+      },
+      {
+        "tekstas": "naktį",
+        "teisingas": false
+      },
+      {
+        "tekstas": "vakare",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "saulė pakilo",
+    "zodis": "pieva"
+  },
+  {
+    "id": "s3-k08",
+    "skyrius": 3,
+    "tipas": "kova",
+    "tekstas": "Vėjas pagavo Pteriuko žemėlapį ir nunešė jį virš ežero. Žemėlapis nukrito ant didelio lelijos lapo. Dabar jis plūduriuoja pačiame ežero viduryje. Pteriukas sunerimęs sukasi ratu.",
+    "klausimas": "Kur dabar yra žemėlapis?",
+    "atsakymai": [
+      {
+        "tekstas": "ant vandens",
+        "teisingas": true
+      },
+      {
+        "tekstas": "ant kranto",
+        "teisingas": false
+      },
+      {
+        "tekstas": "virš ežero",
+        "teisingas": false
+      },
+      {
+        "tekstas": "pas Pteriuką",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "plūduriuoja",
+    "zodis": "žemėlapis"
+  },
+  {
+    "id": "s3-k09",
+    "skyrius": 3,
+    "tipas": "kova",
+    "tekstas": "Rūke kažkas garsiai šnarpščia. [Vardas] mato tik tris ilgus ragus ir didelę apykaklę aplink galvą. Netrukus iš rūko išlenda ir visas dinozauras. Jis atrodo piktas ir trypia kojomis.",
+    "klausimas": "Kas šnarpščia rūke?",
+    "atsakymai": [
+      {
+        "tekstas": "stegozauras",
+        "teisingas": false
+      },
+      {
+        "tekstas": "brachiozauras",
+        "teisingas": false
+      },
+      {
+        "tekstas": "triceratopsas",
+        "teisingas": true
+      },
+      {
+        "tekstas": "kompsognatas",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "tris ilgus ragus",
+    "zodis": "rūkas"
+  },
+  {
+    "id": "s3-k10",
+    "skyrius": 3,
+    "tipas": "kova",
+    "tekstas": "Kompsognatai žaidžia gaudynių pakrantėje. Iš pradžių jų buvo keturi. Paskui atbėgo dar du, o vienas pavargo ir nuėjo miegoti po paparčiu. Kiti žaidžia toliau ir linksmai cypia.",
+    "klausimas": "Kiek kompsognatų dabar žaidžia?",
+    "atsakymai": [
+      {
+        "tekstas": "keturi",
+        "teisingas": false
+      },
+      {
+        "tekstas": "penki",
+        "teisingas": true
+      },
+      {
+        "tekstas": "šeši",
+        "teisingas": false
+      },
+      {
+        "tekstas": "septyni",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "dar du",
+    "zodis": "pakrantė"
+  },
+  {
+    "id": "s3-k11",
+    "skyrius": 3,
+    "tipas": "kova",
+    "tekstas": "Įlankoje tvyro tirštas rūkas. Mažas kompsognatas pasiklydo tarp krūmų ir tyliai verkia. Jo mama šaukia nuo aukštos uolos, kuri stūkso virš vandens. Kompsognatas klauso ir bėga į balsą.",
+    "klausimas": "Kur yra kompsognato mama?",
+    "atsakymai": [
+      {
+        "tekstas": "po vandeniu",
+        "teisingas": false
+      },
+      {
+        "tekstas": "tarp nendrių",
+        "teisingas": false
+      },
+      {
+        "tekstas": "ant akmens",
+        "teisingas": true
+      },
+      {
+        "tekstas": "lizde",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "nuo aukštos uolos",
+    "zodis": "uola"
+  },
+  {
+    "id": "s3-k12",
+    "skyrius": 3,
+    "tipas": "kova",
+    "tekstas": "Pteriukas sako: „Rūkas išsisklaidys, kai pakils vėjas.“ Ilgai buvo tylu. Kai saulė pakilo aukščiausiai, sušlamėjo nendrės ir įlanka tapo matoma. Ant vandens sublizgo saulės spinduliai.",
+    "klausimas": "Kada išsisklaidė rūkas?",
+    "atsakymai": [
+      {
+        "tekstas": "vidurnaktį",
+        "teisingas": false
+      },
+      {
+        "tekstas": "paryčiais",
+        "teisingas": false
+      },
+      {
+        "tekstas": "vakarop",
+        "teisingas": false
+      },
+      {
+        "tekstas": "vidurdienį",
+        "teisingas": true
+      }
+    ],
+    "uzuomina": "aukščiausiai",
+    "zodis": "nendrė"
+  },
+  {
+    "id": "s3-k13",
+    "skyrius": 3,
+    "tipas": "kova",
+    "tekstas": "Ant smėlio kažkas paliko didelius pėdsakus. Kiekvienas pėdsakas turi tris storus pirštus. Šalia guli nukritusi didelė plokštelė, kokios auga tik ant vieno dinozauro nugaros. Pėdsakai veda į rūką.",
+    "klausimas": "Kas čia vaikščiojo?",
+    "atsakymai": [
+      {
+        "tekstas": "triceratopsas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "kompsognatas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "stegozauras",
+        "teisingas": true
+      },
+      {
+        "tekstas": "brachiozauras",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "plokštelė",
+    "zodis": "pėdsakas"
+  },
+  {
+    "id": "s3-k14",
+    "skyrius": 3,
+    "tipas": "kova",
+    "tekstas": "Triceratopsas rado prie įlankos krūmą su sultingomis uogomis. Jis suėdė šešias uogas, o dvi paliko Pteriukui. Pteriukas apsidžiaugė ir suplasnojo sparnais. Krūmas liko visai tuščias.",
+    "klausimas": "Kiek uogų buvo ant krūmo?",
+    "atsakymai": [
+      {
+        "tekstas": "septynios",
+        "teisingas": false
+      },
+      {
+        "tekstas": "aštuonios",
+        "teisingas": true
+      },
+      {
+        "tekstas": "šešios",
+        "teisingas": false
+      },
+      {
+        "tekstas": "dešimt",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "dvi paliko",
+    "zodis": "uoga"
+  },
+  {
+    "id": "s3-k15",
+    "skyrius": 3,
+    "tipas": "kova",
+    "tekstas": "Kiekvieną rytą triceratopsas maudosi įlankoje. Šiandien jis neatėjo, nes pilki pelenai jį supykdė ir sutrikdė. Dabar jis stovi tarp medžių ir piktai trypia. Vanduo įlankoje lieka ramus ir tuščias.",
+    "klausimas": "Kur dabar triceratopsas?",
+    "atsakymai": [
+      {
+        "tekstas": "ant kranto",
+        "teisingas": false
+      },
+      {
+        "tekstas": "miške",
+        "teisingas": true
+      },
+      {
+        "tekstas": "pelkėje",
+        "teisingas": false
+      },
+      {
+        "tekstas": "įlankoje",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "tarp medžių",
+    "zodis": "medis"
+  },
+  {
+    "id": "s3-k16",
+    "skyrius": 3,
+    "tipas": "kova",
+    "tekstas": "Ant ilgo rąsto prie vandens sėdi varlės. Trys varlės žalios, dvi rudos, o viena geltona. Kai triceratopsas suriaumojo, visos rudos šoko į vandenį. Kitos liko sėdėti.",
+    "klausimas": "Kiek varlių liko ant rąsto?",
+    "atsakymai": [
+      {
+        "tekstas": "šešios",
+        "teisingas": false
+      },
+      {
+        "tekstas": "trys",
+        "teisingas": false
+      },
+      {
+        "tekstas": "keturios",
+        "teisingas": true
+      },
+      {
+        "tekstas": "nė vienos",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "visos rudos",
+    "zodis": "varlė"
+  },
+  {
+    "id": "s3-k17",
+    "skyrius": 3,
+    "tipas": "kova",
+    "tekstas": "[Vardas] su Pteriuku plaukia plaustu prie salos. Staiga plaustas atsitrenkia į akmenį ir sustoja. Aplink plaukioja žuvys, o krantas dar toli. Teks stumtis ilga lazda.",
+    "klausimas": "Kur sustojo plaustas?",
+    "atsakymai": [
+      {
+        "tekstas": "ant smėlio kranto",
+        "teisingas": false
+      },
+      {
+        "tekstas": "ant kranto",
+        "teisingas": false
+      },
+      {
+        "tekstas": "ežero viduryje",
+        "teisingas": true
+      },
+      {
+        "tekstas": "prie pat salos",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "krantas dar toli",
+    "zodis": "sala"
+  },
+  {
+    "id": "s3-k18",
+    "skyrius": 3,
+    "tipas": "kova",
+    "tekstas": "Ant salos auga aukštas medis. Jo viršūnėje kažkas sukrovė lizdą iš šakelių. Tas, kuris jį sukrovė, turi odinius sparnus ir ilgą snapą. Dabar lizde cypia mažyliai.",
+    "klausimas": "Kas sukrovė lizdą medyje?",
+    "atsakymai": [
+      {
+        "tekstas": "stegozauras",
+        "teisingas": false
+      },
+      {
+        "tekstas": "kompsognatas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "triceratopsas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "pterodaktilis",
+        "teisingas": true
+      }
+    ],
+    "uzuomina": "odinius sparnus",
+    "zodis": "sparnas"
+  },
+  {
+    "id": "s3-k19",
+    "skyrius": 3,
+    "tipas": "kova",
+    "tekstas": "Alkani kompsognatai rado mažą salą su saldžiomis uogomis. Du maži kompsognatai suėdė po tris uogas. Ant krūmo dar liko viena uoga. Ją kompsognatai paliko Pteriukui.",
+    "klausimas": "Kiek uogų suėdė abu kompsognatai kartu?",
+    "atsakymai": [
+      {
+        "tekstas": "penkias",
+        "teisingas": false
+      },
+      {
+        "tekstas": "tris",
+        "teisingas": false
+      },
+      {
+        "tekstas": "šešias",
+        "teisingas": true
+      },
+      {
+        "tekstas": "septynias",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "po tris",
+    "zodis": "krūmas"
+  },
+  {
+    "id": "s3-k20",
+    "skyrius": 3,
+    "tipas": "kova",
+    "tekstas": "Triceratopsas užmigo saloje po medžiu. Kai jis pabudo, danguje švietė mėnulis, o aplink čirpė svirpliai. Jis nustebo, kaip ilgai miegojo, ir nusižiovavo. Visi draugai jau seniai buvo išėję.",
+    "klausimas": "Kada pabudo triceratopsas?",
+    "atsakymai": [
+      {
+        "tekstas": "naktį",
+        "teisingas": true
+      },
+      {
+        "tekstas": "po pietų",
+        "teisingas": false
+      },
+      {
+        "tekstas": "vidurdienį",
+        "teisingas": false
+      },
+      {
+        "tekstas": "rytą",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "švietė mėnulis",
+    "zodis": "mėnulis"
+  },
+  {
+    "id": "s3-k21",
+    "skyrius": 3,
+    "tipas": "kova",
+    "tekstas": "Pteriukas žaidžia slėpynių su kompsognatu. Kompsognatas negali jo rasti nei tarp akmenų, nei krūmuose. O Pteriukas tupi aukštai ant šakos ir tyliai kikena. Pagaliau kompsognatas pakelia galvą ir nusijuokia.",
+    "klausimas": "Kur pasislėpė Pteriukas?",
+    "atsakymai": [
+      {
+        "tekstas": "medyje",
+        "teisingas": true
+      },
+      {
+        "tekstas": "smėlyje",
+        "teisingas": false
+      },
+      {
+        "tekstas": "tarp akmenų",
+        "teisingas": false
+      },
+      {
+        "tekstas": "krūmuose",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "aukštai ant šakos",
+    "zodis": "šaka"
+  },
+  {
+    "id": "s3-k22",
+    "skyrius": 3,
+    "tipas": "kova",
+    "tekstas": "Kažkas trypia per salą. Jo kojos storos kaip medžiai, o kaklas toks ilgas, kad jis ėda lapus nuo pačių aukščiausių šakų. Nuo jo žingsnių dreba žemė.",
+    "klausimas": "Kas trypia per salą?",
+    "atsakymai": [
+      {
+        "tekstas": "brachiozauras",
+        "teisingas": true
+      },
+      {
+        "tekstas": "triceratopsas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "kompsognatas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "Pteriukas",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "kaklas toks ilgas",
+    "zodis": "kaklas"
+  },
+  {
+    "id": "s3-k23",
+    "skyrius": 3,
+    "tipas": "kova",
+    "tekstas": "Prie salos stūkso trys uolos. Ant kiekvienos uolos tupi po vieną kompsognatą, o ant didžiausios – dar ir triceratopsas. Visi susidomėję žiūri į krioklį. Vanduo ten krenta žemyn ir putoja.",
+    "klausimas": "Kiek dinozaurų yra ant uolų?",
+    "atsakymai": [
+      {
+        "tekstas": "penki",
+        "teisingas": false
+      },
+      {
+        "tekstas": "keturi",
+        "teisingas": true
+      },
+      {
+        "tekstas": "trys",
+        "teisingas": false
+      },
+      {
+        "tekstas": "vienas",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "dar ir triceratopsas",
+    "zodis": "krioklys"
+  },
+  {
+    "id": "s3-k24",
+    "skyrius": 3,
+    "tipas": "kova",
+    "tekstas": "Pteriukas nori skristi toliau, bet dar ne laikas. Kiautas pasakė: „Skrisime, kai ant salos nusileis paskutinis saulės spindulys.“ Pteriukas nekantriai žiūri į dangų. Laukti dar ilgai.",
+    "klausimas": "Kada jie skris toliau?",
+    "atsakymai": [
+      {
+        "tekstas": "auštant",
+        "teisingas": false
+      },
+      {
+        "tekstas": "tuoj pat",
+        "teisingas": false
+      },
+      {
+        "tekstas": "per pietus",
+        "teisingas": false
+      },
+      {
+        "tekstas": "sutemus",
+        "teisingas": true
+      }
+    ],
+    "uzuomina": "paskutinis saulės spindulys",
+    "zodis": "saulė"
+  },
+  {
+    "id": "s3-b01",
+    "skyrius": 3,
+    "tipas": "bosas",
+    "tekstas": "Prie ežero stovi stegozauras Dygliauodegis. Ant jo uodegos styro du dygliai kairėje ir du dešinėje. Jis piktai mosuoja uodega ir neleidžia prieiti prie vandens. Kiti dinozaurai stovi atokiai ir bijo.",
+    "klausimas": "Kiek dyglių turi Dygliauodegio uodega?",
+    "atsakymai": [
+      {
+        "tekstas": "penkis",
+        "teisingas": false
+      },
+      {
+        "tekstas": "aštuonis",
+        "teisingas": false
+      },
+      {
+        "tekstas": "tris",
+        "teisingas": false
+      },
+      {
+        "tekstas": "keturis",
+        "teisingas": true
+      }
+    ],
+    "uzuomina": "du dešinėje",
+    "zodis": "dyglys"
+  },
+  {
+    "id": "s3-b02",
+    "skyrius": 3,
+    "tipas": "bosas",
+    "tekstas": "Dygliauodegis saugo savo lizdą su trimis kiaušiniais. Jis paslėpė kiaušinius ten, kur šlama aukštos nendrės ir kvaksi varlės. Todėl jis pyksta ir pučia pro šnerves, kai kas nors prieina prie kranto.",
+    "klausimas": "Kur Dygliauodegis paslėpė kiaušinius?",
+    "atsakymai": [
+      {
+        "tekstas": "pakrantėje",
+        "teisingas": true
+      },
+      {
+        "tekstas": "ant uolos",
+        "teisingas": false
+      },
+      {
+        "tekstas": "medyje",
+        "teisingas": false
+      },
+      {
+        "tekstas": "kalnų urve",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "aukštos nendrės",
+    "zodis": "lizdas"
+  },
+  {
+    "id": "s3-b03",
+    "skyrius": 3,
+    "tipas": "bosas",
+    "tekstas": "Kiautas prie laužo papasakojo, kad Dygliauodegis anksčiau buvo labai geras. Jis supyko tą dieną, kai iš Burbulo išskrido pelenų debesis. Nuo tada jis niekam neleidžia gerti iš ežero ir vis piktai mosuoja uodega.",
+    "klausimas": "Kada Dygliauodegis supyko?",
+    "atsakymai": [
+      {
+        "tekstas": "per didelę audrą",
+        "teisingas": false
+      },
+      {
+        "tekstas": "šį rytą",
+        "teisingas": false
+      },
+      {
+        "tekstas": "vakar vakare",
+        "teisingas": false
+      },
+      {
+        "tekstas": "po išsiveržimo",
+        "teisingas": true
+      }
+    ],
+    "uzuomina": "pelenų debesis",
+    "zodis": "debesis"
+  },
+  {
+    "id": "s3-b04",
+    "skyrius": 3,
+    "tipas": "bosas",
+    "tekstas": "Dygliauodegis jau prisiminė tris žodžius ir šiek tiek nurimo. Kiautas sakė, kad jam reikia prisiminti dar tiek pat. Tada stegozauras visai nusiramins ir leis visiems gerti. Visi laukia susikaupę.",
+    "klausimas": "Kiek žodžių iš viso turi prisiminti Dygliauodegis?",
+    "atsakymai": [
+      {
+        "tekstas": "šešis",
+        "teisingas": true
+      },
+      {
+        "tekstas": "aštuonis",
+        "teisingas": false
+      },
+      {
+        "tekstas": "tris",
+        "teisingas": false
+      },
+      {
+        "tekstas": "penkis",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "dar tiek pat",
+    "zodis": "žodis"
+  },
+  {
+    "id": "s3-b05",
+    "skyrius": 3,
+    "tipas": "bosas",
+    "tekstas": "Kai Dygliauodegis prisiminė paskutinį žodį, jis garsiai ir linksmai nusijuokė. Pro pilkus debesis prasiskverbė saulė, ir ežeras sublizgo. Stegozauras pakvietė kompsognatus bei triceratopsą atsigerti. Nuo tol visi jie susitinka prie vandens kiekvieną rytą.",
+    "klausimas": "Kaip dažnai draugai dabar susitinka prie ežero?",
+    "atsakymai": [
+      {
+        "tekstas": "tik vakare",
+        "teisingas": false
+      },
+      {
+        "tekstas": "kartą metuose",
+        "teisingas": false
+      },
+      {
+        "tekstas": "kasdien",
+        "teisingas": true
+      },
+      {
+        "tekstas": "niekada",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "kiekvieną rytą",
+    "zodis": "ežeras"
+  },
+  {
+    "id": "s3-z01",
+    "skyrius": 3,
+    "tipas": "sankryza",
+    "tekstas": "Kairėje – lobis, bet jį saugo kompsognatas ir triceratopsas. Dešinėje laukia tik vienas kompsognatas.",
+    "klausimas": "Kur eisi?",
+    "atsakymai": [
+      {
+        "tekstas": "← kairėn",
+        "kelias": "lobis"
+      },
+      {
+        "tekstas": "dešinėn →",
+        "kelias": "trumpas"
+      }
+    ]
+  },
+  {
+    "id": "s3-z02",
+    "skyrius": 3,
+    "tipas": "sankryza",
+    "tekstas": "Kairėje – trumpas takas, jį saugo vienas triceratopsas. Dešinėje – lobis, bet ten laukia du dinozaurai.",
+    "klausimas": "Kur eisi?",
+    "atsakymai": [
+      {
+        "tekstas": "← kairėn",
+        "kelias": "trumpas"
+      },
+      {
+        "tekstas": "dešinėn →",
+        "kelias": "lobis"
+      }
+    ]
+  },
+  {
+    "id": "s3-z03",
+    "skyrius": 3,
+    "tipas": "sankryza",
+    "tekstas": "Kairėje – lobis, jį saugo triceratopsas ir kompsognatas. Dešinėje – tik vienas mažas kompsognatas.",
+    "klausimas": "Kur eisi?",
+    "atsakymai": [
+      {
+        "tekstas": "← kairėn",
+        "kelias": "lobis"
+      },
+      {
+        "tekstas": "dešinėn →",
+        "kelias": "trumpas"
+      }
+    ]
+  },
+  {
+    "id": "s3-d01",
+    "skyrius": 3,
+    "tipas": "durys",
+    "tekstas": "Ant akmens iškalta: „Be rankų, be kojų, o vartus atidaro. Kas aš?“",
+    "klausimas": "",
+    "atsakymai": [
+      {
+        "tekstas": "sniegas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "paukštis",
+        "teisingas": false
+      },
+      {
+        "tekstas": "vėjas",
+        "teisingas": true
+      },
+      {
+        "tekstas": "lietus",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "vartus atidaro"
+  },
+  {
+    "id": "s3-d02",
+    "skyrius": 3,
+    "tipas": "durys",
+    "tekstas": "Ant uolos parašyta: „Be lentų, be vinių, o per upę tiltas. Kas tai?“",
+    "klausimas": "",
+    "atsakymai": [
+      {
+        "tekstas": "akmuo",
+        "teisingas": false
+      },
+      {
+        "tekstas": "ledas",
+        "teisingas": true
+      },
+      {
+        "tekstas": "rąstas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "laivas",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "per upę"
+  },
+  {
+    "id": "s3-d03",
+    "skyrius": 3,
+    "tipas": "durys",
+    "tekstas": "Urvo sienoje iškalta: „Kadaise buvau gyvas, o dabar esu kietas kaip akmuo. Mane randa kasinėdami žemę. Kas aš?“",
+    "klausimas": "",
+    "atsakymai": [
+      {
+        "tekstas": "gintaras",
+        "teisingas": false
+      },
+      {
+        "tekstas": "kiaušinis",
+        "teisingas": false
+      },
+      {
+        "tekstas": "uola",
+        "teisingas": false
+      },
+      {
+        "tekstas": "fosilija",
+        "teisingas": true
+      }
+    ],
+    "uzuomina": "Kadaise buvau gyvas"
+  }
+]

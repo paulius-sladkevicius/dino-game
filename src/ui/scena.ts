@@ -1,8 +1,8 @@
 // Kambarys iš šono: urvo fonas, durys, objektai ir herojus, kuris gali eiti.
 
 import type { KovosRusis } from '../game/engine';
-import type { Iranga } from '../game/types';
-import { deme, durys, herojusSonu, kaukas, lauzas, rodykliuStulpas, skrynia, slaptosDurys, urvoFonas } from './art';
+import type { DinoPiesinys, Iranga } from '../game/types';
+import { dino, herojusSonu, lauzas, perėja as durys, rodykliuStulpas, skrynia, slaptosDurys, slenioFonas, vezlys } from './art';
 import { h, sumazintasJudesys, svg } from './dom';
 
 /** Vietos scenoje (procentais nuo kairės). */
@@ -20,7 +20,7 @@ export const X = {
 };
 
 export type ScenosObjektas =
-  | { tipas: 'deme'; rusis: KovosRusis; virsus?: HTMLElement; klases?: string }
+  | { tipas: 'deme'; rusis: KovosRusis; piesinys: DinoPiesinys; virsus?: HTMLElement; klases?: string }
   | { tipas: 'skrynia'; atidaryta: boolean }
   | { tipas: 'kaukas' }
   | { tipas: 'lauzas'; melynas: boolean };
@@ -44,7 +44,7 @@ const padeti = (el: HTMLElement, x: number, klase: string) => {
 };
 
 export function scena(p: ScenosParametrai): HTMLElement {
-  const vaikai: HTMLElement[] = [svg(urvoFonas(), 'scenos-fonas')];
+  const vaikai: HTMLElement[] = [svg(slenioFonas(), 'scenos-fonas')];
   if (p.kaireDurys) vaikai.push(padeti(svg(durys(p.kaireDurys)), X.kaireDurys + 2, 'durys-sonines'));
   if (p.desineDurys) vaikai.push(padeti(svg(durys(p.desineDurys)), X.desineDurys + 2, 'durys-sonines'));
   if (p.sankryza) {
@@ -57,9 +57,9 @@ export function scena(p: ScenosParametrai): HTMLElement {
   if (o) {
     let el: HTMLElement;
     if (o.tipas === 'deme') {
-      el = h('div', { class: `scenos-priesas priesas-${o.rusis} ${o.klases ?? ''}` }, o.virsus ?? null, svg(deme(o.rusis), 'demes-piesinys'));
+      el = h('div', { class: `scenos-priesas priesas-${o.rusis} ${o.klases ?? ''}` }, o.virsus ?? null, svg(dino(o.piesinys, !o.klases?.includes('susigeria')), 'demes-piesinys'));
     } else if (o.tipas === 'skrynia') el = svg(skrynia(o.atidaryta), 'skrynia');
-    else if (o.tipas === 'kaukas') el = svg(kaukas(80), 'scenos-kaukas');
+    else if (o.tipas === 'kaukas') el = svg(vezlys(80), 'scenos-kaukas');
     else el = svg(lauzas(o.melynas ? 'melyna' : 'iprasta', 100), 'scenos-lauzas');
     vaikai.push(padeti(el, X.objektas, 'objektas'));
   }

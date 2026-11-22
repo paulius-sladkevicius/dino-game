@@ -5,7 +5,7 @@ import type { Turinys } from '../content';
 import { naujaBusena, naujaSalesBusena } from './engine';
 import type { Busena } from './types';
 
-export const SAUGYKLOS_RAKTAS = 'dingusios-raides/v1';
+export const SAUGYKLOS_RAKTAS = 'dino-ekspedicija/v1';
 
 export interface Saugykla {
   getItem(k: string): string | null;
@@ -56,6 +56,7 @@ export function atkurtiBusena(duomenys: unknown, t: Turinys): Busena | null {
   const vieta = rez.vieta as { kur?: string; sale?: string };
   if (!vieta || (vieta.sale && !sales[vieta.sale])) rez.vieta = { kur: 'skyrius' };
   if (rez.vieta.kur === 'sale') rez.vieta = { kur: 'lauzas', sale: rez.vieta.sale };
+  if (!t.skyriai.some((s) => s.numeris === rez.skyrius)) rez.skyrius = t.skyriai[0].numeris;
   const pl = rez.paskutinisLauzas as { kur?: string; sale?: string };
   if (!pl || (pl.kur === 'lauzas' && (!pl.sale || !sales[pl.sale]))) rez.paskutinisLauzas = pagr.paskutinisLauzas;
   return rez;

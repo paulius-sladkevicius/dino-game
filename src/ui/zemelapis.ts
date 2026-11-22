@@ -16,7 +16,7 @@ function kelioLinija(a: Kambarys, b: Kambarys, slaptas: boolean): string {
 /** Salės žemėlapis tik peržiūrai: kur esi ir kur jau buvai. Vaikšto ne per jį. */
 export function zemelapioVaizdas(z: Zaidimas): HTMLElement {
   const b = z.b;
-  if (b.vieta.kur !== 'sale') return h('p', null, 'Žemėlapis rodomas salėje.');
+  if (b.vieta.kur !== 'sale') return h('p', null, 'Žemėlapis rodomas vietovėje.');
   const sale = rastiSale(z.t, b.vieta.sale);
   const sb = b.sales[sale.id];
   const dabar = rastiKambari(sale, b.vieta.kambarys);
@@ -56,7 +56,7 @@ export function zemelapioVaizdas(z: Zaidimas): HTMLElement {
 
   return h(
     'div',
-    { class: 'zemelapis', role: 'img', 'aria-label': `Salės „${sale.pavadinimas}“ žemėlapis. Tu esi: ${dabar.pavadinimas}.` },
+    { class: 'zemelapis', role: 'img', 'aria-label': `Vietovės „${sale.pavadinimas}“ žemėlapis. Tu esi: ${dabar.pavadinimas}.` },
     svg(`<svg viewBox="0 0 100 100" preserveAspectRatio="none" class="keliai">${linijos.join('')}</svg>`, 'keliu-sluoksnis'),
     kambariai,
   );

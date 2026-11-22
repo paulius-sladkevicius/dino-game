@@ -1,0 +1,27 @@
+{
+  "numeris": 4,
+  "pavadinimas": "Kalnų tarpeklis",
+  "priesai": {
+    "mazas": {
+      "vardas": "Pterodaktiliukas",
+      "piesinys": "pterodaktilis"
+    },
+    "vidutinis": {
+      "vardas": "Stegozauras",
+      "piesinys": "stegozauras"
+    }
+  },
+  "bosas": {
+    "vardas": "Pterodaktilis Audrasparnis",
+    "piesinys": "pterodaktilis"
+  },
+  "sales": [
+    "Riedulių perėja",
+    "Vėjų tiltas",
+    "Krioklio uolos"
+  ],
+  "puslapis": {
+    "pavadinimas": "Kalnų tarpeklis",
+    "tekstas": "Kalnų tarpeklyje pūtė stiprus vėjas, o nuo uolų riedėjo akmenys. [Vardas] ir Pteriukas perėjo senu tiltu ir rado slaptą urvą po kriokliu. Pterodaktiliukai ir stegozaurai prisiminė savo žodžius. Didysis Audrasparnis nustojo klykti ir dabar saugo tarpeklį. Pteriuko sparnai nusidažė ryškiai geltonai."
+  }
+}

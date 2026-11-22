@@ -1,0 +1,917 @@
+[
+  {
+    "id": "s2-k01",
+    "skyrius": 2,
+    "tipas": "kova",
+    "tekstas": "Pelkėje kyšo minkšti samanų kupstai. Pterodaktiliukas šokinėja nuo vieno kupsto ant kito ir džiaugiasi, kad nesušlapo.",
+    "klausimas": "Kokios liko pterodaktiliuko kojos?",
+    "atsakymai": [
+      {
+        "tekstas": "šlapios",
+        "teisingas": false
+      },
+      {
+        "tekstas": "sausos",
+        "teisingas": true
+      },
+      {
+        "tekstas": "purvinos",
+        "teisingas": false
+      },
+      {
+        "tekstas": "šaltos",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "nesušlapo",
+    "zodis": "kupstas"
+  },
+  {
+    "id": "s2-k02",
+    "skyrius": 2,
+    "tipas": "kova",
+    "tekstas": "Naktį pelkėje vanduo sustingsta ir tampa kietas kaip akmuo. Rytą pterodaktiliukas čiuožinėja ant jo ir juokiasi.",
+    "klausimas": "Kas vyksta pelkėje naktį?",
+    "atsakymai": [
+      {
+        "tekstas": "šala",
+        "teisingas": true
+      },
+      {
+        "tekstas": "sala",
+        "teisingas": false
+      },
+      {
+        "tekstas": "šyla",
+        "teisingas": false
+      },
+      {
+        "tekstas": "lyja",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "sustingsta",
+    "zodis": "pelkė"
+  },
+  {
+    "id": "s2-k03",
+    "skyrius": 2,
+    "tipas": "kova",
+    "tekstas": "Ankilozauras sunkus kaip uola, todėl brenda per pelkę iki pilvo. Pterodaktiliukas lengvas ir tik švelniai liečia vandenį.",
+    "klausimas": "Kuris iš jų labiau sušlampa?",
+    "atsakymai": [
+      {
+        "tekstas": "mažesnysis",
+        "teisingas": false
+      },
+      {
+        "tekstas": "abu vienodai",
+        "teisingas": false
+      },
+      {
+        "tekstas": "nė vienas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "didesnysis",
+        "teisingas": true
+      }
+    ],
+    "uzuomina": "iki pilvo",
+    "zodis": "uola"
+  },
+  {
+    "id": "s2-k04",
+    "skyrius": 2,
+    "tipas": "kova",
+    "tekstas": "Ant kupsto auga smulkūs žali lapeliai. Ankilozauras juos uosto, nes jie kvepia kaip arbata, kurią verda [Šeima].",
+    "klausimas": "Koks augalas auga ant kupsto?",
+    "atsakymai": [
+      {
+        "tekstas": "meta",
+        "teisingas": false
+      },
+      {
+        "tekstas": "pušis",
+        "teisingas": false
+      },
+      {
+        "tekstas": "mėta",
+        "teisingas": true
+      },
+      {
+        "tekstas": "lapelis",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "arbata",
+    "zodis": "lapelis"
+  },
+  {
+    "id": "s2-k05",
+    "skyrius": 2,
+    "tipas": "kova",
+    "tekstas": "Pterodaktiliuko sparnai ploni kaip lapas, bet labai platūs. Kai jis juos išskleidžia, uždengia visą kupstą.",
+    "klausimas": "Kokie pterodaktiliuko sparnai?",
+    "atsakymai": [
+      {
+        "tekstas": "maži ir stori",
+        "teisingas": false
+      },
+      {
+        "tekstas": "dideli ir lengvi",
+        "teisingas": true
+      },
+      {
+        "tekstas": "dideli ir sunkūs",
+        "teisingas": false
+      },
+      {
+        "tekstas": "maži ir lengvi",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "labai platūs",
+    "zodis": "sparnas"
+  },
+  {
+    "id": "s2-k06",
+    "skyrius": 2,
+    "tipas": "kova",
+    "tekstas": "Kupstuose susitiko ankilozauras ir pterodaktiliukas. Vienas nori miegoti, kitas – žaisti gaudynių. Ankilozauras žiovauja, o pterodaktiliukas sukasi ratu.",
+    "klausimas": "Ko nori ankilozauras?",
+    "atsakymai": [
+      {
+        "tekstas": "pailsėti",
+        "teisingas": true
+      },
+      {
+        "tekstas": "žaisti",
+        "teisingas": false
+      },
+      {
+        "tekstas": "valgyti",
+        "teisingas": false
+      },
+      {
+        "tekstas": "skraidyti",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "žiovauja",
+    "zodis": "ratas"
+  },
+  {
+    "id": "s2-k07",
+    "skyrius": 2,
+    "tipas": "kova",
+    "tekstas": "Pterodaktiliukas įsibėgėja, atsispiria ir peršoka per platų upelį. Ankilozauras nustebęs mirksi akimis.",
+    "klausimas": "Kaip vadinasi tai, ką padarė pterodaktiliukas?",
+    "atsakymai": [
+      {
+        "tekstas": "suolis",
+        "teisingas": false
+      },
+      {
+        "tekstas": "upelis",
+        "teisingas": false
+      },
+      {
+        "tekstas": "maudynės",
+        "teisingas": false
+      },
+      {
+        "tekstas": "šuolis",
+        "teisingas": true
+      }
+    ],
+    "uzuomina": "peršoka",
+    "zodis": "upelis"
+  },
+  {
+    "id": "s2-k08",
+    "skyrius": 2,
+    "tipas": "kova",
+    "tekstas": "Ankilozauras pyksta ir mosuoja uodega su kauline buože. Bet [Vardas] garsiai perskaito žodį, ir buožė nusileidžia.",
+    "klausimas": "Kas nutiko ankilozaurui?",
+    "atsakymai": [
+      {
+        "tekstas": "užmigo",
+        "teisingas": false
+      },
+      {
+        "tekstas": "pabėgo",
+        "teisingas": false
+      },
+      {
+        "tekstas": "nurimo",
+        "teisingas": true
+      },
+      {
+        "tekstas": "supyko",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "nusileidžia",
+    "zodis": "buožė"
+  },
+  {
+    "id": "s2-k09",
+    "skyrius": 2,
+    "tipas": "kova",
+    "tekstas": "Nendrėse slepiasi du pterodaktiliukai. Vieno sparnai spalvos kaip šokoladas, o kito – kaip pelenai.",
+    "klausimas": "Kokių spalvų pterodaktiliukų sparnai?",
+    "atsakymai": [
+      {
+        "tekstas": "baltas ir juodas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "rudas ir pilkas",
+        "teisingas": true
+      },
+      {
+        "tekstas": "žalias ir rudas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "pilkas ir geltonas",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "šokoladas",
+    "zodis": "pelenai"
+  },
+  {
+    "id": "s2-k10",
+    "skyrius": 2,
+    "tipas": "kova",
+    "tekstas": "Pteriukas labai praalko. Prie laužo Kiautas išvirė avižų su uogomis ir pripylė pilną dubenėlį.",
+    "klausimas": "Koks patiekalas buvo dubenėlyje?",
+    "atsakymai": [
+      {
+        "tekstas": "košė",
+        "teisingas": true
+      },
+      {
+        "tekstas": "kosė",
+        "teisingas": false
+      },
+      {
+        "tekstas": "sriuba",
+        "teisingas": false
+      },
+      {
+        "tekstas": "dubenėlis",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "avižų",
+    "zodis": "laužas"
+  },
+  {
+    "id": "s2-k11",
+    "skyrius": 2,
+    "tipas": "kova",
+    "tekstas": "Nendrių takas siauras ir vingiuotas. Ankilozauras per jį brenda lėtai, o pterodaktiliukas skrenda viršum nendrių ir laukia.",
+    "klausimas": "Kuris pirmas pasieks tako galą?",
+    "atsakymai": [
+      {
+        "tekstas": "šarvuotasis",
+        "teisingas": false
+      },
+      {
+        "tekstas": "abu vienu metu",
+        "teisingas": false
+      },
+      {
+        "tekstas": "nė vienas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "sparnuotasis",
+        "teisingas": true
+      }
+    ],
+    "uzuomina": "laukia",
+    "zodis": "takas"
+  },
+  {
+    "id": "s2-k12",
+    "skyrius": 2,
+    "tipas": "kova",
+    "tekstas": "Nendrės linksta ir šnara, nors aplink nieko nėra. Pterodaktiliukui sunku skristi, jį vis nupučia atgal.",
+    "klausimas": "Kas lenkia nendres?",
+    "atsakymai": [
+      {
+        "tekstas": "vejas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "lietus",
+        "teisingas": false
+      },
+      {
+        "tekstas": "vėjas",
+        "teisingas": true
+      },
+      {
+        "tekstas": "paukštis",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "nupučia",
+    "zodis": "nendrė"
+  },
+  {
+    "id": "s2-k13",
+    "skyrius": 2,
+    "tipas": "kova",
+    "tekstas": "Ankilozauras turi kietus šarvus, bet negali skristi. Pterodaktiliukas skraido, bet bijo lietaus, nes jo sparnai sušlampa.",
+    "klausimas": "Kada pterodaktiliukui geriau neskristi?",
+    "atsakymai": [
+      {
+        "tekstas": "kai šviečia saulė",
+        "teisingas": false
+      },
+      {
+        "tekstas": "kai lyja",
+        "teisingas": true
+      },
+      {
+        "tekstas": "kai turi šarvus",
+        "teisingas": false
+      },
+      {
+        "tekstas": "kai tamsu",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "lietaus",
+    "zodis": "šarvai"
+  },
+  {
+    "id": "s2-k14",
+    "skyrius": 2,
+    "tipas": "kova",
+    "tekstas": "Ant nendrės kabo kuprinė, o joje – kompasas ir žemėlapis. Pteriukas sako, kad be jų pelkėje lengva pasiklysti.",
+    "klausimas": "Kam reikalingi kompasas ir žemėlapis?",
+    "atsakymai": [
+      {
+        "tekstas": "rasti kelią",
+        "teisingas": true
+      },
+      {
+        "tekstas": "kurti laužą",
+        "teisingas": false
+      },
+      {
+        "tekstas": "nešti kuprinę",
+        "teisingas": false
+      },
+      {
+        "tekstas": "sušilti",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "pasiklysti",
+    "zodis": "kompasas"
+  },
+  {
+    "id": "s2-k15",
+    "skyrius": 2,
+    "tipas": "kova",
+    "tekstas": "Pelkėje stūkso nedidelis žemės lopinėlis, o aplink jį telkšo vanduo. Ten ilsisi ankilozauras ir šildosi saulėje.",
+    "klausimas": "Kaip vadinasi žemė, kurią iš visų pusių supa vanduo?",
+    "atsakymai": [
+      {
+        "tekstas": "šala",
+        "teisingas": false
+      },
+      {
+        "tekstas": "pelkė",
+        "teisingas": false
+      },
+      {
+        "tekstas": "uola",
+        "teisingas": false
+      },
+      {
+        "tekstas": "sala",
+        "teisingas": true
+      }
+    ],
+    "uzuomina": "aplink jį",
+    "zodis": "vanduo"
+  },
+  {
+    "id": "s2-k16",
+    "skyrius": 2,
+    "tipas": "kova",
+    "tekstas": "Nendrių tako gale du pterodaktiliukai ginčijasi dėl uogos. Pteriukas perkanda ją pusiau, ir abu nusiramina.",
+    "klausimas": "Kaip Pteriukas padalijo uogą?",
+    "atsakymai": [
+      {
+        "tekstas": "vienam daugiau",
+        "teisingas": false
+      },
+      {
+        "tekstas": "nė vienam",
+        "teisingas": false
+      },
+      {
+        "tekstas": "po lygiai",
+        "teisingas": true
+      },
+      {
+        "tekstas": "tik sau",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "pusiau",
+    "zodis": "uoga"
+  },
+  {
+    "id": "s2-k17",
+    "skyrius": 2,
+    "tipas": "kova",
+    "tekstas": "Virš ežerėlio tvyro tirštas rūkas. Ankilozauras nemato net savo uodegos, todėl stovi vietoje ir laukia.",
+    "klausimas": "Kodėl ankilozauras nejuda?",
+    "atsakymai": [
+      {
+        "tekstas": "nori miego",
+        "teisingas": false
+      },
+      {
+        "tekstas": "nesimato kelio",
+        "teisingas": true
+      },
+      {
+        "tekstas": "jam skauda kojas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "ieško uodegos",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "tirštas rūkas",
+    "zodis": "rūkas"
+  },
+  {
+    "id": "s2-k18",
+    "skyrius": 2,
+    "tipas": "kova",
+    "tekstas": "Ežerėlio pakraštyje stovi dvi ankilozaurės. Viena graužia lapus, kita brenda į vandenį ir gurkšnoja. Antroji turi ilgesnę uodegą.",
+    "klausimas": "Ką veikia ankilozaurė su ilgesne uodega?",
+    "atsakymai": [
+      {
+        "tekstas": "geria",
+        "teisingas": true
+      },
+      {
+        "tekstas": "valgo",
+        "teisingas": false
+      },
+      {
+        "tekstas": "graužia",
+        "teisingas": false
+      },
+      {
+        "tekstas": "miega",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "Antroji",
+    "zodis": "ežerėlis"
+  },
+  {
+    "id": "s2-k19",
+    "skyrius": 2,
+    "tipas": "kova",
+    "tekstas": "Rūke kažkas tyliai cypsi: „Pi-pi, pi-pi!“ Tai pterodaktiliukas pasiklydo ir šaukia mamą.",
+    "klausimas": "Kaip jaučiasi pterodaktiliukas?",
+    "atsakymai": [
+      {
+        "tekstas": "linksmas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "piktas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "mieguistas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "išsigandęs",
+        "teisingas": true
+      }
+    ],
+    "uzuomina": "pasiklydo",
+    "zodis": "mama"
+  },
+  {
+    "id": "s2-k20",
+    "skyrius": 2,
+    "tipas": "kova",
+    "tekstas": "Ant ežerėlio kranto Kiautas surinko sausų nendrių ir žolės krūvelę. Jis paklojo ją palapinėje, kad būtų minkšta miegoti.",
+    "klausimas": "Ką paklojo Kiautas?",
+    "atsakymai": [
+      {
+        "tekstas": "sieną",
+        "teisingas": false
+      },
+      {
+        "tekstas": "smėlį",
+        "teisingas": false
+      },
+      {
+        "tekstas": "šieną",
+        "teisingas": true
+      },
+      {
+        "tekstas": "palapinę",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "sausų",
+    "zodis": "palapinė"
+  },
+  {
+    "id": "s2-k21",
+    "skyrius": 2,
+    "tipas": "kova",
+    "tekstas": "Ežerėlyje plaukioja keturios varlės, o ant lapo tupi dar dvi. Pterodaktiliukas nori jas suskaičiuoti, bet vis susipainioja.",
+    "klausimas": "Kiek iš viso varlių?",
+    "atsakymai": [
+      {
+        "tekstas": "keturios",
+        "teisingas": false
+      },
+      {
+        "tekstas": "šešios",
+        "teisingas": true
+      },
+      {
+        "tekstas": "penkios",
+        "teisingas": false
+      },
+      {
+        "tekstas": "septynios",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "dar dvi",
+    "zodis": "varlė"
+  },
+  {
+    "id": "s2-k22",
+    "skyrius": 2,
+    "tipas": "kova",
+    "tekstas": "Pterodaktiliukas šlapias, jam labai šalta. Kiautas uždega laužą, ir mažylis prisiglaudžia prie ugnies.",
+    "klausimas": "Ko labiausiai reikia pterodaktiliukui?",
+    "atsakymai": [
+      {
+        "tekstas": "šilumos",
+        "teisingas": true
+      },
+      {
+        "tekstas": "vandens",
+        "teisingas": false
+      },
+      {
+        "tekstas": "lietaus",
+        "teisingas": false
+      },
+      {
+        "tekstas": "šešėlio",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "šalta",
+    "zodis": "ugnis"
+  },
+  {
+    "id": "s2-k23",
+    "skyrius": 2,
+    "tipas": "kova",
+    "tekstas": "Rūkas pamažu sklaidosi. Ežerėlio vanduo ima žvilgėti, o ankilozauras pagaliau mato kitą krantą ir brenda link jo.",
+    "klausimas": "Kas nutiko rūkui?",
+    "atsakymai": [
+      {
+        "tekstas": "sutirštėjo",
+        "teisingas": false
+      },
+      {
+        "tekstas": "užšalo",
+        "teisingas": false
+      },
+      {
+        "tekstas": "pajuodo",
+        "teisingas": false
+      },
+      {
+        "tekstas": "išnyko",
+        "teisingas": true
+      }
+    ],
+    "uzuomina": "sklaidosi",
+    "zodis": "krantas"
+  },
+  {
+    "id": "s2-k24",
+    "skyrius": 2,
+    "tipas": "kova",
+    "tekstas": "Ankilozauras taip greitai bėgo per pelkę, kad visa nugara apsitaškė purvu. Dabar jis tupi ežerėlyje ir maudosi.",
+    "klausimas": "Kodėl ankilozauras maudosi?",
+    "atsakymai": [
+      {
+        "tekstas": "jam karšta",
+        "teisingas": false
+      },
+      {
+        "tekstas": "nori žuvų",
+        "teisingas": false
+      },
+      {
+        "tekstas": "buvo nešvarus",
+        "teisingas": true
+      },
+      {
+        "tekstas": "pabėgo nuo pelkės",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "purvu",
+    "zodis": "purvas"
+  },
+  {
+    "id": "s2-b01",
+    "skyrius": 2,
+    "tipas": "bosas",
+    "tekstas": "Prie ežerėlio stovi milžiniškas brachiozauras Ilgakaklis. Jo kaklas siekia medžių viršūnes, o kojos storos kaip kamienai.",
+    "klausimas": "Kokios dvi savybės tinka Ilgakakliui?",
+    "atsakymai": [
+      {
+        "tekstas": "mažas ir silpnas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "aukštas ir silpnas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "aukštas ir stiprus",
+        "teisingas": true
+      },
+      {
+        "tekstas": "mažas ir stiprus",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "storos kaip kamienai",
+    "zodis": "kaklas"
+  },
+  {
+    "id": "s2-b02",
+    "skyrius": 2,
+    "tipas": "bosas",
+    "tekstas": "Ilgakaklis piktai pučia pro šnerves ir purto galvą. Nuo medžių krinta lapai, o pterodaktiliukai išsigandę nuskrenda šalin.",
+    "klausimas": "Ką daro pterodaktiliukai?",
+    "atsakymai": [
+      {
+        "tekstas": "pučia",
+        "teisingas": false
+      },
+      {
+        "tekstas": "pabėga",
+        "teisingas": true
+      },
+      {
+        "tekstas": "puola",
+        "teisingas": false
+      },
+      {
+        "tekstas": "snaudžia",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "nuskrenda šalin",
+    "zodis": "lapas"
+  },
+  {
+    "id": "s2-b03",
+    "skyrius": 2,
+    "tipas": "bosas",
+    "tekstas": "Pteriukas nutupia ant Ilgakaklio galvos ir kažką jam čiulba. Milžinas sustoja, nes Pteriuko balsas jam primena seną draugą.",
+    "klausimas": "Kodėl Ilgakaklis sustojo?",
+    "atsakymai": [
+      {
+        "tekstas": "prisiminė bičiulį",
+        "teisingas": true
+      },
+      {
+        "tekstas": "išsigando Pteriuko",
+        "teisingas": false
+      },
+      {
+        "tekstas": "norėjo pamiegoti",
+        "teisingas": false
+      },
+      {
+        "tekstas": "pamatė gintarą",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "primena",
+    "zodis": "draugas"
+  },
+  {
+    "id": "s2-b04",
+    "skyrius": 2,
+    "tipas": "bosas",
+    "tekstas": "[Vardas] skaito, o Ilgakaklis vis žemiau lenkia kaklą. Kai jo galva priartėja prie žemės, milžinas užsimerkia ir giliai atsidūsta.",
+    "klausimas": "Ką daro Ilgakaklis, kai [Vardas] skaito?",
+    "atsakymai": [
+      {
+        "tekstas": "pyksta",
+        "teisingas": false
+      },
+      {
+        "tekstas": "bėga šalin",
+        "teisingas": false
+      },
+      {
+        "tekstas": "skaito",
+        "teisingas": false
+      },
+      {
+        "tekstas": "klausosi",
+        "teisingas": true
+      }
+    ],
+    "uzuomina": "lenkia kaklą",
+    "zodis": "galva"
+  },
+  {
+    "id": "s2-b05",
+    "skyrius": 2,
+    "tipas": "bosas",
+    "tekstas": "Ilgakaklis prisimena žodį ir švelniai nusišypso. Jis nuleidžia kaklą kaip tiltą per ežerėlį, o [Vardas] ir Pteriukas juo pereina į kitą krantą.",
+    "klausimas": "Kaip Ilgakaklis padeda keliautojams?",
+    "atsakymai": [
+      {
+        "tekstas": "neša ant nugaros",
+        "teisingas": false
+      },
+      {
+        "tekstas": "parodo kelią",
+        "teisingas": false
+      },
+      {
+        "tekstas": "tampa lieptu",
+        "teisingas": true
+      },
+      {
+        "tekstas": "išgeria ežerėlį",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "kaip tiltą",
+    "zodis": "tiltas"
+  },
+  {
+    "id": "s2-d01",
+    "skyrius": 2,
+    "tipas": "durys",
+    "tekstas": "Ant kupsto akmens iškalta: „Žalia, bet ne žolė, šokinėja, bet ne kiškis, kurkia pelkėje. Kas aš?“",
+    "klausimas": "",
+    "atsakymai": [
+      {
+        "tekstas": "varlė",
+        "teisingas": true
+      },
+      {
+        "tekstas": "žiogas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "kiškis",
+        "teisingas": false
+      },
+      {
+        "tekstas": "gyvatė",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "kurkia",
+    "zodis": "varlė"
+  },
+  {
+    "id": "s2-d02",
+    "skyrius": 2,
+    "tipas": "durys",
+    "tekstas": "Ant nendrės lapo išraižyta: „Dieną miega, naktį skraido, kabo galva žemyn. Kas aš?“",
+    "klausimas": "",
+    "atsakymai": [
+      {
+        "tekstas": "drugelis",
+        "teisingas": false
+      },
+      {
+        "tekstas": "pterodaktilis",
+        "teisingas": false
+      },
+      {
+        "tekstas": "debesis",
+        "teisingas": false
+      },
+      {
+        "tekstas": "šikšnosparnis",
+        "teisingas": true
+      }
+    ],
+    "uzuomina": "galva žemyn",
+    "zodis": "šikšnosparnis"
+  },
+  {
+    "id": "s2-d03",
+    "skyrius": 2,
+    "tipas": "durys",
+    "tekstas": "Ant akmens prie ežerėlio iškalta: „Ne dūmai, o kyla, ne sniegas, o baltas, saulė pasirodo – ir manęs nebėra. Kas aš?“",
+    "klausimas": "",
+    "atsakymai": [
+      {
+        "tekstas": "dūmai",
+        "teisingas": false
+      },
+      {
+        "tekstas": "sniegas",
+        "teisingas": false
+      },
+      {
+        "tekstas": "rūkas",
+        "teisingas": true
+      },
+      {
+        "tekstas": "vėjas",
+        "teisingas": false
+      }
+    ],
+    "uzuomina": "saulė pasirodo",
+    "zodis": "rūkas"
+  },
+  {
+    "id": "s2-z01",
+    "skyrius": 2,
+    "tipas": "sankryza",
+    "tekstas": "Kairėje už kupstų žiba lobis, bet jį saugo du dinozaurai. Dešinėje trumpas takas ir tik vienas dinozauras.",
+    "klausimas": "Kur eisi?",
+    "atsakymai": [
+      {
+        "tekstas": "← kairėn",
+        "kelias": "lobis"
+      },
+      {
+        "tekstas": "dešinėn →",
+        "kelias": "trumpas"
+      }
+    ]
+  },
+  {
+    "id": "s2-z02",
+    "skyrius": 2,
+    "tipas": "sankryza",
+    "tekstas": "Kairėje trumpas takas per nendres, ten laukia vienas dinozauras. Dešinėje paslėptas lobis, bet jį saugo du dinozaurai.",
+    "klausimas": "Kur eisi?",
+    "atsakymai": [
+      {
+        "tekstas": "← kairėn",
+        "kelias": "trumpas"
+      },
+      {
+        "tekstas": "dešinėn →",
+        "kelias": "lobis"
+      }
+    ]
+  },
+  {
+    "id": "s2-z03",
+    "skyrius": 2,
+    "tipas": "sankryza",
+    "tekstas": "Kairėje rūke slepiasi lobis, tačiau jį saugo du dinozaurai. Dešinėje kelias trumpas, ten tik vienas dinozauras.",
+    "klausimas": "Kur eisi?",
+    "atsakymai": [
+      {
+        "tekstas": "← kairėn",
+        "kelias": "lobis"
+      },
+      {
+        "tekstas": "dešinėn →",
+        "kelias": "trumpas"
+      }
+    ]
+  }
+]

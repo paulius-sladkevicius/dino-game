@@ -1,0 +1,388 @@
+{
+  "numeris": 5,
+  "pavadinimas": "Ugnikalnio papėdė",
+  "priesai": {
+    "mazas": {
+      "vardas": "Kompsognatas",
+      "piesinys": "kompsognatas"
+    },
+    "vidutinis": {
+      "vardas": "Brachiozauras",
+      "piesinys": "brachiozauras"
+    }
+  },
+  "bosas": {
+    "vardas": "Ankilozauras Šarvuotis",
+    "piesinys": "ankilozauras",
+    "uzduotys": [
+      "s5-b01",
+      "s5-b02",
+      "s5-b03",
+      "s5-b04",
+      "s5-b05"
+    ]
+  },
+  "puslapis": {
+    "pavadinimas": "Ugnikalnio papėdė",
+    "tekstas": "Ugnikalnio papėdėje buvo karšta, o ore sklandė pilki pelenai. [Vardas] ir Pteriukas padėjo išsigandusiems kompsognatams ir alkaniems brachiozaurams prisiminti žodžius. Ankilozauras Šarvuotis nieko neleido prie savo lizdo, bet perskaitytas tekstas jį nuramino. Iš kiaušinio išsirito mažas ankilozauriukas, o Šarvuotis padovanojo gintarą. Pteriuko sparnai vėl sužibo mėlynai, ir kelias į ugnikalnio viršūnę atsivėrė."
+  },
+  "sales": [
+    {
+      "id": "s5-sale1",
+      "pavadinimas": "Karštųjų akmenų laukas",
+      "uzduotys": [
+        "s5-k01",
+        "s5-k02",
+        "s5-k03",
+        "s5-k04",
+        "s5-k05",
+        "s5-k06",
+        "s5-k07",
+        "s5-k08"
+      ],
+      "pradzia": "lauzas",
+      "kambariai": [
+        {
+          "id": "lauzas",
+          "pavadinimas": "Stovykla",
+          "kaimynai": [
+            "r1"
+          ],
+          "x": 16,
+          "y": 88,
+          "tipas": "lauzas"
+        },
+        {
+          "id": "r1",
+          "pavadinimas": "Proskyna",
+          "kaimynai": [
+            "lauzas",
+            "sankryza"
+          ],
+          "x": 50,
+          "y": 88,
+          "tipas": "priesas",
+          "priesas": "vidutinis"
+        },
+        {
+          "id": "sankryza",
+          "pavadinimas": "Kryžkelė",
+          "kaimynai": [
+            "r1",
+            "t1",
+            "s1",
+            "slaptas"
+          ],
+          "x": 50,
+          "y": 62,
+          "tipas": "sankryza",
+          "zenklas": "s5-z01",
+          "keliai": {
+            "lobis": "t1",
+            "trumpas": "s1"
+          },
+          "slaptosDurys": {
+            "kambarys": "slaptas",
+            "misle": "s5-d01"
+          }
+        },
+        {
+          "id": "t1",
+          "pavadinimas": "Lobio takas",
+          "kaimynai": [
+            "sankryza",
+            "t2"
+          ],
+          "x": 16,
+          "y": 62,
+          "tipas": "priesas",
+          "priesas": "mazas"
+        },
+        {
+          "id": "t2",
+          "pavadinimas": "Lobis",
+          "kaimynai": [
+            "t1",
+            "galas"
+          ],
+          "x": 16,
+          "y": 36,
+          "tipas": "lobis",
+          "sargas": "vidutinis"
+        },
+        {
+          "id": "s1",
+          "pavadinimas": "Trumpas takas",
+          "kaimynai": [
+            "sankryza",
+            "galas"
+          ],
+          "x": 84,
+          "y": 36,
+          "tipas": "priesas",
+          "priesas": "mazas"
+        },
+        {
+          "id": "slaptas",
+          "pavadinimas": "Slaptas urvas",
+          "kaimynai": [
+            "sankryza"
+          ],
+          "x": 50,
+          "y": 36,
+          "tipas": "slaptas",
+          "dovana": "kepure"
+        },
+        {
+          "id": "galas",
+          "pavadinimas": "Vietovės pabaiga",
+          "kaimynai": [
+            "t2",
+            "s1"
+          ],
+          "x": 50,
+          "y": 10,
+          "tipas": "galas"
+        }
+      ]
+    },
+    {
+      "id": "s5-sale2",
+      "pavadinimas": "Garuojantys šaltiniai",
+      "uzduotys": [
+        "s5-k09",
+        "s5-k10",
+        "s5-k11",
+        "s5-k12",
+        "s5-k13",
+        "s5-k14",
+        "s5-k15",
+        "s5-k16"
+      ],
+      "pradzia": "lauzas",
+      "kambariai": [
+        {
+          "id": "lauzas",
+          "pavadinimas": "Stovykla",
+          "kaimynai": [
+            "r1"
+          ],
+          "x": 84,
+          "y": 88,
+          "tipas": "lauzas"
+        },
+        {
+          "id": "r1",
+          "pavadinimas": "Proskyna",
+          "kaimynai": [
+            "lauzas",
+            "sankryza"
+          ],
+          "x": 50,
+          "y": 88,
+          "tipas": "priesas",
+          "priesas": "mazas"
+        },
+        {
+          "id": "sankryza",
+          "pavadinimas": "Kryžkelė",
+          "kaimynai": [
+            "r1",
+            "t1",
+            "s1",
+            "slaptas"
+          ],
+          "x": 50,
+          "y": 62,
+          "tipas": "sankryza",
+          "zenklas": "s5-z02",
+          "keliai": {
+            "lobis": "t1",
+            "trumpas": "s1"
+          },
+          "slaptosDurys": {
+            "kambarys": "slaptas",
+            "misle": "s5-d02"
+          }
+        },
+        {
+          "id": "t1",
+          "pavadinimas": "Lobio takas",
+          "kaimynai": [
+            "sankryza",
+            "t2"
+          ],
+          "x": 84,
+          "y": 62,
+          "tipas": "priesas",
+          "priesas": "vidutinis"
+        },
+        {
+          "id": "t2",
+          "pavadinimas": "Lobis",
+          "kaimynai": [
+            "t1",
+            "galas"
+          ],
+          "x": 84,
+          "y": 36,
+          "tipas": "lobis",
+          "sargas": "mazas"
+        },
+        {
+          "id": "s1",
+          "pavadinimas": "Trumpas takas",
+          "kaimynai": [
+            "sankryza",
+            "galas"
+          ],
+          "x": 16,
+          "y": 36,
+          "tipas": "priesas",
+          "priesas": "vidutinis"
+        },
+        {
+          "id": "slaptas",
+          "pavadinimas": "Slaptas urvas",
+          "kaimynai": [
+            "sankryza"
+          ],
+          "x": 50,
+          "y": 36,
+          "tipas": "slaptas",
+          "dovana": "apsiaustas"
+        },
+        {
+          "id": "galas",
+          "pavadinimas": "Vietovės pabaiga",
+          "kaimynai": [
+            "t2",
+            "s1"
+          ],
+          "x": 50,
+          "y": 10,
+          "tipas": "galas"
+        }
+      ]
+    },
+    {
+      "id": "s5-sale3",
+      "pavadinimas": "Pelenų giraitė",
+      "uzduotys": [
+        "s5-k17",
+        "s5-k18",
+        "s5-k19",
+        "s5-k20",
+        "s5-k21",
+        "s5-k22",
+        "s5-k23",
+        "s5-k24"
+      ],
+      "pradzia": "lauzas",
+      "kambariai": [
+        {
+          "id": "lauzas",
+          "pavadinimas": "Stovykla",
+          "kaimynai": [
+            "r1"
+          ],
+          "x": 16,
+          "y": 88,
+          "tipas": "lauzas"
+        },
+        {
+          "id": "r1",
+          "pavadinimas": "Proskyna",
+          "kaimynai": [
+            "lauzas",
+            "sankryza"
+          ],
+          "x": 50,
+          "y": 88,
+          "tipas": "priesas",
+          "priesas": "vidutinis"
+        },
+        {
+          "id": "sankryza",
+          "pavadinimas": "Kryžkelė",
+          "kaimynai": [
+            "r1",
+            "t1",
+            "s1",
+            "slaptas"
+          ],
+          "x": 50,
+          "y": 62,
+          "tipas": "sankryza",
+          "zenklas": "s5-z03",
+          "keliai": {
+            "lobis": "t1",
+            "trumpas": "s1"
+          },
+          "slaptosDurys": {
+            "kambarys": "slaptas",
+            "misle": "s5-d03"
+          }
+        },
+        {
+          "id": "t1",
+          "pavadinimas": "Lobio takas",
+          "kaimynai": [
+            "sankryza",
+            "t2"
+          ],
+          "x": 16,
+          "y": 62,
+          "tipas": "priesas",
+          "priesas": "vidutinis"
+        },
+        {
+          "id": "t2",
+          "pavadinimas": "Lobis",
+          "kaimynai": [
+            "t1",
+            "galas"
+          ],
+          "x": 16,
+          "y": 36,
+          "tipas": "lobis",
+          "sargas": "mazas"
+        },
+        {
+          "id": "s1",
+          "pavadinimas": "Trumpas takas",
+          "kaimynai": [
+            "sankryza",
+            "galas"
+          ],
+          "x": 84,
+          "y": 36,
+          "tipas": "priesas",
+          "priesas": "mazas"
+        },
+        {
+          "id": "slaptas",
+          "pavadinimas": "Slaptas urvas",
+          "kaimynai": [
+            "sankryza"
+          ],
+          "x": 50,
+          "y": 36,
+          "tipas": "slaptas",
+          "dovana": "lauzoSpalva"
+        },
+        {
+          "id": "galas",
+          "pavadinimas": "Vietovės pabaiga",
+          "kaimynai": [
+            "t2",
+            "s1"
+          ],
+          "x": 50,
+          "y": 10,
+          "tipas": "galas"
+        }
+      ]
+    }
+  ]
+}

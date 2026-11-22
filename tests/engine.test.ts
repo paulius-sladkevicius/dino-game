@@ -1,11 +1,17 @@
 import { describe, expect, it } from 'vitest';
-import { TURINYS, uzduotis } from '../src/content';
+import { skyrius, TURINYS, uzduotis } from '../src/content';
 import {
   atidarytiLobi,
   atsakyti,
   atsakytiMislei,
   baigtiSale,
   bosasAtrakintas,
+  bosasNugaletas,
+  burtasIsmoktas,
+  pasirinktiSkyriu,
+  pasiektasSkyrius,
+  saleAtrakinta as saleAtrakintaF,
+  skyriusAtrakintas,
   bosoKova,
   dabartineUzduotis,
   eitiIKambari,
@@ -60,7 +66,7 @@ describe('pradžia', () => {
     expect(b.mana).toBe(3);
     expect(b.iranga).toEqual({ kardas: 0, salmas: 0, sarvai: 0, batai: 0 });
     expect(b.kreipinys).toBe('Ugne');
-    expect(Object.keys(b.sales)).toHaveLength(3);
+    expect(Object.keys(b.sales)).toHaveLength(18);
   });
 });
 
@@ -68,7 +74,7 @@ describe('susitikimas su priešu', () => {
   it('priešo gyvybės: maža Dėmė 1, vidutinis 2, bosas 5, pabėgusi 1', () => {
     expect(kova('mazas').gyvybes).toBe(1);
     expect(kova('vidutinis').gyvybes).toBe(2);
-    expect(bosoKova(T, rng()).gyvybes).toBe(5);
+    expect(bosoKova(busena(), T, rng()).gyvybes).toBe(5);
     expect(kova('pabeges', ['s1-k01'], null).gyvybes).toBe(1);
   });
 
@@ -166,10 +172,10 @@ describe('susitikimas su priešu', () => {
     const k = kova('mazas', ['s1-k07']);
     const r = atsakyti(busena(), T, k, teisingas(k), nesekme);
     expect(r.kova.gyvybes).toBe(0);
-    expect(r.busena.zodziai).toEqual(['varlė']);
+    expect(r.busena.zodziai).toEqual([uzduotis(T, 's1-k07').zodis]);
     expect(r.busena.susitikimai).toBe(1);
     expect(r.busena.sales['s1-sale1'].iveikti).toContain('r1');
-    expect(r.ivykiai.at(-1)).toMatchObject({ tipas: 'nugaletas', zodis: 'varlė', grobis: null });
+    expect(r.ivykiai.at(-1)).toMatchObject({ tipas: 'nugaletas', zodis: uzduotis(T, 's1-k07').zodis, grobis: null });
   });
 
   it('kardas: papildoma mana už nugalėtą priešą', () => {
@@ -295,8 +301,8 @@ describe('pralaimėjimas – ne „Game over“', () => {
 describe('bosas', () => {
   it('5 tekstai iš eilės, nugalėjus: visos širdelės, +3 manos, visada daiktas, puslapis Knygai', () => {
     let b = busena({ sirdeles: 2, mana: 0, iranga: { kardas: 0, salmas: 0, sarvai: 1, batai: 0 } });
-    let k = bosoKova(T, rng());
-    expect(k.vardas).toBe('Didžioji Dėmė');
+    let k = bosoKova(b, T, rng());
+    expect(k.vardas).toBe(skyrius(T, 1).bosas.vardas);
     expect(k.uzduotys).toEqual(['s1-b01', 's1-b02', 's1-b03', 's1-b04', 's1-b05']);
     // Pirmame tekste klysta, kad serijos premija nesutaptų su 5 teisingais.
     let r = atsakyti(b, T, k, neteisingas(k), nesekme);
@@ -308,7 +314,6 @@ describe('bosas', () => {
     const ivykis = r.ivykiai.find((i) => i.tipas === 'bosasNugaletas');
     expect(ivykis).toBeDefined();
     expect(b.sirdeles).toBe(6); // visos atsistato (variniai šarvai – 6)
-    expect(b.bosasNugaletas).toBe(true);
     expect(b.puslapiai).toEqual([1]);
     expect(ivykis && ivykis.tipas === 'bosasNugaletas' && ivykis.grobis).toBeTruthy();
     expect(ivykis && ivykis.tipas === 'bosasNugaletas' && ivykis.mana).toBe(3);
@@ -406,7 +411,8 @@ describe('salė, sankryža, lobis, slaptos durys', () => {
     expect(r.atidaryta).toBe(true);
     b = eitiIKambari(r.busena, 's1-sale1', 'slaptas');
     expect(kambarioVeiksmas(b, T)).toEqual({ tipas: 'dovana', dovana: 'kepure' });
-    b = paimtiDovana(b, 'kepure');
+    b = paimtiDovana(b, 's1-sale1', 'kepure').busena;
+    expect(b.kosmetika).toContain('kepure');
     expect(kambarioVeiksmas(b, T)).toEqual({ tipas: 'nieko' });
   });
 
@@ -450,7 +456,7 @@ describe('pabėgusios Dėmės', () => {
     b = atsakyti(b, T, k, teisingas(k), nesekme).busena; // 3
     const p = pabegusiDeme(b, T, rng())!;
     expect(p.rusis).toBe('pabeges');
-    expect(p.vardas).toBe('Pabėgusi Dėmė');
+    expect(p.vardas).toBe('Pabėgęs žodis');
     expect(p.uzduotys).toEqual(['s1-k01']);
     b = atsakyti(b, T, p, teisingas(p), nesekme).busena;
     expect(b.pabege).toEqual([{ uzduotis: 's1-k01', dezute: 2, kada: 8 }]);
@@ -470,7 +476,113 @@ describe('pabėgusios Dėmės', () => {
 
   it('pirmiausia parenkamos dar nematytos užduotys', () => {
     const matyta = { rodyta: 3, klaidos: 0, paskutinis: 1 };
-    const b = busena({ uzduotys: Object.fromEntries(['s1-k01', 's1-k02', 's1-k03', 's1-k04', 's1-k05', 's1-k06', 's1-k07', 's1-k08'].map((id) => [id, matyta])) });
-    expect(parinktiUzduotis(b, rastiSale(T, 's1-sale1').uzduotys, 2, rng()).sort()).toEqual(['s1-k09', 's1-k10']);
+    const b = busena({ uzduotys: Object.fromEntries(['s1-k01', 's1-k02', 's1-k03', 's1-k04', 's1-k05', 's1-k06'].map((id) => [id, matyta])) });
+    expect(parinktiUzduotis(b, rastiSale(T, 's1-sale1').uzduotys, 2, rng()).sort()).toEqual(['s1-k07', 's1-k08']);
+  });
+});
+
+describe('6 lygiai', () => {
+  it('naujas žaidimas prasideda 1 lygyje, visų lygių vietovės paruoštos', () => {
+    const b = naujaBusena('Jonas', T);
+    expect(b.skyrius).toBe(1);
+    expect(Object.keys(b.sales)).toHaveLength(18);
+    expect(skyriusAtrakintas(b, T, 1)).toBe(true);
+    expect(skyriusAtrakintas(b, T, 2)).toBe(false);
+    expect(saleAtrakintaF(b, T, 's2-sale1')).toBe(false);
+  });
+
+  it('nuraminus lygio bosą grįžta to lygio puslapis ir atsirakina kitas lygis', () => {
+    let b = busena({ skyrius: 1 });
+    let k = bosoKova(b, T, rng());
+    for (let i = 0; i < 5; i++) ({ busena: b, kova: k } = atsakyti(b, T, k, teisingas(k), nesekme));
+    expect(b.puslapiai).toEqual([1]);
+    expect(bosasNugaletas(b, 1)).toBe(true);
+    expect(skyriusAtrakintas(b, T, 2)).toBe(true);
+    expect(pasiektasSkyrius(b, T)).toBe(2);
+    b = pasirinktiSkyriu(b, T, 2);
+    expect(b.skyrius).toBe(2);
+    expect(saleAtrakintaF(b, T, 's2-sale1')).toBe(true);
+    expect(bosoKova(b, T, rng()).vardas).toBe(skyrius(T, 2).bosas.vardas);
+    // Užrakinto lygio pasirinkti negalima.
+    expect(pasirinktiSkyriu(b, T, 4).skyrius).toBe(2);
+  });
+
+  it('daiktai iškrenta pagal lygį: 3 lygyje – sidabriniai', () => {
+    const b = busena({ skyrius: 3, puslapiai: [1, 2] });
+    let k = bosoKova(b, T, rng());
+    let r = { busena: b, kova: k, ivykiai: [] as ReturnType<typeof atsakyti>['ivykiai'] };
+    for (let i = 0; i < 5; i++) {
+      r = atsakyti(r.busena, T, r.kova, teisingas(r.kova), () => 0.5);
+    }
+    const ivykis = r.ivykiai.find((i) => i.tipas === 'bosasNugaletas');
+    expect(ivykis && ivykis.tipas === 'bosasNugaletas' && ivykis.grobis?.lygis).toBe(3);
+    k = r.kova;
+  });
+});
+
+describe('naujos gudrybės (kas lygį – po vieną)', () => {
+  const bosoKovaB = (b: Busena) => bosoKova(b, T, rng());
+
+  it('išmokstamos pagal pasiektą lygį: 1 – Lupa ir Uogos, 2 – Skiemenys, 3 – Skydas, 4 – Perskilimas, 5 – Riaumojimas', () => {
+    const b1 = busena();
+    expect(burtasIsmoktas(b1, T, 'sviesele')).toBe(true);
+    expect(burtasIsmoktas(b1, T, 'gydymas')).toBe(true);
+    expect(burtasIsmoktas(b1, T, 'skiemenys')).toBe(false);
+    expect(burtasIsmoktas(busena({ puslapiai: [1] }), T, 'skiemenys')).toBe(true);
+    expect(burtasIsmoktas(busena({ puslapiai: [1] }), T, 'skydas')).toBe(false);
+    expect(burtasIsmoktas(busena({ puslapiai: [1, 2] }), T, 'skydas')).toBe(true);
+    expect(burtasIsmoktas(busena({ puslapiai: [1, 2, 3] }), T, 'perskilimas')).toBe(true);
+    expect(burtasIsmoktas(busena({ puslapiai: [1, 2, 3, 4] }), T, 'ugnies')).toBe(true);
+    expect(galimaBurta(busena({ mana: 10 }), kova('mazas'), 'skydas', T)).toBe(false);
+  });
+
+  it('Skydas (2): kita klaida neatima širdelės', () => {
+    const b = busena({ mana: 5, puslapiai: [1, 2] });
+    const r = naudotiBurta(b, kova('mazas'), 'skydas', T);
+    expect(r.busena.mana).toBe(3);
+    const k = r.kova!;
+    const po = atsakyti(r.busena, T, k, neteisingas(k), nesekme);
+    expect(po.busena.sirdeles).toBe(5);
+    expect(po.ivykiai.some((i) => i.tipas === 'skydas')).toBe(true);
+    expect(po.kova.skydas).toBe(false);
+  });
+
+  it('Perskilimas (3): išnyksta du neteisingi atsakymai', () => {
+    const b = busena({ mana: 5, puslapiai: [1, 2, 3] });
+    const r = naudotiBurta(b, kova('mazas'), 'perskilimas', T);
+    expect(r.busena.mana).toBe(2);
+    expect(rodomiAtsakymai(r.kova!)).toHaveLength(2);
+    expect(rodomiAtsakymai(r.kova!)).toContain(teisingas(r.kova!));
+    expect(galimaBurta(r.busena, r.kova, 'perskilimas', T)).toBe(false);
+  });
+
+  it('Skiemenys (1): įjungia žodžio skaidymą', () => {
+    const r = naudotiBurta(busena({ mana: 2, puslapiai: [1] }), kova('mazas'), 'skiemenys', T);
+    expect(r.busena.mana).toBe(1);
+    expect(r.kova!.skiemenys).toBe(true);
+  });
+
+  it('Riaumojimas (5): tik prieš bosą, kitas teisingas atsakymas – dvigubas smūgis', () => {
+    const b = busena({ mana: 10, puslapiai: [1, 2, 3, 4] });
+    expect(galimaBurta(b, kova('mazas'), 'ugnies', T)).toBe(false);
+    const k0 = bosoKovaB(b);
+    const r = naudotiBurta(b, k0, 'ugnies', T);
+    expect(r.busena.mana).toBe(5);
+    const po = atsakyti(r.busena, T, r.kova!, teisingas(r.kova!), nesekme);
+    expect(po.kova.gyvybes).toBe(3);
+    expect(po.kova.ugnies).toBe(false);
+  });
+});
+
+describe('slapto urvo dovana', () => {
+  it('pirmą kartą – kosmetinis atlygis, kai jis jau turimas – gintaras; kiekvienoje vietovėje kartą', () => {
+    let b = busena({ mana: 0 });
+    let r = paimtiDovana(b, 's1-sale1', 'kepure');
+    expect(r.nauja).toBe(true);
+    b = r.busena;
+    r = paimtiDovana(b, 's2-sale1', 'kepure');
+    expect(r.nauja).toBe(false);
+    expect(r.mana).toBe(3);
+    expect(paimtiDovana(r.busena, 's2-sale1', 'kepure').mana).toBe(0);
   });
 });

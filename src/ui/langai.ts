@@ -1,6 +1,6 @@
 // Iššokantys langai: grobis „Imu / Palieku“, lobis, durys, salės pabaiga ir kt.
 
-import { uzduotis } from '../content';
+import { skyrius, uzduotis } from '../content';
 import { DAIKTAI, daiktoAprasas, daiktoPavadinimas, palyginti } from '../game/equipment';
 import { KAUKAI_MOKA_MANOS } from '../game/rules';
 import { rastiKambari, rastiSale } from '../game/engine';
@@ -8,14 +8,14 @@ import type { Zaidimas, Langas } from './app';
 import {
   daiktoIkona,
   herojus,
-  kaukas,
+  vezlys,
   KOSMETIKOS_VARDAI,
   lauzas,
   manosLasas,
   rodykle,
   sirdele,
   zvaigzdute,
-  ziezirba,
+  pteriukas,
 } from './art';
 import { h, svg } from './dom';
 import { skaitomasTekstas } from './skaitymas';
@@ -49,16 +49,16 @@ export function langas(z: Zaidimas, l: Langas): HTMLElement {
   const b = z.b;
   switch (l.tipas) {
     case 'nugaletas': {
-      const antraste = l.pabeges ? (l.sugautas ? 'Pabėgęs žodis sugautas!' : 'Dėmė išsisklaidė!') : 'Dėmė virto raidėmis!';
+      const antraste = l.pabeges ? (l.sugautas ? 'Pabėgęs žodis sugautas!' : 'Žodis dar pasislėpė!') : 'Dinozauras nurimo!';
       return remas(
         z,
         l.tipas,
         antraste,
         l.zodis && (!l.pabeges || l.sugautas)
-          ? h('div', { class: 'grizes-zodis' }, h('p', { class: 'mazas-tekstas' }, 'Į Knygą grįžo žodis:'), h('p', { class: 'didelis-zodis skaitymas' }, l.zodis))
+          ? h('div', { class: 'grizes-zodis' }, h('p', { class: 'mazas-tekstas' }, 'Į dienoraštį grįžo žodis:'), h('p', { class: 'didelis-zodis skaitymas' }, l.zodis))
           : skaitomas(z, 'Šis žodis dar sugrįš. Tada jį sugausi!'),
         l.kardoMana > 0
-          ? h('p', { class: 'atlygis' }, svg(manosLasas(16)), `Kardas: +${l.kardoMana} ${l.kardoMana === 1 ? 'mana' : 'manos'}`)
+          ? h('p', { class: 'atlygis' }, svg(manosLasas(16)), `Plaktukas: +${l.kardoMana} gintaro`)
           : null,
         toliau(z),
       );
@@ -86,7 +86,7 @@ export function langas(z: Zaidimas, l: Langas): HTMLElement {
           svg(rodykle(kryptis)),
         ),
         korta(dabar, 'Dabar turi', 'dabartinis'),
-        h('p', { class: 'mazas-tekstas' }, `Kaukai už atiduotą daiktą duos ${KAUKAI_MOKA_MANOS} manas.`),
+        h('p', { class: 'mazas-tekstas' }, `Kiautas už atiduotą daiktą duos ${KAUKAI_MOKA_MANOS} gintaro lašus.`),
         h(
           'div',
           { class: 'mygtuku-eile' },
@@ -124,9 +124,9 @@ export function langas(z: Zaidimas, l: Langas): HTMLElement {
       return remas(
         z,
         l.tipas,
-        'Kaukų dovana!',
-        svg(kaukas(80)),
-        skaitomas(z, `Kaukai tau dovanoja: ${KOSMETIKOS_VARDAI[l.dovana]}.`),
+        'Kiauto dovana!',
+        svg(vezlys(80)),
+        skaitomas(z, l.nauja ? `Kiautas tau dovanoja: ${KOSMETIKOS_VARDAI[l.dovana]}.` : `Kiautas tau dovanoja ${l.mana || 3} gintaro lašus.`),
         toliau(z, 'Ačiū!'),
       );
     case 'durys': {
@@ -138,7 +138,7 @@ export function langas(z: Zaidimas, l: Langas): HTMLElement {
         z,
         l.tipas,
         'Slaptos durys',
-        skaitomas(z, misle.tekstas),
+        h('div', { 'data-uzduotis': misle.id }, skaitomas(z, misle.tekstas)),
         misle.klausimas ? skaitomas(z, misle.klausimas, 'klausimas') : null,
         h(
           'div',
@@ -158,7 +158,7 @@ export function langas(z: Zaidimas, l: Langas): HTMLElement {
       return remas(
         z,
         l.tipas,
-        'Salė įveikta!',
+        'Vietovė įveikta!',
         h(
           'div',
           { class: 'zvaigzdutes', role: 'img', 'aria-label': `${l.zvaigzdutes} žvaigždutės iš 3` },
@@ -167,7 +167,7 @@ export function langas(z: Zaidimas, l: Langas): HTMLElement {
         h(
           'div',
           { class: 'ziezirba-sako' },
-          svg(ziezirba(b.puslapiai.length, b.kosmetika.includes('kepure'), 56)),
+          svg(pteriukas(b.puslapiai.length, b.kosmetika.includes('kepure'), 56)),
           h('p', { class: 'burbulas skaitymas' }, ZIEZIRBA.saleBaigta),
         ),
         h(
@@ -182,21 +182,35 @@ export function langas(z: Zaidimas, l: Langas): HTMLElement {
         z,
         l.tipas,
         'Širdelės baigėsi',
-        h('div', { class: 'scena' }, svg(ziezirba(b.puslapiai.length, b.kosmetika.includes('kepure'), 70)), svg(lauzas(b.kosmetika.includes('lauzoSpalva') ? 'melyna' : 'iprasta', 80))),
+        h('div', { class: 'paveikslas' }, svg(pteriukas(b.puslapiai.length, b.kosmetika.includes('kepure'), 70)), svg(lauzas(b.kosmetika.includes('lauzoSpalva') ? 'melyna' : 'iprasta', 80))),
         skaitomas(z, ZIEZIRBA.pralaimejimas),
-        h('button', { type: 'button', class: 'pagrindinis', 'data-pirmas': '1', onclick: () => z.pralaimeti() }, 'Prie laužo'),
+        h('button', { type: 'button', class: 'pagrindinis', 'data-pirmas': '1', onclick: () => z.pralaimeti() }, 'Į stovyklą'),
       );
     case 'pergale':
       return remas(
         z,
         l.tipas,
-        'Didžioji Dėmė nugalėta!',
-        h('div', { class: 'scena' }, svg(ziezirba(1, b.kosmetika.includes('kepure'), 96), 'sviecia')),
+        `${skyrius(z.t, b.skyrius).bosas.vardas} nurimo!`,
+        h('div', { class: 'paveikslas' }, svg(pteriukas(1, b.kosmetika.includes('kepure'), 96), 'sviecia')),
         skaitomas(z, ZIEZIRBA.pergale),
         toliau(z),
       );
+    case 'riaumojimas':
+      return remas(
+        z,
+        l.tipas,
+        'Riaumojimas!',
+        skaitomas(z, 'Perskaityk tekstą garsiai tėvams. Jei perskaitei gerai, kitas teisingas atsakymas bus dvigubas smūgis.'),
+        h('p', { class: 'mazas-tekstas' }, 'Tėvams: ar vaikas perskaitė tekstą garsiai?'),
+        h(
+          'div',
+          { class: 'mygtuku-eile' },
+          h('button', { type: 'button', class: 'pagrindinis', 'data-pirmas': '1', onclick: () => z.patvirtintiRiaumojima(true) }, 'Taip, perskaitė'),
+          h('button', { type: 'button', class: 'antrinis', onclick: () => z.patvirtintiRiaumojima(false) }, 'Dar ne'),
+        ),
+      );
     case 'zemelapis':
-      return remas(z, l.tipas, 'Salės žemėlapis', zemelapioVaizdas(z), h('p', { class: 'mazas-tekstas' }, 'Eik mygtukais „◀“ ir „Eiti ▶“.'), toliau(z, 'Uždaryti'));
+      return remas(z, l.tipas, 'Vietovės žemėlapis', zemelapioVaizdas(z), h('p', { class: 'mazas-tekstas' }, 'Eik mygtukais „◀“ ir „Eiti ▶“.'), toliau(z, 'Uždaryti'));
     case 'daiktai':
       return remas(
         z,

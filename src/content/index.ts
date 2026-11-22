@@ -2,8 +2,10 @@
 
 import type { Skyrius, Uzduotis } from '../game/types';
 import { sakiniuSkaicius, zodziuSkaicius, rastiUzuomina, zetonai } from '../game/text';
-import uzduotys1 from './skyrius-1/uzduotys.json';
-import skyrius1 from './skyrius-1/skyrius.json';
+
+// Visi skyriai įkeliami automatiškai iš aplankų src/content/skyrius-N/.
+const uzduotysFailai = import.meta.glob<Uzduotis[]>('./skyrius-*/uzduotys.json', { eager: true, import: 'default' });
+const skyriaiFailai = import.meta.glob<Skyrius>('./skyrius-*/skyrius.json', { eager: true, import: 'default' });
 
 export interface Turinys {
   uzduotys: Map<string, Uzduotis>;
@@ -15,8 +17,8 @@ export function sukurtiTurini(uzduotys: Uzduotis[], skyriai: Skyrius[]): Turinys
 }
 
 export const TURINYS: Turinys = sukurtiTurini(
-  uzduotys1 as Uzduotis[],
-  [skyrius1 as Skyrius],
+  Object.values(uzduotysFailai).flat(),
+  Object.values(skyriaiFailai).sort((a, b) => a.numeris - b.numeris),
 );
 
 export function uzduotis(t: Turinys, id: string): Uzduotis {
@@ -32,12 +34,16 @@ export function skyrius(t: Turinys, numeris: number): Skyrius {
 }
 
 /**
- * Teksto apimtis pagal skyrių. 1 skyrius pasunkintas (pagal tėvų pageidavimą):
- * vietoj scenarijaus „1 sakinys, 3–5 žodžiai“ – 1–3 sakiniai, 8–22 žodžiai.
+ * Teksto apimtis pagal lygį (skyrių). Sunkėja kaip scenarijaus lentelėje
+ * „Skyriai ir sunkumo progresija“, bet nuo 1 lygio tekstai ilgesni (tėvų pageidavimu).
  */
 export const TEKSTO_RIBOS: Record<number, { sakiniai: [number, number]; zodziai: [number, number] }> = {
   1: { sakiniai: [1, 3], zodziai: [8, 22] },
-  2: { sakiniai: [1, 2], zodziai: [1, 8] },
+  2: { sakiniai: [2, 3], zodziai: [12, 28] },
+  3: { sakiniai: [2, 4], zodziai: [15, 35] },
+  4: { sakiniai: [3, 4], zodziai: [20, 40] },
+  5: { sakiniai: [3, 5], zodziai: [25, 50] },
+  6: { sakiniai: [4, 6], zodziai: [30, 60] },
 };
 
 const kamienas = (zodis: string) => zodis.toLocaleLowerCase('lt').slice(0, 4);

@@ -1,6 +1,6 @@
 // „Rašalas ant popieriaus“ piešiniai. Spalvos – iš eskizo „Knyga“.
 
-import type { Daiktas, Iranga, Kosmetika, Lygis } from '../game/types';
+import type { Daiktas, DinoPiesinys, Iranga, Kosmetika, Lygis } from '../game/types';
 
 export const SPALVOS = {
   popierius: '#f3ead8',
@@ -28,7 +28,7 @@ export function sirdele(pilna: boolean, dydis = 30): string {
 
 export function manosLasas(dydis = 20): string {
   const h = Math.round((dydis * 28) / 20);
-  return `<svg width="${dydis}" height="${h}" viewBox="0 0 20 28"><path d="M10 2 C14 10 18 14 18 19 C18 24 14 27 10 27 C6 27 2 24 2 19 C2 14 6 10 10 2 Z" fill="${SPALVOS.melynas}" stroke="${R}" stroke-width="2"/><path d="M6 19 C6 22 8 23 9 23" fill="none" stroke="${SPALVOS.melynasSviesus}" stroke-width="2" stroke-linecap="round"/></svg>`;
+  return `<svg width="${dydis}" height="${h}" viewBox="0 0 20 28"><path d="M10 2 C14 10 18 14 18 19 C18 24 14 27 10 27 C6 27 2 24 2 19 C2 14 6 10 10 2 Z" fill="#e0952a" stroke="${R}" stroke-width="2"/><path d="M6 19 C6 22 8 23 9 23" fill="none" stroke="#fbe3b0" stroke-width="2" stroke-linecap="round"/></svg>`;
 }
 
 export function zvaigzdute(pilna: boolean, dydis = 34): string {
@@ -73,7 +73,7 @@ export function herojus(iranga: Iranga, apsiaustas: boolean, dydis = 120): strin
   const aps = apsiaustas
     ? `<path d="M40 58 C30 80 28 104 26 124 L74 124 C72 104 70 80 60 58 Z" fill="${SPALVOS.raudonas}" stroke="${R}" stroke-width="2" stroke-linejoin="round"/>`
     : '';
-  return `<svg width="${dydis}" height="${Math.round(dydis * 1.15)}" viewBox="0 0 110 132" role="img" aria-label="Herojus"><defs><filter id="zeri"><feDropShadow dx="0" dy="0" stdDeviation="2.5" flood-color="#7fd3ff"/></filter></defs>${aps}<path d="M86 30 L92 92" stroke="${m('kardas')}" stroke-width="6" stroke-linecap="round" ${zeri('kardas')}/><path d="M86 30 L92 92" stroke="${R}" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M80 78 L98 76" stroke="${R}" stroke-width="4" stroke-linecap="round"/><circle cx="50" cy="38" r="15" fill="${SPALVOS.popieriusSviesus}" stroke="${R}" stroke-width="2.2"/><path d="M34 34 C34 18 66 18 66 34 L66 30 C62 26 38 26 34 30 Z" fill="${m('salmas')}" stroke="${R}" stroke-width="2.2" stroke-linejoin="round" ${zeri('salmas')}/><circle cx="45" cy="40" r="2" fill="${R}"/><circle cx="55" cy="40" r="2" fill="${R}"/><path d="M45 46 Q50 50 55 46" fill="none" stroke="${R}" stroke-width="1.8" stroke-linecap="round"/><path d="M36 56 L64 56 L68 96 L32 96 Z" fill="${m('sarvai')}" stroke="${R}" stroke-width="2.2" stroke-linejoin="round" ${zeri('sarvai')}/><path d="M50 58 L50 94 M36 74 L64 74" stroke="${R}" stroke-width="1.2" opacity="0.5"/><path d="M36 60 L22 84 M64 60 L84 78" stroke="${R}" stroke-width="5" stroke-linecap="round"/><path d="M40 96 L38 116 M60 96 L62 116" stroke="${R}" stroke-width="5" stroke-linecap="round"/><path d="M30 114 L44 114 L44 124 L28 124 Z M56 114 L70 114 L72 124 L56 124 Z" fill="${m('batai')}" stroke="${R}" stroke-width="2" stroke-linejoin="round" ${zeri('batai')}/></svg>`;
+  return `<svg width="${dydis}" height="${Math.round(dydis * 1.15)}" viewBox="0 0 110 132" role="img" aria-label="Herojus"><defs><filter id="zeri"><feDropShadow dx="0" dy="0" stdDeviation="2.5" flood-color="#7fd3ff"/></filter></defs>${aps}<path d="M88 44 L90 92" stroke="#7a4b28" stroke-width="5" stroke-linecap="round"/><path d="M78 40 L100 44" stroke="${m('kardas')}" stroke-width="9" stroke-linecap="round" ${zeri('kardas')}/><path d="M78 40 L100 44" stroke="${R}" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="50" cy="38" r="15" fill="${SPALVOS.popieriusSviesus}" stroke="${R}" stroke-width="2.2"/><path d="M36 28 C36 12 64 12 64 28 Z" fill="${m('salmas')}" stroke="${R}" stroke-width="2.2" stroke-linejoin="round" ${zeri('salmas')}/><path d="M28 28 H72" stroke="${R}" stroke-width="3" stroke-linecap="round"/><circle cx="45" cy="40" r="2" fill="${R}"/><circle cx="55" cy="40" r="2" fill="${R}"/><path d="M45 46 Q50 50 55 46" fill="none" stroke="${R}" stroke-width="1.8" stroke-linecap="round"/><path d="M36 56 L64 56 L68 96 L32 96 Z" fill="${m('sarvai')}" stroke="${R}" stroke-width="2.2" stroke-linejoin="round" ${zeri('sarvai')}/><path d="M50 58 L50 94 M36 74 L64 74" stroke="${R}" stroke-width="1.2" opacity="0.5"/><path d="M36 60 L22 84 M64 60 L84 78" stroke="${R}" stroke-width="5" stroke-linecap="round"/><path d="M40 96 L38 116 M60 96 L62 116" stroke="${R}" stroke-width="5" stroke-linecap="round"/><path d="M30 114 L44 114 L44 124 L28 124 Z M56 114 L70 114 L72 124 L56 124 Z" fill="${m('batai')}" stroke="${R}" stroke-width="2" stroke-linejoin="round" ${zeri('batai')}/></svg>`;
 }
 
 export function kaukas(dydis = 70): string {
@@ -98,9 +98,9 @@ export function daiktoIkona(daiktas: Daiktas, lygis: Lygis, dydis = 44): string 
   const f = lygis === 5 ? `filter="url(#zeri-${daiktas})"` : '';
   const defs = `<defs><filter id="zeri-${daiktas}"><feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="#7fd3ff"/></filter></defs>`;
   const kunas: Record<Daiktas, string> = {
-    kardas: `<path d="M30 6 L36 10 L16 32 L12 28 Z" fill="${c}" stroke="${R}" stroke-width="2" stroke-linejoin="round" ${f}/><path d="M8 26 L18 36 M12 32 L6 38" stroke="${R}" stroke-width="3" stroke-linecap="round"/>`,
-    salmas: `<path d="M8 28 C8 12 36 12 36 28 L36 32 L8 32 Z" fill="${c}" stroke="${R}" stroke-width="2" stroke-linejoin="round" ${f}/><path d="M22 14 L22 32" stroke="${R}" stroke-width="1.5" opacity="0.6"/>`,
-    sarvai: `<path d="M10 10 L34 10 L38 36 L6 36 Z" fill="${c}" stroke="${R}" stroke-width="2" stroke-linejoin="round" ${f}/><path d="M16 10 C16 16 28 16 28 10" fill="none" stroke="${R}" stroke-width="2"/>`,
+    kardas: `<path d="M22 16 L22 40" stroke="#7a4b28" stroke-width="5" stroke-linecap="round"/><path d="M8 12 L36 12" stroke="${c}" stroke-width="10" stroke-linecap="round" ${f}/><path d="M8 12 L36 12" stroke="${R}" stroke-width="1.6" stroke-linecap="round"/>`,
+    salmas: `<path d="M10 28 C10 10 34 10 34 28 Z" fill="${c}" stroke="${R}" stroke-width="2" stroke-linejoin="round" ${f}/><path d="M4 29 H40" stroke="${R}" stroke-width="3" stroke-linecap="round"/>`,
+    sarvai: `<path d="M10 8 L18 8 L22 16 L26 8 L34 8 L36 38 L8 38 Z" fill="${c}" stroke="${R}" stroke-width="2" stroke-linejoin="round" ${f}/><path d="M12 26 H20 M24 26 H32" stroke="${R}" stroke-width="1.5"/>`,
     batai: `<path d="M8 8 L18 8 L18 28 L30 30 C36 31 38 34 38 38 L8 38 Z" fill="${c}" stroke="${R}" stroke-width="2" stroke-linejoin="round" ${f}/>`,
   };
   return `<svg width="${dydis}" height="${dydis}" viewBox="0 0 44 44">${defs}${kunas[daiktas]}</svg>`;
@@ -126,7 +126,7 @@ export function kambarioIkona(tipas: string, dydis = 34): string {
     case 'lauzas':
       return `<svg ${s}><path d="M17 4 C24 14 26 18 24 24 C22 28 12 28 10 24 C8 18 14 16 15 10 C16 14 17 14 17 4 Z" fill="#e8742c" stroke="${R}" stroke-width="1.8"/><path d="M6 30 L28 26 M6 26 L28 30" stroke="#7a4b28" stroke-width="3.5" stroke-linecap="round"/></svg>`;
     case 'priesas':
-      return `<svg ${s}><path d="M17 4 C22 3 27 7 28 12 C32 14 31 19 28 21 C29 25 25 28 21 26 C19 30 15 30 13 27 C8 29 4 25 6 21 C2 18 3 12 7 11 C7 6 12 4 17 4 Z" fill="${SPALVOS.deme}"/><circle cx="13" cy="15" r="3" fill="${SPALVOS.popieriusSviesus}"/><circle cx="21" cy="15" r="3" fill="${SPALVOS.popieriusSviesus}"/></svg>`;
+      return `<svg ${s}><path d="M30 20 Q30 10 20 9 L6 11 Q3 16 6 20 L18 22 Q26 24 30 20 Z" fill="#7aa35a" stroke="${R}" stroke-width="2" stroke-linejoin="round"/><circle cx="16" cy="14" r="2" fill="${R}"/><path d="M8 19 L18 20" stroke="${R}" stroke-width="1.5"/></svg>`;
     case 'sankryza':
       return `<svg ${s}><path d="M17 6 V31" stroke="${R}" stroke-width="2.5"/><path d="M17 8 H28 L31 11 L28 14 H17 Z M17 17 H6 L3 20 L6 23 H17 Z" fill="${SPALVOS.popieriusSviesus}" stroke="${R}" stroke-width="2" stroke-linejoin="round"/></svg>`;
     case 'lobis':
@@ -145,8 +145,8 @@ export function banga(plotis = 240): string {
 }
 
 export const KOSMETIKOS_VARDAI: Record<Kosmetika, string> = {
-  kepure: 'Žiežirbos kepurė',
-  apsiaustas: 'herojaus apsiaustas',
+  kepure: 'Pteriuko tyrinėtojo kepurė',
+  apsiaustas: 'raudona tyrinėtojo skara',
   lauzoSpalva: 'mėlyna laužo ugnis',
 };
 
@@ -161,7 +161,7 @@ export function herojusSonu(iranga: Iranga, apsiaustas: boolean): string {
     : '';
   const koja = (klase: string, x: number) =>
     `<g class="koja ${klase}"><path d="M${x} 82 L${x} 104" stroke="${R}" stroke-width="5" stroke-linecap="round"/><path d="M${x - 5} 102 L${x + 9} 102 L${x + 11} 110 L${x - 5} 110 Z" fill="${m('batai')}" stroke="${R}" stroke-width="2" stroke-linejoin="round" ${zeri('batai')}/></g>`;
-  return `<svg viewBox="0 0 90 114" role="img" aria-label="Herojus"><defs><filter id="zeri-sonu"><feDropShadow dx="0" dy="0" stdDeviation="2.5" flood-color="#7fd3ff"/></filter></defs>${aps}${koja('koja-2', 36)}<path d="M28 46 L52 46 L54 84 L26 84 Z" fill="${m('sarvai')}" stroke="${R}" stroke-width="2.2" stroke-linejoin="round" ${zeri('sarvai')}/>${koja('koja-1', 44)}<circle cx="42" cy="28" r="14" fill="${SPALVOS.popieriusSviesus}" stroke="${R}" stroke-width="2.2"/><path d="M55 28 L60 31 L55 33" fill="${SPALVOS.popieriusSviesus}" stroke="${R}" stroke-width="2" stroke-linejoin="round"/><circle cx="49" cy="26" r="2" fill="${R}"/><path d="M47 35 Q51 37 54 35" fill="none" stroke="${R}" stroke-width="1.6" stroke-linecap="round"/><path d="M27 26 C27 10 57 10 57 24 L57 22 C50 18 34 18 27 22 Z" fill="${m('salmas')}" stroke="${R}" stroke-width="2.2" stroke-linejoin="round" ${zeri('salmas')}/><g class="ranka"><path d="M44 52 L62 62" stroke="${R}" stroke-width="5" stroke-linecap="round"/><path d="M60 64 L86 30" stroke="${m('kardas')}" stroke-width="6" stroke-linecap="round" ${zeri('kardas')}/><path d="M60 64 L86 30" stroke="${R}" stroke-width="1.4" stroke-linecap="round"/><path d="M56 56 L68 66" stroke="${R}" stroke-width="4" stroke-linecap="round"/></g></svg>`;
+  return `<svg viewBox="0 0 90 114" role="img" aria-label="Herojus"><defs><filter id="zeri-sonu"><feDropShadow dx="0" dy="0" stdDeviation="2.5" flood-color="#7fd3ff"/></filter></defs>${aps}${koja('koja-2', 36)}<path d="M28 46 L52 46 L54 84 L26 84 Z" fill="${m('sarvai')}" stroke="${R}" stroke-width="2.2" stroke-linejoin="round" ${zeri('sarvai')}/><path d="M34 46 L40 58 L46 46 M30 66 H38" fill="none" stroke="${R}" stroke-width="1.5" opacity="0.7"/>${koja('koja-1', 44)}<circle cx="42" cy="28" r="14" fill="${SPALVOS.popieriusSviesus}" stroke="${R}" stroke-width="2.2"/><path d="M55 28 L60 31 L55 33" fill="${SPALVOS.popieriusSviesus}" stroke="${R}" stroke-width="2" stroke-linejoin="round"/><circle cx="49" cy="26" r="2" fill="${R}"/><path d="M47 35 Q51 37 54 35" fill="none" stroke="${R}" stroke-width="1.6" stroke-linecap="round"/><path d="M29 22 C30 6 56 6 57 22 Z" fill="${m('salmas')}" stroke="${R}" stroke-width="2.2" stroke-linejoin="round" ${zeri('salmas')}/><path d="M22 22 H64" stroke="${R}" stroke-width="3" stroke-linecap="round"/><g class="ranka"><path d="M44 52 L62 62" stroke="${R}" stroke-width="5" stroke-linecap="round"/><path d="M60 64 L80 36" stroke="#7a4b28" stroke-width="5" stroke-linecap="round"/><path d="M72 28 L90 42" stroke="${m('kardas')}" stroke-width="9" stroke-linecap="round" ${zeri('kardas')}/><path d="M72 28 L90 42" stroke="${R}" stroke-width="1.5" stroke-linecap="round" fill="none"/></g></svg>`;
 }
 
 /** Durys šoninėje sienoje: uždarytos, atidarytos arba šviečiantis išėjimas. */
@@ -202,4 +202,103 @@ export function urvoFonas(): string {
     .map((x, i) => `<ellipse cx="${x}" cy="${93 + (i % 2)}" rx="${1.4 + (i % 3) * 0.5}" ry="0.9" fill="${SPALVOS.rasalas}" opacity="0.5"/>`)
     .join('');
   return `<svg viewBox="0 0 100 100" preserveAspectRatio="none" class="urvo-fonas"><path d="M0 0 H100 V6 C88 9 78 4 66 7 C52 10 40 5 26 8 C14 10 6 6 0 8 Z" fill="#d9ccb0"/>${varvekliai}<path d="M0 86 C20 84 40 88 60 85 C76 83 90 87 100 85 V100 H0 Z" fill="#e3d6ba"/><path d="M0 86 C20 84 40 88 60 85 C76 83 90 87 100 85" fill="none" stroke="${SPALVOS.rasalas}" stroke-width="2" vector-effect="non-scaling-stroke"/>${akmenukai}</svg>`;
+}
+
+// ================================================================== Dino ekspedicija
+
+const DINO_SPALVOS: Record<DinoPiesinys, string> = {
+  kompsognatas: '#7aa35a',
+  stegozauras: '#c99a4b',
+  triceratopsas: '#7f9fc0',
+  pterodaktilis: '#cf8a5a',
+  brachiozauras: '#93b56f',
+  ankilozauras: '#9a8b73',
+  tiranozauras: '#8a77b8',
+};
+
+const akis = (x: number, y: number, r = 6, piktas = true) =>
+  `<circle cx="${x}" cy="${y}" r="${r}" fill="#fbf6ea" stroke="${R}" stroke-width="2"/><circle cx="${x - 1.5}" cy="${y + 1}" r="${r * 0.45}" fill="${R}"/>${piktas ? `<path d="M${x - r - 2} ${y - r - 1} L${x + r} ${y - r + 3}" stroke="${R}" stroke-width="2.4" stroke-linecap="round"/>` : ''}`;
+
+/** Užkerėto dinozauro pelenų dulkės virš galvos. */
+const pelenai = (x: number, y: number) =>
+  [0, 1, 2, 3].map((i) => `<circle cx="${x + i * 9 - 12}" cy="${y - (i % 2) * 7}" r="${2.4 + (i % 3)}" fill="#8b8794" opacity="0.7"/>`).join('');
+
+/** Dinozaurai iš šono (žiūri į kairę – į herojų). */
+export function dino(piesinys: DinoPiesinys, uzkerėtas = true): string {
+  const c = DINO_SPALVOS[piesinys];
+  const st = `stroke="${R}" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"`;
+  const koja = (x: number, y: number, h: number, w = 12) => `<path d="M${x} ${y} L${x} ${y + h} L${x - w * 0.6} ${y + h}" fill="none" ${st}/>`;
+  const storaKoja = (x: number, y: number, h: number, w = 16) => `<rect x="${x - w / 2}" y="${y}" width="${w}" height="${h}" rx="4" fill="${c}" ${st}/>`;
+  let kunas = '';
+  let galva: [number, number] = [0, 0];
+  switch (piesinys) {
+    case 'kompsognatas':
+      kunas = `${koja(112, 120, 44)}${koja(132, 118, 46)}<path d="M150 100 Q195 92 214 70 Q198 112 150 122 Z" fill="${c}" ${st}/><ellipse cx="122" cy="108" rx="40" ry="24" fill="${c}" ${st}/><path d="M94 96 Q80 80 76 70" fill="none" stroke="${c}" stroke-width="16" stroke-linecap="round"/><path d="M94 96 Q80 80 76 70" fill="none" stroke="${R}" stroke-width="3" stroke-dasharray="0 0" opacity="0"/><ellipse cx="62" cy="64" rx="27" ry="17" fill="${c}" ${st}/><path d="M38 70 L58 72" ${st}/><path d="M100 114 L92 128" ${st}/>`;
+      galva = [56, 58];
+      break;
+    case 'stegozauras':
+      kunas = `${storaKoja(70, 120, 46)}${storaKoja(98, 126, 40)}${storaKoja(150, 126, 40)}${storaKoja(176, 118, 48)}${[60, 84, 108, 132, 156].map((x, i) => `<path d="M${x} ${92 - Math.sin((i + 1) * 0.6) * 22} l12 -26 l12 26 Z" fill="#c2413a" ${st}/>`).join('')}<path d="M36 128 Q110 46 196 120 Q214 128 216 112 L210 140 Q120 156 36 140 Z" fill="${c}" ${st}/><path d="M206 116 l10 -14 M212 126 l12 -8" ${st}/><ellipse cx="34" cy="132" rx="22" ry="14" fill="${c}" ${st}/>`;
+      galva = [28, 128];
+      break;
+    case 'triceratopsas':
+      kunas = `${storaKoja(92, 124, 44, 18)}${storaKoja(118, 128, 40, 18)}${storaKoja(162, 128, 40, 18)}${storaKoja(186, 122, 46, 18)}<path d="M186 104 Q212 104 218 118 Q200 120 186 122 Z" fill="${c}" ${st}/><ellipse cx="140" cy="108" rx="58" ry="36" fill="${c}" ${st}/><circle cx="86" cy="86" r="34" fill="${c}" ${st}/><ellipse cx="62" cy="110" rx="34" ry="24" fill="${c}" ${st}/><path d="M48 98 L22 82 L50 92 Z M70 92 L56 62 L78 88 Z M32 116 L14 112 L32 108 Z" fill="#fbf6ea" ${st}/>`;
+      galva = [58, 104];
+      break;
+    case 'pterodaktilis':
+      kunas = `<path d="M118 92 L200 54 L168 104 Z" fill="${c}" ${st}/><path d="M104 96 L40 52 L84 108 Z" fill="${c}" ${st} opacity="0.85"/><ellipse cx="112" cy="104" rx="30" ry="16" fill="${c}" ${st}/><path d="M104 118 L100 140 M120 118 L124 140" ${st}/><ellipse cx="80" cy="84" rx="20" ry="14" fill="${c}" ${st}/><path d="M64 84 L18 92 L64 90 Z" fill="#e8c38c" ${st}/><path d="M92 76 L120 60 L96 84 Z" fill="${c}" ${st}/>`;
+      galva = [76, 80];
+      break;
+    case 'brachiozauras':
+      kunas = `${storaKoja(118, 120, 50, 18)}${storaKoja(142, 124, 46, 18)}${storaKoja(184, 124, 46, 18)}${storaKoja(204, 118, 52, 18)}<path d="M200 104 Q220 120 218 140 Q208 124 196 120 Z" fill="${c}" ${st}/><ellipse cx="164" cy="108" rx="52" ry="32" fill="${c}" ${st}/><path d="M124 96 Q96 60 78 22" fill="none" stroke="${R}" stroke-width="22" stroke-linecap="round"/><path d="M124 96 Q96 60 78 22" fill="none" stroke="${c}" stroke-width="16" stroke-linecap="round"/><ellipse cx="66" cy="20" rx="22" ry="13" fill="${c}" ${st}/>`;
+      galva = [58, 16];
+      break;
+    case 'ankilozauras':
+      kunas = `${storaKoja(84, 132, 34, 18)}${storaKoja(110, 136, 30, 18)}${storaKoja(160, 136, 30, 18)}${storaKoja(184, 132, 34, 18)}<path d="M190 120 L210 112" ${st}/><circle cx="214" cy="110" r="10" fill="${c}" ${st}/><path d="M50 136 Q130 70 206 128 L200 146 Q130 156 54 148 Z" fill="${c}" ${st}/>${[74, 98, 122, 146, 170].map((x) => `<path d="M${x} ${108 - Math.abs(x - 122) * 0.18} l8 -12 l8 12 Z" fill="#fbf6ea" ${st}/>`).join('')}<ellipse cx="44" cy="136" rx="22" ry="15" fill="${c}" ${st}/>`;
+      galva = [38, 132];
+      break;
+    case 'tiranozauras':
+      kunas = `<path d="M150 92 Q204 96 218 128 Q190 116 150 120 Z" fill="${c}" ${st}/><path d="M122 132 L116 168 L98 168 M150 128 L156 168 L138 168" fill="none" stroke="${R}" stroke-width="12" stroke-linecap="round"/><path d="M122 132 L116 168 L98 168 M150 128 L156 168 L138 168" fill="none" stroke="${c}" stroke-width="7" stroke-linecap="round"/><ellipse cx="136" cy="106" rx="40" ry="34" fill="${c}" ${st}/><path d="M104 108 L92 120 M108 116 L100 126" ${st}/><path d="M112 82 Q100 54 70 52 L28 58 Q20 74 30 86 L70 92 Q96 98 112 96 Z" fill="${c}" ${st}/><path d="M32 82 L70 86" ${st}/><path d="M36 82 l4 6 l4 -6 l4 6 l4 -6 l4 6" fill="#fbf6ea" stroke="${R}" stroke-width="1.6"/>`;
+      galva = [62, 64];
+      break;
+  }
+  return `<svg viewBox="0 0 230 180" role="img" aria-label="${piesinys}">${kunas}${akis(galva[0], galva[1], piesinys === 'tiranozauras' || piesinys === 'brachiozauras' ? 6 : 6.5, uzkerėtas)}${uzkerėtas ? pelenai(galva[0] + 10, galva[1] - 22) : ''}</svg>`;
+}
+
+/** Pteriukas – mažas pterozauriukas. Kuo daugiau puslapių, tuo daugiau spalvų. */
+export function pteriukas(puslapiai: number, kepure: boolean, dydis = 64): string {
+  const spalvos = ['#a8a3b5', '#c9a27a', '#e09455', '#e8742c', '#e8742c', '#e8742c', '#e8742c'];
+  const sparnai = ['#cfcbd6', '#d8c3a4', '#9fd3c7', '#7cc4b4', '#5fb8d8', '#5fb8d8', '#5fb8d8'];
+  const i = Math.max(0, Math.min(6, puslapiai));
+  const kep = kepure
+    ? `<path d="M22 22 Q36 8 50 22 Z" fill="#b5893a" stroke="${R}" stroke-width="1.6"/><path d="M16 23 H56" stroke="${R}" stroke-width="2.2" stroke-linecap="round"/>`
+    : '';
+  return `<svg width="${dydis}" height="${dydis}" viewBox="-2 -4 76 80" role="img" aria-label="Pteriukas"><path d="M30 42 L2 26 L14 52 Z M44 42 L72 26 L60 52 Z" fill="${sparnai[i]}" stroke="${R}" stroke-width="2" stroke-linejoin="round"/><ellipse cx="37" cy="46" rx="13" ry="16" fill="${spalvos[i]}" stroke="${R}" stroke-width="2.2"/><circle cx="37" cy="30" r="12" fill="${spalvos[i]}" stroke="${R}" stroke-width="2.2"/><path d="M42 22 L56 12 L46 28 Z" fill="${spalvos[i]}" stroke="${R}" stroke-width="1.8" stroke-linejoin="round"/><path d="M30 34 L14 38 L30 38 Z" fill="#e8c38c" stroke="${R}" stroke-width="1.6" stroke-linejoin="round"/>${kep}<circle cx="33" cy="28" r="2.6" fill="${R}"/><circle cx="41" cy="28" r="2.6" fill="${R}"/><path d="M33 60 L31 70 M41 60 L43 70" stroke="${R}" stroke-width="2.2" stroke-linecap="round"/></svg>`;
+}
+
+/** Išmintingas vėžlys Kiautas. */
+export function vezlys(dydis = 70): string {
+  return `<svg width="${dydis}" height="${Math.round(dydis * 0.8)}" viewBox="0 0 90 72" role="img" aria-label="Vėžlys Kiautas"><path d="M14 60 L10 70 H22 M66 60 L70 70 H58" stroke="${R}" stroke-width="3" fill="#9fbf7a" stroke-linecap="round" stroke-linejoin="round"/><circle cx="76" cy="44" r="11" fill="#9fbf7a" stroke="${R}" stroke-width="2.2"/><circle cx="79" cy="41" r="2.2" fill="${R}"/><path d="M78 49 Q82 51 85 48" fill="none" stroke="${R}" stroke-width="1.6" stroke-linecap="round"/><path d="M6 60 Q8 18 40 16 Q72 18 72 60 Z" fill="#6f8f4a" stroke="${R}" stroke-width="2.4"/><path d="M26 30 L40 24 L54 30 L54 46 L40 52 L26 46 Z M26 30 L14 40 M54 30 L66 40 M40 52 V60" fill="none" stroke="${R}" stroke-width="1.8"/><path d="M60 22 Q70 6 80 20" fill="none" stroke="${R}" stroke-width="2"/></svg>`;
+}
+
+/** Ekspedicijos palapinė stovykloje. */
+export function palapine(dydis = 100): string {
+  return `<svg width="${dydis}" height="${Math.round(dydis * 0.8)}" viewBox="0 0 100 80" role="img" aria-label="Palapinė"><path d="M4 76 L50 8 L96 76 Z" fill="#d9b26a" stroke="${R}" stroke-width="2.6" stroke-linejoin="round"/><path d="M50 8 L36 76 H64 Z" fill="#7a5a3a" stroke="${R}" stroke-width="2.2" stroke-linejoin="round"/><path d="M50 8 L50 2" stroke="${R}" stroke-width="2.4"/><path d="M50 2 L62 6 L50 10" fill="#c2413a" stroke="${R}" stroke-width="1.4"/></svg>`;
+}
+
+/** Priešistorinio slėnio fonas iš šono: ugnikalnis toli, paparčiai, žemė. */
+export function slenioFonas(): string {
+  const paparciai = [6, 30, 58, 80, 96]
+    .map((x, i) => `<path d="M${x} 86 Q${x - 4} ${76 - (i % 2) * 4} ${x - 8} ${72 - (i % 3) * 3} M${x} 86 Q${x + 3} ${75 - (i % 2) * 3} ${x + 8} ${71 - (i % 3) * 2} M${x} 86 Q${x} ${74} ${x + 1} ${68 - (i % 2) * 4}" fill="none" stroke="#5f8a4a" stroke-width="2" vector-effect="non-scaling-stroke" stroke-linecap="round"/>`)
+    .join('');
+  return `<svg viewBox="0 0 100 100" preserveAspectRatio="none" class="urvo-fonas"><rect width="100" height="100" fill="#efe6cf"/><path d="M52 60 L66 26 L72 26 L88 60 Z" fill="#d8c8aa" stroke="${SPALVOS.rasalas}" stroke-width="1.5" vector-effect="non-scaling-stroke" opacity="0.7"/><path d="M66 26 Q64 16 70 10 Q76 4 72 -2" fill="none" stroke="#9a96a3" stroke-width="2.5" vector-effect="non-scaling-stroke" opacity="0.6"/><path d="M0 62 Q25 54 50 60 Q75 66 100 58 V86 H0 Z" fill="#e2d7bb" opacity="0.6"/>${paparciai}<path d="M0 86 C20 84 40 88 60 85 C76 83 90 87 100 85 V100 H0 Z" fill="#d9c9a3"/><path d="M0 86 C20 84 40 88 60 85 C76 83 90 87 100 85" fill="none" stroke="${SPALVOS.rasalas}" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>`;
+}
+
+/** Perėja uolose: užaugusi vijokliais, atvira arba saulėta išeitis. */
+export function perėja(busena: 'uzdarytos' | 'atidarytos' | 'isejimas'): string {
+  const uola = `<path d="M2 122 V34 C2 6 58 6 58 34 V122 H48 V38 C48 18 12 18 12 38 V122 Z" fill="#b8ab93" stroke="${R}" stroke-width="2.5" stroke-linejoin="round"/>`;
+  if (busena === 'isejimas')
+    return `<svg viewBox="0 0 60 124" role="img" aria-label="Išėjimas"><defs><radialGradient id="saule" cx="50%" cy="40%"><stop offset="0" stop-color="#fff6c8"/><stop offset="1" stop-color="#f6c344"/></radialGradient></defs><path d="M12 122 V38 C12 18 48 18 48 38 V122 Z" fill="url(#saule)"/>${uola}<path d="M18 120 H42 M22 108 H44" stroke="#5f8a4a" stroke-width="2.5" stroke-linecap="round"/></svg>`;
+  const vidus = `<path d="M12 122 V38 C12 18 48 18 48 38 V122 Z" fill="#2c2a40"/>`;
+  if (busena === 'atidarytos') return `<svg viewBox="0 0 60 124" role="img" aria-label="Atvira perėja">${vidus}${uola}<path d="M48 40 Q40 60 46 80" fill="none" stroke="#5f8a4a" stroke-width="3" stroke-linecap="round"/></svg>`;
+  return `<svg viewBox="0 0 60 124" role="img" aria-label="Perėja užaugusi vijokliais">${vidus}${uola}<path d="M12 40 Q30 60 48 44 M12 64 Q30 82 48 66 M12 88 Q30 104 48 90 M14 50 L46 100 M46 52 L14 104" fill="none" stroke="#5f8a4a" stroke-width="3.5" stroke-linecap="round"/><circle cx="22" cy="58" r="3" fill="#c2413a"/><circle cx="38" cy="84" r="3" fill="#c2413a"/></svg>`;
 }

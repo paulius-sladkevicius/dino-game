@@ -1,15 +1,18 @@
 // Kovos ekranas (pagal eskizą „Knyga“) ir raidžių skrydis į Knygą.
 
 import { skyrius } from '../content';
-import { dabartineUzduotis, DABARTINIS_SKYRIUS, galimaBurta } from '../game/engine';
+import { burtasIsmoktas, dabartineUzduotis, galimaBurta, saleSkyrius } from '../game/engine';
 import { maxMana, maxSirdeles } from '../game/equipment';
 import { BURTAI, type Burtas } from '../game/rules';
 import type { Zaidimas } from './app';
-import { knygosIkona, manosLasas, sirdele, SPALVOS, ziezirba } from './art';
+import { knygosIkona, manosLasas, sirdele, SPALVOS, pteriukas } from './art';
 import { scena, X } from './scena';
 import { h, sumazintasJudesys, svg } from './dom';
 import { skaitomasTekstas, uzuominosRibos } from './skaitymas';
-import { zodziuSkaicius } from '../game/text';
+import { sakiniuRibos, zodziuSkaicius } from '../game/text';
+import { BURTU_VARDAI, priesoPiesinys, TEMA } from './tema';
+
+const BURTU_EILE: Burtas[] = ['sviesele', 'skiemenys', 'skydas', 'perskilimas', 'ugnies', 'gydymas'];
 
 export function hud(z: Zaidimas, papildomai?: HTMLElement): HTMLElement {
   const b = z.b;
@@ -21,7 +24,7 @@ export function hud(z: Zaidimas, papildomai?: HTMLElement): HTMLElement {
   );
   const mana = h(
     'div',
-    { class: 'mana', role: 'img', 'aria-label': `Mana ${b.mana} iš ${maxMana(b.iranga)}`, 'data-mana': b.mana },
+    { class: 'mana', role: 'img', 'aria-label': `${TEMA.mana} ${b.mana} iš ${maxMana(b.iranga)}`, 'data-mana': b.mana },
     svg(manosLasas(20)),
     h('span', { class: 'mana-skaicius' }, `${b.mana} / ${maxMana(b.iranga)}`),
   );
@@ -33,33 +36,55 @@ export function ziezirbosBurbulas(z: Zaidimas, tekstas: string | null): HTMLElem
   return h(
     'div',
     { class: 'ziezirba-sako', role: 'status', 'aria-live': 'polite' },
-    svg(ziezirba(z.b.puslapiai.length, z.b.kosmetika.includes('kepure'), 46)),
+    svg(pteriukas(z.b.puslapiai.length, z.b.kosmetika.includes('kepure'), 46)),
     h('p', { class: 'burbulas skaitymas' }, z.tekstas(tekstas)),
   );
 }
 
 export function burtoMygtukas(z: Zaidimas, burtas: Burtas): HTMLElement {
-  const galima = galimaBurta(z.b, z.kova, burtas) && !z.animKova;
+  const galima = galimaBurta(z.b, z.kova, burtas, z.t) && !z.animKova;
+  const { vardas, aprasas } = BURTU_VARDAI[burtas];
   return h(
     'button',
     {
       type: 'button',
-      class: 'burtas',
+      class: `burtas burtas-${burtas}`,
       disabled: !galima,
       'data-fokusas': `burtas-${burtas}`,
-      'aria-label': `${BURTAI[burtas].pavadinimas}, kainuoja ${BURTAI[burtas].mana} ${BURTAI[burtas].mana === 1 ? 'maną' : 'manas'}`,
+      'data-burtas': burtas,
+      title: aprasas,
+      'aria-label': `${vardas}, kainuoja ${BURTAI[burtas].mana} gintaro. ${aprasas}`,
       onclick: () => z.burtas(burtas),
     },
     svg(manosLasas(12)),
-    `${BURTAI[burtas].pavadinimas} ${BURTAI[burtas].mana}`,
+    `${vardas} ${BURTAI[burtas].mana}`,
   );
+}
+
+/** Ilgas tekstas telefone rodomas dalimis (po kelis sakinius), kad nereikėtų slinkti. */
+export function tekstoDalys(tekstas: string, maxZodziu = 22): [number, number][] {
+  if (zodziuSkaicius(tekstas) <= 26) return [[0, tekstas.length]];
+  const dalys: [number, number][] = [];
+  let pradzia = 0;
+  let zodziu = 0;
+  for (const [a, b] of sakiniuRibos(tekstas)) {
+    const n = zodziuSkaicius(tekstas.slice(a, b));
+    if (zodziu > 0 && zodziu + n > maxZodziu) {
+      dalys.push([pradzia, a]);
+      pradzia = a;
+      zodziu = 0;
+    }
+    zodziu += n;
+  }
+  dalys.push([pradzia, tekstas.length]);
+  return dalys;
 }
 
 export function ekranasKova(z: Zaidimas): HTMLElement {
   const anim = z.animKova;
   const k = anim?.kova ?? z.kova!;
   const u = dabartineUzduotis(z.t, k);
-  const sk = skyrius(z.t, DABARTINIS_SKYRIUS);
+  const sk = skyrius(z.t, k.sale ? saleSkyrius(z.t, k.sale) : z.b.skyrius);
   const tekstas = z.tekstas(u.tekstas);
   const ribos = anim ? {} : uzuominosRibos(tekstas, u.uzuomina && z.tekstas(u.uzuomina), k.uzuomina, k.sviesele);
   const nustatymai = { skiemenys: z.b.nustatymai.skiemenys };
@@ -95,6 +120,7 @@ export function ekranasKova(z: Zaidimas): HTMLElement {
     objektas: {
       tipas: 'deme',
       rusis: k.rusis,
+      piesinys: priesoPiesinys(z.t, z.b.skyrius, k.sale, k.rusis),
       virsus,
       klases: anim?.nugaletas ? 'susigeria' : anim ? 'smugis' : '',
     },
@@ -104,6 +130,30 @@ export function ekranasKova(z: Zaidimas): HTMLElement {
     klase: 'kovos-scena',
   });
   if (purslai.length) vaizdas.querySelector('.scenos-priesas')?.append(...purslai);
+
+  // Ilgi tekstai – dalimis. Kai rodoma užuomina, atsiverčia dalis su ja.
+  const dalys = tekstoDalys(tekstas);
+  const uzuominosDalis = ribos.zodis ? dalys.findIndex(([a, b]) => ribos.zodis![0] >= a && ribos.zodis![0] < b) : -1;
+  const dalis = Math.min(dalys.length - 1, Math.max(0, z.tekstoDalis ?? (uzuominosDalis >= 0 ? uzuominosDalis : 0)));
+  const [dA, dB] = dalys[dalis];
+  const rodomas = tekstas.slice(dA, dB).trim();
+  const tarpas = tekstas.slice(dA, dB).length - tekstas.slice(dA, dB).trimStart().length;
+  const poslinkis = (r: { zodis?: [number, number] | null; sakinys?: [number, number] | null }) => {
+    const p = (x?: [number, number] | null): [number, number] | null => (x ? [x[0] - dA - tarpas, x[1] - dA - tarpas] : null);
+    return { zodis: p(r.zodis), sakinys: p(r.sakinys) };
+  };
+  const dalysNav =
+    dalys.length > 1
+      ? h(
+          'div',
+          { class: 'teksto-dalys' },
+          h('button', { type: 'button', class: 'antrinis ikonos-mygtukas', 'aria-label': 'Ankstesnė teksto dalis', 'data-dalis-atgal': '1', disabled: dalis === 0, onclick: () => z.rodytiDali(dalis - 1) }, '◀'),
+          h('span', { class: 'dalies-nr' }, `${dalis + 1} / ${dalys.length}`),
+          h('button', { type: 'button', class: 'antrinis ikonos-mygtukas', 'aria-label': 'Kita teksto dalis', 'data-dalis-pirmyn': '1', disabled: dalis === dalys.length - 1, onclick: () => z.rodytiDali(dalis + 1) }, '▶'),
+        )
+      : null;
+  // Gudrybė „Skiemenys“: vaikas paliečia vieną žodį.
+  const skiemenu = k.skiemenys && !anim ? { skaidomas: z.skiemenuZodis === null ? null : z.skiemenuZodis - dA - tarpas, liesti: (p: number) => z.suskaidytiZodi(p + dA + tarpas) } : undefined;
 
   const uzrakinta = Date.now() < z.uzraktasIki;
   const likoMs = Math.max(0, z.uzraktasIki - Date.now());
@@ -141,11 +191,12 @@ export function ekranasKova(z: Zaidimas): HTMLElement {
     h(
       'section',
       { class: 'teksto-kortele', 'aria-label': 'Tekstas', 'data-uzduotis': u.id },
-      h('p', { class: 'tekstas skaitymas', lang: 'lt' }, skaitomasTekstas(tekstas, nustatymai, ribos)),
+      dalysNav,
+      h('p', { class: 'tekstas skaitymas', lang: 'lt', 'data-dalis': dalis }, skaitomasTekstas(rodomas, nustatymai, poslinkis(ribos), skiemenu)),
       h('p', { class: 'klausimas skaitymas' }, skaitomasTekstas(z.tekstas(u.klausimas), nustatymai)),
     ),
     atsakymai,
-    h('div', { class: 'burtai' }, burtoMygtukas(z, 'sviesele'), burtoMygtukas(z, 'gydymas')),
+    h('div', { class: 'burtai' }, BURTU_EILE.filter((x) => burtasIsmoktas(z.b, z.t, x)).map((x) => burtoMygtukas(z, x))),
   );
 }
 

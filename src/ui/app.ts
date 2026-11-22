@@ -22,7 +22,8 @@ export type Langas =
   | { tipas: 'nugaletas'; zodis: string | null; kardoMana: number; sugautas: boolean; pabeges: boolean }
   | { tipas: 'grobis'; grobis: Grobis }
   | { tipas: 'lobis'; sirdeles: number; mana: number; planuota: { sirdeles: number; mana: number } }
-  | { tipas: 'dovana'; dovana: Kosmetika }
+  | { tipas: 'dovana'; dovana: Kosmetika; nauja: boolean; mana: number }
+  | { tipas: 'riaumojimas' }
   | { tipas: 'durys'; tvarka: number[] }
   | { tipas: 'saleBaigta'; zvaigzdutes: number }
   | { tipas: 'pralaimejimas' }
@@ -44,6 +45,10 @@ export class Zaidimas {
   private poLangu: (() => void) | null = null;
   zinute: string | null = null;
   uzraktasIki = 0;
+  /** Ilgo teksto rodoma dalis (null – automatiškai: ten, kur užuomina). */
+  tekstoDalis: number | null = null;
+  /** Gudrybe „Skiemenys“ suskaidyto žodžio pradžia tekste. */
+  skiemenuZodis: number | null = null;
   grizti: Ekranas = 'zaidimas';
   rng: Rng = sistemosRng;
   private laikoPradzia = Date.now();
@@ -300,9 +305,10 @@ export class Zaidimas {
         return;
       case 'dovana':
         this.eiti(X.priesObjekta, () => {
-          this.busena = E.paimtiDovana(this.b, veiksmas.dovana);
+          const r = E.paimtiDovana(this.b, sale.id, veiksmas.dovana);
+          this.busena = r.busena;
           this.saugoti();
-          this.rodytiLangus([{ tipas: 'dovana', dovana: veiksmas.dovana }]);
+          this.rodytiLangus([{ tipas: 'dovana', dovana: veiksmas.dovana, nauja: r.nauja, mana: r.mana }]);
         });
         return;
       case 'galas':
@@ -428,6 +434,8 @@ export class Zaidimas {
 
   pradetiKova(kova: Kova): void {
     this.kova = kova;
+    this.tekstoDalis = null;
+    this.skiemenuZodis = null;
     this.zinute = ZIEZIRBA.pradzia[kova.rusis];
     this.uzraktasIki = 0;
     this.render();
@@ -435,7 +443,7 @@ export class Zaidimas {
 
   pradetiBosoKova(): void {
     this.busena = E.pradetiBosoKova(this.b);
-    this.pradetiKova(E.bosoKova(this.t, this.rng));
+    this.pradetiKova(E.bosoKova(this.b, this.t, this.rng));
   }
 
   get uzrakinta(): boolean {
@@ -454,7 +462,8 @@ export class Zaidimas {
     if (tipai.has('klaida')) {
       groti('klaida');
       this.kova = r.kova;
-      const pradzia = tipai.has('salmas') ? `${ZIEZIRBA.salmas} ` : '';
+      this.tekstoDalis = null;
+      const pradzia = tipai.has('skydas') ? `${ZIEZIRBA.skydas} ` : tipai.has('salmas') ? `${ZIEZIRBA.salmas} ` : '';
       this.zinute = pradzia + (r.kova.uzuomina === 'sakinys' ? ZIEZIRBA.klaida2 : ZIEZIRBA.klaida1);
       this.uzraktasIki = Date.now() + UZRAKTAS_PO_KLAIDOS_MS;
       setTimeout(() => this.render(), UZRAKTAS_PO_KLAIDOS_MS + 20);
@@ -479,6 +488,8 @@ export class Zaidimas {
     this.render();
     skraidintiRaides(this.saknis, nugaletas).then(() => {
       this.animKova = null;
+      this.tekstoDalis = null;
+      this.skiemenuZodis = null;
       if (!nugaletas) return this.render();
       this.poPergales(r.ivykiai, k);
     });
@@ -492,8 +503,12 @@ export class Zaidimas {
       const langai: Langas[] = [{ tipas: 'pergale' }];
       if (boso.grobis) langai.push({ tipas: 'grobis', grobis: boso.grobis });
       this.rodytiLangus(langai, () => {
-        this.busena = { ...this.b, vieta: { kur: 'skyrius' } };
+        const kitas = this.b.skyrius + 1;
+        this.busena = E.skyriusAtrakintas(this.b, this.t, kitas) && this.t.skyriai.some((x) => x.numeris === kitas)
+          ? E.pasirinktiSkyriu(this.b, this.t, kitas)
+          : { ...this.b, vieta: { kur: 'skyrius' } };
         this.saugoti();
+        this.zinute = ZIEZIRBA.naujasLygis;
         this.grizti = 'zaidimas';
         this.ekranas = 'knyga';
       });
@@ -551,12 +566,53 @@ export class Zaidimas {
 
   burtas(burtas: Burtas): void {
     if (this.animKova) return;
-    if (!E.galimaBurta(this.b, this.kova, burtas)) return;
-    const r = E.naudotiBurta(this.b, this.kova, burtas);
+    if (!E.galimaBurta(this.b, this.kova, burtas, this.t)) return;
+    // Riaumojimas (Ugnies žodis): pirma perskaityti garsiai tėvams, jie patvirtina.
+    if (burtas === 'ugnies') {
+      this.rodytiLangus([{ tipas: 'riaumojimas' }]);
+      return;
+    }
+    this.naudoti(burtas);
+  }
+
+  private naudoti(burtas: Burtas): void {
+    const r = E.naudotiBurta(this.b, this.kova, burtas, this.t);
     groti('burtas');
     this.kova = r.kova;
-    this.zinute = burtas === 'gydymas' ? ZIEZIRBA.gydymas : ZIEZIRBA.sviesele;
+    if (burtas === 'sviesele') this.tekstoDalis = null;
+    const zinutes: Record<Burtas, string> = {
+      sviesele: ZIEZIRBA.sviesele,
+      gydymas: ZIEZIRBA.gydymas,
+      skiemenys: ZIEZIRBA.skiemenys,
+      skydas: ZIEZIRBA.skydasIjungtas,
+      perskilimas: ZIEZIRBA.perskilimas,
+      ugnies: ZIEZIRBA.ugnies,
+    };
+    this.zinute = zinutes[burtas];
     this.atnaujinti(r.busena);
+  }
+
+  patvirtintiRiaumojima(perskaite: boolean): void {
+    this.langai = this.langai.filter((l) => l.tipas !== 'riaumojimas');
+    if (perskaite) this.naudoti('ugnies');
+    else this.render();
+  }
+
+  rodytiDali(i: number): void {
+    this.tekstoDalis = Math.max(0, i);
+    this.render();
+  }
+
+  suskaidytiZodi(pradzia: number): void {
+    if (!this.kova?.skiemenys || this.skiemenuZodis !== null) return;
+    this.skiemenuZodis = pradzia;
+    groti('raides');
+    this.render();
+  }
+
+  pasirinktiSkyriu(n: number): void {
+    this.zinute = null;
+    this.atnaujinti(E.pasirinktiSkyriu(this.b, this.t, n));
   }
 
   // ---------------------------------------------------------------- tėvai

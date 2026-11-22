@@ -13,11 +13,12 @@ import type { Daiktas, Iranga, Lygis } from './types';
 
 export const DAIKTAI: readonly Daiktas[] = ['kardas', 'salmas', 'sarvai', 'batai'];
 
-const DAIKTU_VARDAI: Record<Daiktas, { vardas: string; daugiskaita: boolean }> = {
-  kardas: { vardas: 'kardas', daugiskaita: false },
-  salmas: { vardas: 'šalmas', daugiskaita: false },
-  sarvai: { vardas: 'šarvai', daugiskaita: true },
-  batai: { vardas: 'batai', daugiskaita: true },
+type Gimine = 'vyr' | 'mot' | 'dgs';
+const DAIKTU_VARDAI: Record<Daiktas, { vardas: string; gimine: Gimine }> = {
+  kardas: { vardas: 'plaktukas', gimine: 'vyr' },
+  salmas: { vardas: 'šalmas', gimine: 'vyr' },
+  sarvai: { vardas: 'liemenė', gimine: 'mot' },
+  batai: { vardas: 'batai', gimine: 'dgs' },
 };
 
 export const PRADINE_IRANGA: Iranga = { kardas: 0, salmas: 0, sarvai: 0, batai: 0 };
@@ -42,18 +43,19 @@ function didziaja(s: string): string {
   return s.charAt(0).toLocaleUpperCase('lt') + s.slice(1);
 }
 
-/** „Geležinis šalmas“, „Variniai šarvai“. */
+/** „Geležinis šalmas“, „Varinė liemenė“, „Variniai batai“. */
 export function daiktoPavadinimas(daiktas: Daiktas, lygis: Lygis): string {
-  const { vardas, daugiskaita } = DAIKTU_VARDAI[daiktas];
+  const { vardas, gimine } = DAIKTU_VARDAI[daiktas];
   const medziaga = LYGIU_PAVADINIMAI[lygis];
-  const forma = daugiskaita ? medziaga.replace(/is$/, 'iai') : medziaga;
+  const forma = gimine === 'dgs' ? medziaga.replace(/is$/, 'iai') : gimine === 'mot' ? medziaga.replace(/is$/, 'ė') : medziaga;
   return `${didziaja(forma)} ${vardas}`;
 }
 
-function manosForma(n: number): string {
-  if (n % 10 === 1 && n % 100 !== 11) return 'maną';
-  if (n % 10 === 0 || (n % 100 >= 11 && n % 100 <= 19)) return 'manų';
-  return 'manas';
+/** „1 gintaro lašą“, „2 gintaro lašus“, „10 gintaro lašų“. */
+function gintaroForma(n: number): string {
+  if (n % 10 === 1 && n % 100 !== 11) return 'gintaro lašą';
+  if (n % 10 === 0 || (n % 100 >= 11 && n % 100 <= 19)) return 'gintaro lašų';
+  return 'gintaro lašus';
 }
 
 const SKAICIAI_ZODZIAIS = ['', 'Viena', 'Dvi', 'Trys'];
@@ -64,15 +66,15 @@ export function daiktoAprasas(daiktas: Daiktas, lygis: Lygis): string {
   switch (daiktas) {
     case 'kardas':
       return n === 0
-        ? 'Papildomos manos neduoda.'
-        : `Už nugalėtą priešą gausi ${n} ${manosForma(n)}.`;
+        ? 'Papildomo gintaro neduoda.'
+        : `Už nuramintą dinozaurą gausi ${n} ${gintaroForma(n)}.`;
     case 'salmas':
       if (n === 0) return 'Nuo klaidų nesaugo.';
       return `${SKAICIAI_ZODZIAIS[n]} ${n === 1 ? 'klaida' : 'klaidos'} salėje neatima širdelės.`;
     case 'sarvai':
       return `Gali turėti iki ${n} širdelių.`;
     case 'batai':
-      return `Gali turėti iki ${n} manų.`;
+      return `Gali nešti iki ${n} gintaro lašų.`;
   }
 }
 

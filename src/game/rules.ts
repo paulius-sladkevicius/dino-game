@@ -36,12 +36,23 @@ export const KLAIDOS_IKI_SAKINIO = 2;
 /** „Pralaimėjimas – ne Game over“: širdelės atsistato iki 5. */
 export const SIRDELES_PO_PRALAIMEJIMO = 5;
 
-/** „Burtai“: pirmame skyriuje atrakinti tik Švieselė ir Gydymas. */
+/**
+ * „Burtai“ (žaidime – „gudrybės“): pirmame skyriuje atrakinti tik Švieselė ir Gydymas,
+ * toliau kas skyrių išmokstama po vieną naują. `nuo` – nuo kurio skyriaus galima naudoti.
+ * Pavadinimai sąsajoje – src/ui/tema.ts.
+ */
 export const BURTAI = {
-  sviesele: { pavadinimas: 'Švieselė', mana: 1 },
-  gydymas: { pavadinimas: 'Gydymas', mana: 3, sirdeles: 2 },
+  sviesele: { pavadinimas: 'Švieselė', mana: 1, nuo: 1 },
+  gydymas: { pavadinimas: 'Gydymas', mana: 3, sirdeles: 2, nuo: 1 },
+  skiemenys: { pavadinimas: 'Skiemenys', mana: 1, nuo: 2 },
+  skydas: { pavadinimas: 'Skydas', mana: 2, nuo: 3 },
+  perskilimas: { pavadinimas: 'Perskilimas', mana: 3, nuo: 4 },
+  ugnies: { pavadinimas: 'Ugnies žodis', mana: 5, nuo: 5 },
 } as const;
 export type Burtas = keyof typeof BURTAI;
+
+/** Skyrių (lygių) skaičius: 5 skyriai ir finalas. */
+export const SKYRIU_SKAICIUS = 6;
 
 /** „Įranga“: 6 lygiai nuo medinio iki deimantinio. */
 export const LYGIU_PAVADINIMAI = [

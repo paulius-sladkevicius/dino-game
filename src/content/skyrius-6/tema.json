@@ -1,0 +1,27 @@
+{
+  "numeris": 6,
+  "pavadinimas": "Ugnikalnio viršūnė",
+  "priesai": {
+    "mazas": {
+      "vardas": "Pterodaktiliukas",
+      "piesinys": "pterodaktilis"
+    },
+    "vidutinis": {
+      "vardas": "Triceratopsas",
+      "piesinys": "triceratopsas"
+    }
+  },
+  "bosas": {
+    "vardas": "Tiranozauras Rūstuolis",
+    "piesinys": "tiranozauras"
+  },
+  "sales": [
+    "Akmenų laiptai",
+    "Debesų atbraila",
+    "Kraterio kraštas"
+  ],
+  "puslapis": {
+    "pavadinimas": "Ugnikalnio viršūnė",
+    "tekstas": "Ugnikalnio viršūnėje gyveno tiranozauras Rūstuolis, kurio bijojo visas slėnis. [Vardas] atsisėdo šalia ir pasekė jam pasaką apie vienišą tiranozauriuką Mažylį. Rūstuolis suprato, kad tai jo paties istorija, ir pagaliau nurimo. Dabar jis saugo slėnį, o vakarais prie laužo prašo dar vienos pasakos. Pteriukas vėl spalvotas, o Ekspedicijos dienoraštis pilnas sugrįžusių žodžių."
+  }
+}

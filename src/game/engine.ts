@@ -36,7 +36,6 @@ import type {
   Uzduotis,
 } from './types';
 
-export const DABARTINIS_SKYRIUS = 1;
 
 // ------------------------------------------------------------------ Būsena
 
@@ -46,6 +45,7 @@ export function naujaSalesBusena(): SalesBusena {
     iveikti: [],
     durysAtidarytos: false,
     lobisPaimtas: false,
+    dovanaPaimta: false,
     baigta: false,
     zvaigzdutes: 0,
     ejimas: { aktyvus: false, klaidos: 0 },
@@ -53,11 +53,12 @@ export function naujaSalesBusena(): SalesBusena {
 }
 
 export function naujaBusena(vardas: string, t: Turinys): Busena {
-  const sk = gautiSkyriu(t, DABARTINIS_SKYRIUS);
   const sales: Record<string, SalesBusena> = {};
-  for (const s of sk.sales) sales[s.id] = naujaSalesBusena();
+  for (const sk of t.skyriai) for (const s of sk.sales) sales[s.id] = naujaSalesBusena();
+  const pirmas = t.skyriai[0];
   return {
     versija: 1,
+    skyrius: pirmas.numeris,
     vardas,
     kreipinys: sauksmininkas(vardas),
     sirdeles: PRADZIOS_SIRDELES,
@@ -66,9 +67,8 @@ export function naujaBusena(vardas: string, t: Turinys): Busena {
     salmoPanaudota: 0,
     iranga: { ...PRADINE_IRANGA },
     vieta: { kur: 'skyrius' },
-    paskutinisLauzas: { kur: 'lauzas', sale: sk.sales[0].id },
+    paskutinisLauzas: { kur: 'lauzas', sale: pirmas.sales[0].id },
     sales,
-    bosasNugaletas: false,
     puslapiai: [],
     zodziai: [],
     pabege: [],
@@ -146,14 +146,28 @@ export interface Kova {
   visiIsPirmo: boolean;
   sviesele: boolean;
   uzuomina: 'nera' | 'zodis' | 'sakinys';
+  /** Skiemenys: vaikas gali paliesti vieną žodį – jis suskyla į skiemenis. */
+  skiemenys: boolean;
+  /** Skydas: kita klaida neatima širdelės. */
+  skydas: boolean;
+  /** Ugnies žodis: kitas teisingas atsakymas – dvigubas smūgis (tik bosui). */
+  ugnies: boolean;
 }
 
 export const PRIESU_VARDAI: Record<KovosRusis, string> = {
-  mazas: 'Rašalo lašelis',
-  vidutinis: 'Rašalo dėmė',
-  bosas: 'Didžioji Dėmė',
-  pabeges: 'Pabėgusi Dėmė',
+  mazas: 'Mažas dinozauras',
+  vidutinis: 'Dinozauras',
+  bosas: 'Didysis dinozauras',
+  pabeges: 'Pabėgęs žodis',
 };
+
+/** Priešo vardas pagal skyrių (lygį). */
+export function priesoVardas(t: Turinys, skyrius: number, rusis: KovosRusis): string {
+  const sk = gautiSkyriu(t, skyrius);
+  if (rusis === 'bosas') return sk.bosas.vardas;
+  if (rusis === 'pabeges') return PRIESU_VARDAI.pabeges;
+  return sk.priesai?.[rusis]?.vardas ?? PRIESU_VARDAI[rusis];
+}
 
 /** Parenka salės užduotis: pirmiausia dar nematytas, paskui seniausiai matytas. */
 export function parinktiUzduotis(b: Busena, sarasas: readonly string[], kiek: number, rng: Rng): string[] {
@@ -193,6 +207,9 @@ export function pradetiKova(
     visiIsPirmo: true,
     sviesele: false,
     uzuomina: 'nera',
+    skiemenys: false,
+    skydas: false,
+    ugnies: false,
   };
 }
 
@@ -200,11 +217,12 @@ export function pradetiKova(
 export function kovaKambaryje(b: Busena, t: Turinys, sale: Sale, kambarys: Kambarys, rng: Rng): Kova {
   const dydis = (kambarys.tipas === 'lobis' ? kambarys.sargas : kambarys.priesas) ?? 'mazas';
   const uzd = parinktiUzduotis(b, sale.uzduotys, PRIESO_GYVYBES[dydis], rng);
-  return pradetiKova(t, { rusis: dydis, uzduotys: uzd, sale: sale.id, kambarys: kambarys.id }, rng);
+  const k = pradetiKova(t, { rusis: dydis, uzduotys: uzd, sale: sale.id, kambarys: kambarys.id }, rng);
+  return { ...k, vardas: priesoVardas(t, saleSkyrius(t, sale.id), dydis) };
 }
 
-export function bosoKova(t: Turinys, rng: Rng): Kova {
-  const sk = gautiSkyriu(t, DABARTINIS_SKYRIUS);
+export function bosoKova(b: Busena, t: Turinys, rng: Rng): Kova {
+  const sk = gautiSkyriu(t, b.skyrius);
   const k = pradetiKova(t, { rusis: 'bosas', uzduotys: sk.bosas.uzduotys, sale: null, kambarys: null }, rng);
   return { ...k, vardas: sk.bosas.vardas };
 }
@@ -225,6 +243,7 @@ export type Ivykis =
   | { tipas: 'serija'; mana: number }
   | { tipas: 'klaida'; atimtaSirdele: boolean }
   | { tipas: 'salmas' }
+  | { tipas: 'skydas' }
   | { tipas: 'smugis'; liko: number }
   | {
       tipas: 'nugaletas';
@@ -278,23 +297,27 @@ export function atsakyti(b: Busena, t: Turinys, k: Kova, indeksas: number, rng: 
     nb = { ...nb, pabege: uzregistruotiKlaida(nb.pabege, u.id, nb.susitikimai + 1) };
   }
 
-  const gyvybes = k.gyvybes - 1;
+  const smugis = k.ugnies ? 2 : 1;
+  const gyvybes = Math.max(0, k.gyvybes - smugis);
   const visiIsPirmo = k.visiIsPirmo && isPirmo;
   if (gyvybes > 0) {
     ivykiai.push({ tipas: 'smugis', liko: gyvybes });
-    const kitas = gautiUzduoti(t, k.uzduotys[k.nr + 1]);
+    const kitasNr = Math.min(k.nr + smugis, k.uzduotys.length - 1);
+    const kitas = gautiUzduoti(t, k.uzduotys[kitasNr]);
     return {
       busena: nb,
       kova: {
         ...k,
         gyvybes,
-        nr: k.nr + 1,
+        nr: kitasNr,
         tvarka: sumaisyti(rng, kitas.atsakymai.map((_, i) => i)),
         pasalinti: [],
         klaidos: 0,
         visiIsPirmo,
         sviesele: false,
         uzuomina: 'nera',
+        skiemenys: false,
+        ugnies: false,
       },
       ivykiai,
     };
@@ -307,11 +330,10 @@ export function atsakyti(b: Busena, t: Turinys, k: Kova, indeksas: number, rng: 
     const m0 = nb.mana;
     nb = apriboti({ ...nb, sirdeles: maxSirdeles(nb.iranga) });
     nb = pridetiMana(nb, ATLYGIAI.bosas.mana);
-    const grobis = ridentiGrobi(rng, 'bosas', visiIsPirmo, DABARTINIS_SKYRIUS, nb.iranga);
+    const grobis = ridentiGrobi(rng, 'bosas', visiIsPirmo, nb.skyrius, nb.iranga);
     nb = {
       ...nb,
-      bosasNugaletas: true,
-      puslapiai: nb.puslapiai.includes(DABARTINIS_SKYRIUS) ? nb.puslapiai : [...nb.puslapiai, DABARTINIS_SKYRIUS],
+      puslapiai: nb.puslapiai.includes(nb.skyrius) ? nb.puslapiai : [...nb.puslapiai, nb.skyrius].sort((a, c) => a - c),
     };
     ivykiai.push({ tipas: 'bosasNugaletas', grobis, mana: nb.mana - m0 });
     return { busena: nb, kova: baigtaKova, ivykiai };
@@ -323,7 +345,7 @@ export function atsakyti(b: Busena, t: Turinys, k: Kova, indeksas: number, rng: 
   if (zodis && (k.rusis !== 'pabeges' || sugautas) && !nb.zodziai.includes(zodis))
     nb = { ...nb, zodziai: [...nb.zodziai, zodis] };
   const saltinis = k.rusis === 'vidutinis' ? 'vidutinis' : 'mazas';
-  const grobis = ridentiGrobi(rng, saltinis, visiIsPirmo, DABARTINIS_SKYRIUS, nb.iranga);
+  const grobis = ridentiGrobi(rng, saltinis, visiIsPirmo, nb.skyrius, nb.iranga);
   if (k.sale && k.kambarys) {
     const kamb = k.kambarys;
     nb = atnaujintiSale(nb, k.sale, (s) => ({
@@ -339,7 +361,9 @@ function klaida(b: Busena, k: Kova, uzduotisId: string, indeksas: number): Rezul
   const ivykiai: Ivykis[] = [];
   let nb = irasytiStatistika({ ...b, serija: 0 }, uzduotisId, true, false);
   if (k.sale) nb = atnaujintiSale(nb, k.sale, (s) => ({ ...s, ejimas: { ...s.ejimas, klaidos: s.ejimas.klaidos + 1 } }));
-  if (nb.salmoPanaudota < salmoApsauga(nb.iranga)) {
+  if (k.skydas) {
+    ivykiai.push({ tipas: 'skydas' }, { tipas: 'klaida', atimtaSirdele: false });
+  } else if (nb.salmoPanaudota < salmoApsauga(nb.iranga)) {
     nb = { ...nb, salmoPanaudota: nb.salmoPanaudota + 1 };
     ivykiai.push({ tipas: 'salmas' }, { tipas: 'klaida', atimtaSirdele: false });
   } else {
@@ -351,6 +375,7 @@ function klaida(b: Busena, k: Kova, uzduotisId: string, indeksas: number): Rezul
     ...k,
     klaidos,
     pasalinti: [...k.pasalinti, indeksas],
+    skydas: false,
     visiIsPirmo: false,
     uzuomina: klaidos >= KLAIDOS_IKI_SAKINIO ? 'sakinys' : 'zodis',
   };
@@ -365,17 +390,66 @@ export function rodomiAtsakymai(k: Kova): number[] {
 
 // ------------------------------------------------------------------ Burtai
 
-export function galimaBurta(b: Busena, k: Kova | null, burtas: Burtas): boolean {
-  if (b.mana < BURTAI[burtas].mana) return false;
-  if (burtas === 'gydymas') return b.sirdeles < maxSirdeles(b.iranga);
-  return k !== null && k.gyvybes > 0 && !k.sviesele && k.uzuomina === 'nera';
+/** Toliausias pasiektas skyrius (atrakintas lygis). */
+export function pasiektasSkyrius(b: Busena, t: Turinys): number {
+  const max = Math.max(...t.skyriai.map((s) => s.numeris));
+  return Math.min(max, Math.max(1, ...b.puslapiai.map((p) => p + 1)));
 }
 
-export function naudotiBurta(b: Busena, k: Kova | null, burtas: Burtas): { busena: Busena; kova: Kova | null } {
-  if (!galimaBurta(b, k, burtas)) return { busena: b, kova: k };
+/** Burtas išmoktas: nuo jo skyriaus lygis jau pasiektas. */
+export function burtasIsmoktas(b: Busena, t: Turinys, burtas: Burtas): boolean {
+  return pasiektasSkyrius(b, t) >= BURTAI[burtas].nuo;
+}
+
+function neteisingiRodomi(t: Turinys, k: Kova): number[] {
+  const u = dabartineUzduotis(t, k);
+  return rodomiAtsakymai(k).filter((i) => !u.atsakymai[i].teisingas);
+}
+
+export function galimaBurta(b: Busena, k: Kova | null, burtas: Burtas, t?: Turinys): boolean {
+  if (b.mana < BURTAI[burtas].mana) return false;
+  if (t && !burtasIsmoktas(b, t, burtas)) return false;
+  if (burtas === 'gydymas') return b.sirdeles < maxSirdeles(b.iranga);
+  if (!k || k.gyvybes <= 0) return false;
+  switch (burtas) {
+    case 'sviesele':
+      return !k.sviesele && k.uzuomina === 'nera';
+    case 'skiemenys':
+      return !k.skiemenys;
+    case 'skydas':
+      return !k.skydas;
+    case 'perskilimas':
+      return t ? neteisingiRodomi(t, k).length >= 2 : k.pasalinti.length === 0;
+    case 'ugnies':
+      return k.rusis === 'bosas' && !k.ugnies;
+  }
+}
+
+export function naudotiBurta(
+  b: Busena,
+  k: Kova | null,
+  burtas: Burtas,
+  t?: Turinys,
+): { busena: Busena; kova: Kova | null } {
+  if (!galimaBurta(b, k, burtas, t)) return { busena: b, kova: k };
   const nb = { ...b, mana: b.mana - BURTAI[burtas].mana };
   if (burtas === 'gydymas') return { busena: pridetiSirdeliu(nb, BURTAI.gydymas.sirdeles), kova: k };
-  return { busena: nb, kova: k ? { ...k, sviesele: true } : k };
+  if (!k) return { busena: nb, kova: k };
+  switch (burtas) {
+    case 'sviesele':
+      return { busena: nb, kova: { ...k, sviesele: true } };
+    case 'skiemenys':
+      return { busena: nb, kova: { ...k, skiemenys: true } };
+    case 'skydas':
+      return { busena: nb, kova: { ...k, skydas: true } };
+    case 'ugnies':
+      return { busena: nb, kova: { ...k, ugnies: true } };
+    case 'perskilimas': {
+      // Išnyksta du neteisingi atsakymai (paskutiniai rodomi).
+      const neteisingi = t ? neteisingiRodomi(t, k) : [];
+      return { busena: nb, kova: { ...k, pasalinti: [...k.pasalinti, ...neteisingi.slice(-2)] } };
+    }
+  }
 }
 
 // ------------------------------------------------------------------ Pralaimėjimas
@@ -401,9 +475,18 @@ export function priimtiGrobi(b: Busena, g: Grobis, imu: boolean): Busena {
 // ------------------------------------------------------------------ Salės
 
 export function rastiSale(t: Turinys, saleId: string): Sale {
-  const s = gautiSkyriu(t, DABARTINIS_SKYRIUS).sales.find((x) => x.id === saleId);
-  if (!s) throw new Error(`Nerasta salė ${saleId}`);
-  return s;
+  for (const sk of t.skyriai) {
+    const s = sk.sales.find((x) => x.id === saleId);
+    if (s) return s;
+  }
+  throw new Error(`Nerasta salė ${saleId}`);
+}
+
+/** Kuriam skyriui priklauso salė. */
+export function saleSkyrius(t: Turinys, saleId: string): number {
+  const sk = t.skyriai.find((x) => x.sales.some((s) => s.id === saleId));
+  if (!sk) throw new Error(`Nerasta salė ${saleId}`);
+  return sk.numeris;
 }
 
 export function rastiKambari(sale: Sale, id: string): Kambarys {
@@ -412,14 +495,32 @@ export function rastiKambari(sale: Sale, id: string): Kambarys {
   return k;
 }
 
+/** Skyrius atrakintas, kai nugalėtas ankstesnio skyriaus bosas. */
+export function skyriusAtrakintas(b: Busena, t: Turinys, numeris: number): boolean {
+  return numeris === t.skyriai[0].numeris || b.puslapiai.includes(numeris - 1);
+}
+
+export function bosasNugaletas(b: Busena, numeris = b.skyrius): boolean {
+  return b.puslapiai.includes(numeris);
+}
+
+/** Pasirinkti kitą (jau atrakintą) skyrių skyriaus žemėlapyje. */
+export function pasirinktiSkyriu(b: Busena, t: Turinys, numeris: number): Busena {
+  if (!skyriusAtrakintas(b, t, numeris)) return b;
+  const sk = gautiSkyriu(t, numeris);
+  return { ...b, skyrius: numeris, vieta: { kur: 'skyrius' }, paskutinisLauzas: { kur: 'lauzas', sale: sk.sales[0].id } };
+}
+
 export function saleAtrakinta(b: Busena, t: Turinys, saleId: string): boolean {
-  const sales = gautiSkyriu(t, DABARTINIS_SKYRIUS).sales;
+  const n = saleSkyrius(t, saleId);
+  if (!skyriusAtrakintas(b, t, n)) return false;
+  const sales = gautiSkyriu(t, n).sales;
   const i = sales.findIndex((s) => s.id === saleId);
   return i === 0 || (i > 0 && salesBusena(b, sales[i - 1].id).baigta);
 }
 
 export function bosasAtrakintas(b: Busena, t: Turinys): boolean {
-  return gautiSkyriu(t, DABARTINIS_SKYRIUS).sales.every((s) => salesBusena(b, s.id).baigta);
+  return gautiSkyriu(t, b.skyrius).sales.every((s) => salesBusena(b, s.id).baigta);
 }
 
 /** Iš skyriaus žemėlapio – prie salės laužo. */
@@ -530,7 +631,7 @@ export function kambarioVeiksmas(b: Busena, t: Turinys): KambarioVeiksmas {
     case 'sankryza':
       return { tipas: 'sankryza' };
     case 'slaptas':
-      return k.dovana && !b.kosmetika.includes(k.dovana) ? { tipas: 'dovana', dovana: k.dovana } : { tipas: 'nieko' };
+      return k.dovana && !sb.dovanaPaimta ? { tipas: 'dovana', dovana: k.dovana } : { tipas: 'nieko' };
     case 'galas':
       return { tipas: 'galas' };
     default:
@@ -550,7 +651,7 @@ export function atidarytiLobi(
   const pr = { s: b.sirdeles, m: b.mana };
   let nb = pridetiMana(pridetiSirdeliu(b, kiek), ATLYGIAI.lobis.mana);
   nb = atnaujintiSale(nb, saleId, (s) => ({ ...s, lobisPaimtas: true }));
-  const grobis = ridentiGrobi(rng, 'lobis', false, DABARTINIS_SKYRIUS, nb.iranga);
+  const grobis = ridentiGrobi(rng, 'lobis', false, nb.skyrius, nb.iranga);
   return {
     busena: nb,
     sirdeles: nb.sirdeles - pr.s,
@@ -573,8 +674,21 @@ export function atsakytiMislei(b: Busena, t: Turinys, atsakymoIndeksas: number):
   return { busena: nb, atidaryta: teisingas };
 }
 
-export function paimtiDovana(b: Busena, dovana: Kosmetika): Busena {
-  return b.kosmetika.includes(dovana) ? b : { ...b, kosmetika: [...b.kosmetika, dovana] };
+/**
+ * Slapto urvo dovana: jei tokio kosmetinio atlygio dar nėra – jis, kitaip
+ * gintaro (manos) dovana. Kiekvienoje salėje – tik kartą.
+ */
+export function paimtiDovana(
+  b: Busena,
+  saleId: string,
+  dovana: Kosmetika,
+): { busena: Busena; nauja: boolean; mana: number } {
+  if (salesBusena(b, saleId).dovanaPaimta) return { busena: b, nauja: false, mana: 0 };
+  let nb = atnaujintiSale(b, saleId, (s) => ({ ...s, dovanaPaimta: true }));
+  if (!nb.kosmetika.includes(dovana)) return { busena: { ...nb, kosmetika: [...nb.kosmetika, dovana] }, nauja: true, mana: 0 };
+  const m0 = nb.mana;
+  nb = pridetiMana(nb, ATLYGIAI.lobis.mana);
+  return { busena: nb, nauja: false, mana: nb.mana - m0 };
 }
 
 /** Salės galas: salė įveikta, žvaigždutės pagal klaidas, toliau – kitos salės laužas. */
@@ -583,7 +697,7 @@ export function baigtiSale(
   t: Turinys,
   saleId: string,
 ): { busena: Busena; zvaigzdutes: 1 | 2 | 3; kita: string | 'bosas' } {
-  const sales = gautiSkyriu(t, DABARTINIS_SKYRIUS).sales;
+  const sales = gautiSkyriu(t, saleSkyrius(t, saleId)).sales;
   const i = sales.findIndex((s) => s.id === saleId);
   const sb = salesBusena(b, saleId);
   const z = zvaigzdutes(sb.ejimas.klaidos);

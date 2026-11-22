@@ -1,20 +1,23 @@
-# Dingusios raidės
+# Dino ekspedicija
 
-Naršyklinis skaitymo žaidimas pirmokui. Rašalo Ragana išliejo rašalą ant Didžiosios
-Knygos, žodžiai pabėgo į požemį ir virto Dėmėmis. Vaikas perskaito trumpą tekstą,
-pasirenka vieną iš 4 atsakymų, ir Dėmė vėl virsta žodžiu.
+Naršyklinis skaitymo žaidimas 6–8 metų vaikui. Tai žaidimo „Dingusios raidės“ atšaka su ta
+pačia logika, bet su dinozaurų tema ir 6 lygiais.
 
-Žaidimas sukurtas pagal scenarijų „Dingusios raidės — skaitymo žaidimo scenarijus“.
-Grafika – „Rašalas ant popieriaus“ pagal eskizą „Knyga“.
+Laiko mašina nukelia vaiką į dinozaurų laikus. Ugnikalnis Burbulas išspjovė stebuklingų
+pelenų debesį: dinozaurai pamiršo žodžius, susipainiojo ir ėmė pykti. Vaikas perskaito
+tekstą, pasirenka atsakymą, ir dinozauras prisimena žodį, nurimsta ir draugiškai nueina,
+o žodis grįžta į Ekspedicijos dienoraštį. Jokio smurto – dinozaurai tik nuraminami.
 
-- **1 versija:** pilnai žaidžiamas 1 skyrius „Drėgnas urvas“ – 3 salės ir bosas
-  Didžioji Dėmė, 41 užduotis (tekstai po 1–3 sakinius, atsakymą reikia suprasti).
-- Statinis puslapis, serverio nereikia (TypeScript + Vite). Progresas saugomas
-  naršyklės `localStorage`.
-- Pritaikytas telefonui ir planšetei vertikalioje padėtyje. Visi mygtukai bent 64 px.
-  Tai PWA: žaidimą galima pridėti prie pagrindinio ekrano, ir jis veikia be interneto.
-- Šriftai Andika (tekstams) ir Caveat (antraštėms) įdėti į patį žaidimą, todėl veikia
-  ir be interneto.
+- **6 lygiai:** Paparčių slėnis, Pelkių takas, Ežerų kraštas, Kalnų tarpeklis, Ugnikalnio
+  papėdė ir finalas Ugnikalnio viršūnėje. Kiekviename lygyje 3 vietovės ir didysis dinozauras,
+  iš viso 210 užduočių.
+- **Sunkumas auga:** nuo 1–3 sakinių („kas, kur, kiek“) iki 4–6 sakinių istorijų, kur reikia
+  suprasti jausmus, ketinimus ir priežastis. Teisingas atsakymas niekada nekartoja teksto
+  žodžių – jį reikia suprasti, o ne surasti.
+- **Palydovas Pteriukas** – mažas pterozauriukas. Pelenai nudažė jį pilkai, ir kiekvienas
+  grąžintas dienoraščio puslapis grąžina jam spalvas. Stovyklose laukia vėžlys Kiautas.
+- Vaizdas iš šono, ėjimas mygtukais „◀“ ir „Eiti ▶“, garso efektai (išjungiami), visas
+  ekranas, veikia be interneto (PWA). Progresas saugomas naršyklėje.
 
 ## Kaip paleisti
 
@@ -43,7 +46,7 @@ Service worker (darbui be interneto) veikia tik per HTTPS arba `localhost`.
 
 Kiekvienas įkėlimas į `main` šaką automatiškai sukuria ir paskelbia žaidimą
 (`.github/workflows/pages.yml`). Žaidimo adresas:
-**https://paulius-sladkevicius.github.io/lost-letters-game/**
+**https://paulius-sladkevicius.github.io/dino-game/**
 
 Vieną kartą reikia įjungti: repozitorijos **Settings → Pages → Build and deployment →
 Source: GitHub Actions**. Tada **Actions** skiltyje paleiskite „GitHub Pages“ iš naujo
@@ -60,7 +63,7 @@ npm run e2e        # sukuria dist/ ir paleidžia naršyklės testus (Playwright)
 ```
 
 Naršyklės testai suvaidina visą skyrių keturiuose įrenginiuose (Pixel 7, iPhone 13,
-iPhone SE, iPad): nuo vardo įvedimo iki Didžiosios Dėmės nugalėjimo. Testas nepraeina,
+iPhone SE, iPad): nuo vardo įvedimo iki 1 lygio didžiojo dinozauro, o telefone – ir visus 6 lygius. Testas nepraeina,
 jei naršyklės konsolėje yra klaidų ar įspėjimų, jei ekranas slenka į šoną arba jei
 kuris nors mygtukas mažesnis nei 64 px. Taip pat tikrinama klaida ir užuomina,
 pralaimėjimas, tėvų skydelis ir darbas be interneto.
@@ -69,18 +72,20 @@ Jei Playwright neranda naršyklės, nurodykite ją: `PW_CHROMIUM=/kelias/iki/chr
 ## Kaip žaisti
 
 1. Pradžios ekrane vaikas įrašo savo vardą. Vardas įrašomas į tekstus („Ką randa Ugnė?“),
-   o Žiežirba kreipiasi šauksmininku („Puiku, Ugne!“).
-2. Trumpa istorija paaiškina, kas yra Dėmės, kaukai, laužai ir lobiai.
-3. Skyriaus žemėlapyje salės atsirakina paeiliui. Kiekviena salė prasideda prie laužo.
-4. Salė rodoma **iš šono**: herojus stovi urvo kambaryje, priekyje – Dėmė, skrynia ar durys.
+   o Pteriukas kreipiasi šauksmininku („Puiku, Ugne!“).
+2. Trumpa istorija paaiškina, kas nutiko dinozaurams, kas yra Pteriukas ir vėžlys Kiautas.
+3. Lygių žemėlapyje vietovės atsirakina paeiliui, o nuraminus didįjį dinozaurą atsirakina
+   kitas lygis (lygio mygtukai 1–6 viršuje). Kiekviena vietovė prasideda stovykloje prie laužo.
+4. Vietovė rodoma **iš šono**: herojus stovi slėnyje, priekyje – dinozauras, skrynia ar perėja.
    Vaikas pats valdo ėjimą mygtukais **„Eiti ▶“** ir **„◀“** (kompiuteryje – rodyklių
-   klavišais). Priėjus prie Dėmės prasideda kova. Nugalėtas priešas išsisklaido rašalo
-   purslais, durys atsidaro, ir herojus pats pereina į kitą kambarį.
+   klavišais). Priėjus prie dinozauro reikia skaityti. Nuramintas dinozauras dingsta, perėja
+   atsidaro, ir herojus pats pereina į kitą vietą.
 5. Sankryžoje reikia perskaityti ženklą ir pasirinkti kelią – herojus nueina prie
    pasirinktų durų. Ten pat yra slaptos durys su mįsle. Žemėlapis (mygtukas su kelio
    ženklu) rodo, kur esi ir kur jau buvai, bet vaikštoma ne per jį.
-6. Po trijų salių laukia laužas prieš bosą ir Didžioji Dėmė. Ją nugalėjus, į Knygą grįžta
-   puslapis, kurį galima perskaityti.
+6. Po trijų vietovių laukia didysis dinozauras. Jį nuraminus, į dienoraštį grįžta puslapis,
+   kurį galima perskaityti, ir atsirakina kitas lygis.
+7. Ilgi 4–6 lygio tekstai telefone rodomi dalimis (mygtukai „◀ 1 / 2 ▶“), kad nereikėtų slinkti.
 
 **Garsai.** Žingsniai, durys, teisingas atsakymas, klaida, išnykstantis priešas, skrendančios
 raidės, lobis, daiktas, burtai, salės pabaiga. Garsai sintezuojami naršyklėje (Web Audio),
@@ -97,7 +102,7 @@ visą ekraną.
 Visi skaičiai surašyti vienoje vietoje: [`src/game/rules.ts`](src/game/rules.ts). Testas
 [`tests/rules.test.ts`](tests/rules.test.ts) tikrina, kad jie sutampa su scenarijumi.
 
-| Įvykis | Širdelės | Mana |
+| Įvykis | Širdelės | Gintaras (mana) |
 |---|---|---|
 | Pradžia | 5 (daugiausia 5, su šarvais iki 8) | 3 (daugiausia 10, su batais iki 15) |
 | Teisingai iš pirmo karto | +1 | +1 |
@@ -107,28 +112,33 @@ Visi skaičiai surašyti vienoje vietoje: [`src/game/rules.ts`](src/game/rules.t
 | Bosas nugalėtas | visos atsistato | +3 |
 | Lobis šoniniame kelyje | +1 arba +2 | +3 |
 
-- **Priešų gyvybės:** Rašalo lašelis (maža Dėmė) 1 tekstas, Rašalo dėmė 2, bosas 5.
+- **Dinozaurų „gyvybės“** (kiek tekstų reikia perskaityti): mažas dinozauras 1, didelis 2,
+  didysis (lygio bosas) 5.
   Boso tekstai eina iš eilės ir vis sunkėja.
 - **Po klaidos** neteisingas atsakymas dingsta, o mygtukai 2 sekundėms užsirakina.
-  Tuo metu Žiežirba paryškina užuominos žodį. Po 2 klaidų lieka du atsakymai ir
+  Tuo metu Pteriukas paryškina užuominos žodį. Po 2 klaidų lieka du atsakymai ir
   paryškinamas visas sakinys su atsakymu.
-- **Pralaimėjimas:** kai širdelės baigiasi, Žiežirba nuneša herojų prie paskutinio laužo.
-  Žodžiai ir mana lieka, širdelės atsistato iki 5, o priešas atgauna gyvybes.
-- **Burtai** (1 skyriuje tik šie du): Švieselė (1 mana) paryškina svarbiausią žodį.
-  Gydymas (3 manos) grąžina 2 širdeles.
-- **Įranga:** kardas, šalmas, šarvai ir batai turi po 6 lygius (nuo medinio iki deimantinio)
-  pagal scenarijaus lentelę. Daiktą gali palikti maža Dėmė (1 iš 10), vidutinis priešas
+- **Pralaimėjimas:** kai širdelės baigiasi, Pteriukas nuneša herojų į paskutinę stovyklą.
+  Žodžiai ir gintaras lieka, širdelės atsistato iki 5, o dinozauras vėl užkerėtas.
+- **Gudrybės** (burtai), kas lygį – po naują, jas išmoko vėžlys Kiautas:
+  1 lygis – **Lupa** (1 gintaras, paryškina svarbiausią žodį) ir **Uogos** (3 gintarai, +2 širdelės);
+  2 – **Skiemenys** (1, paliesk žodį – jis suskyla į skiemenis); 3 – **Skydas** (2, kita klaida
+  neatima širdelės); 4 – **Perskilimas** (3, išnyksta du neteisingi atsakymai); 5 – **Riaumojimas**
+  (5, tik prieš didįjį dinozaurą: perskaityk tekstą garsiai tėvams, jie patvirtina – dvigubas smūgis).
+  Tai scenarijaus burtai Švieselė, Gydymas, Skiemenys, Skydas, Perskilimas ir Ugnies žodis.
+- **Įranga:** plaktukas (scenarijaus kardas), šalmas, liemenė (šarvai) ir batai turi po 6 lygius (nuo medinio iki deimantinio)
+  pagal scenarijaus lentelę. Daiktą gali palikti mažas dinozauras (1 iš 10), vidutinis priešas
   (1 iš 4) arba lobis (1 iš 2). Jei visi priešo tekstai atsakyti iš pirmo karto, tikimybė
   dviguba. Bosas daiktą palieka visada. Daiktas būna skyriaus lygio, o 1 kartą iš 10 –
-  vienu lygiu aukštesnis. Kortelėje „Imu / Palieku“ abu pasirinkimai duoda 2 manas.
+  vienu lygiu aukštesnis. Kortelėje „Imu / Palieku“ abu pasirinkimai duoda 2 gintaro lašus.
 - **Sankryža ir keliai:** lobio kelyje 2 priešai ir lobis, trumpame kelyje 1 priešas.
   Slaptos durys atsidaro įminus mįslę. Klaida ten širdelės neatima, o viduje laukia
-  kaukų dovana (kosmetinis atlygis: Žiežirbos kepurė, herojaus apsiaustas, mėlyna laužo
-  ugnis). Žemėlapyje aplankyti kambariai nuspalvinami. Į praleistą kelią galima grįžti, taip pat ir
+  Kiauto dovana (kosmetinis atlygis: Pteriuko kepurė, raudona skara, mėlyna laužo ugnis; kai
+  jie jau turimi – 3 gintaro lašai). Žemėlapyje aplankyti kambariai nuspalvinami. Į praleistą kelią galima grįžti, taip pat ir
   įveiktą salę pasirinkus skyriaus žemėlapyje.
-- **Didžioji Knyga:** kiekvienas nugalėtas priešas grąžina žodį, bosas – puslapį su
+- **Ekspedicijos dienoraštis:** kiekvienas nuramintas dinozauras grąžina žodį, didysis – puslapį su
   trumpa istorija.
-- **Pabėgę žodžiai:** jei vaikas suklydo, užduotis vėliau grįžta kaip „Pabėgusi Dėmė“.
+- **Pabėgę žodžiai:** jei vaikas suklydo, užduotis vėliau grįžta kaip „Pabėgęs žodis“.
   Pirmą kartą ji grįžta po 2 susitikimų. Atsakius iš pirmo karto, grįžta dar kartą po 4.
   Antrą kartą atsakius iš pirmo karto, žodis sugautas. Vėl suklydus, skaičiavimas
   prasideda iš naujo.
@@ -143,14 +153,12 @@ Kai kurių dalykų scenarijus nenurodo tiksliai, todėl jie nuspręsti taip:
 - **Šrifto dydis:** užduoties tekstas, klausimas, ženklai, mįslės ir Knygos puslapis rodomi
   32 px šriftu (planšetėje 36 px, labai siauruose, iki 360 px, ekranuose 28 px).
   Atsakymai prisitaiko prie ekrano pločio (22–32 px), kad tilptų 2 × 2 tinklelyje.
-  Žiežirbos replikos ir sąsajos užrašai mažesni.
+  Pteriuko replikos ir sąsajos užrašai mažesni.
 - **1 skyriaus sunkumas:** pagal tėvų pageidavimą tekstai ilgesni nei scenarijuje
   (1–3 sakiniai, 8–22 žodžiai vietoj 1 sakinio, 3–5 žodžių). Teisingas atsakymas
   nekartoja teksto žodžių.
 
-Nedaroma 1 versijoje (reikės, kai bus daugiau skyrių): pradinis 5 užduočių patikrinimas,
-Žiežirbos pasiūlymas eiti sunkesniu keliu ir kitų skyrių burtai (Skiemenys, Skydas,
-Perskilimas, Ugnies žodis).
+Nedaroma: pradinis 5 užduočių patikrinimas ir pasiūlymas eiti sunkesniu keliu.
 
 ## Tėvų skydelis
 
@@ -166,7 +174,7 @@ Pradžios ekrane mygtukas „Tėvams“ atsidaro tik atsakius į suaugusiojo kla
 
 ## Kaip pridėti naujų užduočių
 
-Užduotys saugomos JSON faile [`src/content/skyrius-1/uzduotys.json`](src/content/skyrius-1/uzduotys.json),
+Kiekvieno lygio užduotys saugomos JSON faile `src/content/skyrius-N/uzduotys.json` (N = 1–6),
 tokiu pačiu formatu kaip scenarijuje:
 
 ```json
@@ -191,17 +199,17 @@ tokiu pačiu formatu kaip scenarijuje:
 |---|---|
 | `id` | `s<skyrius>-<raidė><nr>`, raidė pagal tipą: `k` kova, `b` bosas, `z` sankryžos ženklas, `d` slaptos durys |
 | `tipas` | `kova`, `bosas`, `sankryza` arba `durys` |
-| `tekstas` | ką vaikas skaito. 1 skyriuje kovai ir bosui – 1–3 sakiniai, 8–22 žodžiai |
+| `tekstas` | ką vaikas skaito. Ilgis pagal lygį: 1 – 8–22 žodžiai, 2 – 12–28, 3 – 15–35, 4 – 20–40, 5 – 25–50, 6 – 30–60 |
 | `klausimas` | klausimas apie tekstą (duryse gali būti tuščias, jei klausimas yra mįslėje) |
 | `atsakymai` | lygiai 4, vienas su `"teisingas": true`. Atsakymų tvarka žaidime kaskart sumaišoma |
-| `uzuomina` | tekste esantis žodis ar frazė, kurią paryškina Švieselė ir Žiežirba po klaidos |
+| `uzuomina` | tekste esantis žodis ar frazė, kurią paryškina Lupa ir Pteriukas po klaidos |
 | `zodis` | (nebūtina) žodis vardininku, kuris grįžta į Didžiąją Knygą. Jei nėra – `uzuomina` |
 
 Sankryžos ženklo atsakymai vietoj `teisingas` turi `kelias`: `"lobis"` arba `"trumpas"`:
 
 ```json
 { "id": "s1-z01", "skyrius": 1, "tipas": "sankryza",
-  "tekstas": "Kairėje lobis ir dvi Dėmės. Dešinėje tik viena Dėmė.",
+  "tekstas": "Kairėje – lobis, bet jį saugo du dinozaurai. Dešinėje tik vienas.",
   "klausimas": "Kur eisi?",
   "atsakymai": [ { "tekstas": "← kairėn", "kelias": "lobis" },
                  { "tekstas": "dešinėn →", "kelias": "trumpas" } ] }
@@ -214,8 +222,9 @@ Tekstuose galima naudoti vietos ženklus (tik vardininko linksniu):
 ### Žingsniai
 
 1. Įrašykite užduotį į `uzduotys.json` su nauju, nepasikartojančiu `id`.
-2. Kad užduotis pasirodytų žaidime, pridėkite jos `id` į salės sąrašą `uzduotys` faile
-   [`src/content/skyrius-1/skyrius.json`](src/content/skyrius-1/skyrius.json).
+2. Kad užduotis pasirodytų žaidime, ji turi būti vietovės sąraše: kiekvienoje vietovėje po 8
+   kovų (`sN-k01`–`k08` – 1 vietovė, `k09`–`k16` – 2, `k17`–`k24` – 3). Sąrašą
+   `skyrius.json` sugeneruoja `node tools/generuoti-skyriu.mjs N`.
    Salės priešai užduotis renkasi iš šio sąrašo: pirmiausia dar nematytas, paskui
    seniausiai matytas. Boso užduotys surašytos `bosas.uzduotys` (lygiai 5, iš eilės).
    Sankryžos ženklas ir mįslė priskiriami kambariui `sankryza` (`zenklas`, `slaptosDurys.misle`).
@@ -238,14 +247,19 @@ Kaip rašyti gerą užduotį (1 skyrius pasunkintas):
   ilgio. Teisingas atsakymas negali būti vienintelis ilgiausias.
 - Atsakymai trumpi (1–2 žodžiai), kad tilptų 2 × 2 tinklelyje telefone.
 
-### Naujas skyrius
+### Naujas lygis arba lygio vietovių pakeitimas
 
-1. Sukurkite aplanką `src/content/skyrius-2/` su `uzduotys.json` ir `skyrius.json`.
-   Patogiausia nukopijuoti 1 skyriaus failus kaip pavyzdį. Salėje turi būti 6–8 kambariai.
-2. Užregistruokite juos [`src/content/index.ts`](src/content/index.ts) (`TURINYS`) ir,
-   jei reikia, pridėkite teksto ribas `TEKSTO_RIBOS`.
-3. Žaidimo eiga dabar vienam skyriui (`DABARTINIS_SKYRIUS` faile `src/game/engine.ts`).
-   Perėjimas tarp skyrių – kito etapo darbas.
+1. Lygio aplanke `src/content/skyrius-N/` yra `tema.json` (lygio pavadinimas, dinozaurai,
+   vietovių pavadinimai, dienoraščio puslapis) ir `uzduotys.json`.
+2. `node tools/generuoti-skyriu.mjs N` iš `tema.json` sukuria `skyrius.json` (vietovių planą:
+   kambariai, kryžkelės, slapti urvai, kurie priešai kur). Lygiai įkeliami automatiškai.
+3. Naujam lygiui pridėkite teksto ribas `TEKSTO_RIBOS` faile `src/content/index.ts`.
+4. Išsamus užduočių rašymo aprašas (tema, sunkumas, taisyklės) – `tools/TURINIO-UZDUOTIS.md`.
+5. `npm test` – turinio testas patikrins visus lygius.
+
+Dinozaurų piešiniai (`kompsognatas`, `stegozauras`, `triceratopsas`, `pterodaktilis`,
+`brachiozauras`, `ankilozauras`, `tiranozauras`) – `src/ui/art.ts`, teminiai pavadinimai –
+`src/ui/tema.ts` ir `src/ui/tekstai.ts`.
 
 ## Projekto sandara
 
