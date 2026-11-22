@@ -165,10 +165,10 @@ describe('susitikimas su priešu', () => {
     const k = kova('mazas', ['s1-k07']);
     const r = atsakyti(busena(), T, k, teisingas(k), nesekme);
     expect(r.kova.gyvybes).toBe(0);
-    expect(r.busena.zodziai).toEqual(['akmuo']);
+    expect(r.busena.zodziai).toEqual(['varlė']);
     expect(r.busena.susitikimai).toBe(1);
     expect(r.busena.sales['s1-sale1'].iveikti).toContain('r1');
-    expect(r.ivykiai.at(-1)).toMatchObject({ tipas: 'nugaletas', zodis: 'akmuo', grobis: null });
+    expect(r.ivykiai.at(-1)).toMatchObject({ tipas: 'nugaletas', zodis: 'varlė', grobis: null });
   });
 
   it('kardas: papildoma mana už nugalėtą priešą', () => {

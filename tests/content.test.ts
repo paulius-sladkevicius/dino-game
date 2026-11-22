@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { patikrintiTurini, skyrius, TURINYS } from '../src/content';
+import { atsakymasTekste, patikrintiTurini, skyrius, TURINYS } from '../src/content';
 
 describe('1 skyriaus turinys', () => {
   it('praeina visus turinio patikrinimus', () => {
@@ -18,21 +18,24 @@ describe('1 skyriaus turinys', () => {
     expect(sk.bosas.uzduotys).toHaveLength(5);
   });
 
-  it('dokumento pavyzdys s1-k07 yra toks pat kaip dokumente', () => {
-    expect(TURINYS.uzduotys.get('s1-k07')).toMatchObject({
-      id: 's1-k07',
-      skyrius: 1,
-      tipas: 'kova',
-      tekstas: 'Ant akmens sėdi žalia varlė.',
-      klausimas: 'Kur sėdi varlė?',
-      atsakymai: [
-        { tekstas: 'ant akmens', teisingas: true },
-        { tekstas: 'ant lapo', teisingas: false },
-        { tekstas: 'vandenyje', teisingas: false },
-        { tekstas: 'ant medžio', teisingas: false },
-      ],
-      uzuomina: 'akmens',
+  it('užduotys reikalauja suprasti: teisingas atsakymas nekartoja teksto žodžių', () => {
+    for (const u of TURINYS.uzduotys.values()) {
+      if (u.tipas !== 'kova' && u.tipas !== 'bosas') continue;
+      expect(atsakymasTekste(u), u.id).toEqual([]);
+    }
+  });
+
+  it('dalis klaidingų atsakymų paimta iš teksto (kad neužtektų ieškoti to paties žodžio)', () => {
+    const kovos = [...TURINYS.uzduotys.values()].filter((u) => u.tipas === 'kova' || u.tipas === 'bosas');
+    const suGundymu = kovos.filter((u) => {
+      const tekstas = u.tekstas.toLocaleLowerCase('lt');
+      return u.atsakymai.some((a) => !a.teisingas && a.tekstas.toLocaleLowerCase('lt').split(/\s+/).some((w) => w.length >= 4 && tekstas.includes(w.slice(0, 4))));
     });
+    expect(suGundymu.length).toBeGreaterThanOrEqual(kovos.length / 3);
+  });
+
+  it('atsakymasTekste atpažįsta atsakymą, paimtą iš teksto', () => {
+    expect(atsakymasTekste({ id: 'x', skyrius: 1, tipas: 'kova', tekstas: 'Ant akmens sėdi varlė.', klausimas: 'Kur?', atsakymai: [{ tekstas: 'ant akmens', teisingas: true }] })).toEqual(['akmens']);
   });
 
   it('kiekvienoje salėje: sankryža, lobio kelias (2–3 priešai), trumpas kelias (1 priešas), slaptos durys', () => {

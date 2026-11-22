@@ -8,7 +8,7 @@ pasirenka vieną iš 4 atsakymų, ir Dėmė vėl virsta žodžiu.
 Grafika – „Rašalas ant popieriaus“ pagal eskizą „Knyga“.
 
 - **1 versija:** pilnai žaidžiamas 1 skyrius „Drėgnas urvas“ – 3 salės ir bosas
-  Didžioji Dėmė, 41 užduotis.
+  Didžioji Dėmė, 41 užduotis (tekstai po 1–3 sakinius, atsakymą reikia suprasti).
 - Statinis puslapis, serverio nereikia (TypeScript + Vite). Progresas saugomas
   naršyklės `localStorage`.
 - Pritaikytas telefonui ir planšetei vertikalioje padėtyje. Visi mygtukai bent 64 px.
@@ -125,9 +125,13 @@ Kai kurių dalykų scenarijus nenurodo tiksliai, todėl jie nuspręsti taip:
   vietai, kurioje herojus dar turi žemesnio lygio daiktą.
 - **Šalmo skaičiavimas:** klaidos skaičiuojamos nuo įėjimo į salę (arba į kovą su bosu)
   nuo laužo.
-- **Šrifto dydis:** užduoties tekstas, klausimas, atsakymai, ženklai, mįslės ir Knygos
-  puslapis rodomi ne mažesniu nei 32 px šriftu (planšetėje 36 px). Žiežirbos repliką
-  ir sąsajos užrašai mažesni.
+- **Šrifto dydis:** užduoties tekstas, klausimas, ženklai, mįslės ir Knygos puslapis rodomi
+  32 px šriftu (planšetėje 36 px, labai siauruose, iki 360 px, ekranuose 28 px).
+  Atsakymai prisitaiko prie ekrano pločio (22–32 px), kad tilptų 2 × 2 tinklelyje.
+  Žiežirbos replikos ir sąsajos užrašai mažesni.
+- **1 skyriaus sunkumas:** pagal tėvų pageidavimą tekstai ilgesni nei scenarijuje
+  (1–3 sakiniai, 8–22 žodžiai vietoj 1 sakinio, 3–5 žodžių). Teisingas atsakymas
+  nekartoja teksto žodžių.
 
 Nedaroma 1 versijoje (reikės, kai bus daugiau skyrių): pradinis 5 užduočių patikrinimas,
 Žiežirbos pasiūlymas eiti sunkesniu keliu ir kitų skyrių burtai (Skiemenys, Skydas,
@@ -172,7 +176,7 @@ tokiu pačiu formatu kaip scenarijuje:
 |---|---|
 | `id` | `s<skyrius>-<raidė><nr>`, raidė pagal tipą: `k` kova, `b` bosas, `z` sankryžos ženklas, `d` slaptos durys |
 | `tipas` | `kova`, `bosas`, `sankryza` arba `durys` |
-| `tekstas` | ką vaikas skaito. 1 skyriuje kovai ir bosui – 1 sakinys, 3–5 žodžiai |
+| `tekstas` | ką vaikas skaito. 1 skyriuje kovai ir bosui – 1–3 sakiniai, 8–22 žodžiai |
 | `klausimas` | klausimas apie tekstą (duryse gali būti tuščias, jei klausimas yra mįslėje) |
 | `atsakymai` | lygiai 4, vienas su `"teisingas": true`. Atsakymų tvarka žaidime kaskart sumaišoma |
 | `uzuomina` | tekste esantis žodis ar frazė, kurią paryškina Švieselė ir Žiežirba po klaidos |
@@ -203,12 +207,21 @@ Tekstuose galima naudoti vietos ženklus (tik vardininko linksniu):
 3. Paleiskite `npm test`. Turinio testas patikrins, ar yra 4 atsakymai ir vienas
    teisingas, ar užuomina tikrai yra tekste, ar teksto ilgis atitinka skyrių ir ar
    teisingas atsakymas nėra vienintelis ilgiausias. Jei kas nors negerai, testas
-   parodys užduoties `id` ir priežastį.
+   parodys užduoties `id` ir priežastį. Testas taip pat neleidžia, kad teisingas atsakymas
+   kartotų teksto žodį: joks 4+ raidžių atsakymo žodis negali turėti tos pačios pradžios
+   (pirmų 4 raidžių) kaip kuris nors teksto žodis.
 
-Geros užduoties taisyklės iš scenarijaus: klaidingi atsakymai skiriasi viena detale,
-kurią galima sužinoti tik iš teksto. Kai įmanoma, vienas atsakymas skiriasi viena raide
-(šaka – šakė). Atsakymai panašaus ilgio, kad atsakymo nebūtų galima atspėti iš pirmos
-raidės ar ilgio.
+Kaip rašyti gerą užduotį (1 skyrius pasunkintas):
+
+- **Atsakymą reikia suprasti, o ne surasti.** Klausiama apie priežastį, jausmą, laiką,
+  kiekį ar sinonimą. Pavyzdžiui, tekste „žibintas“, o teisingas atsakymas „lempa“; tekste
+  „dreba ir neišlenda“, o atsakymas „bijo“.
+- **Klaidingi atsakymai gundo.** Bent vienas klaidingas atsakymas paimtas iš teksto (pvz.,
+  „iš lubų“, kai klausiama, iš ko atsirado bala), kad neužtektų ieškoti to paties žodžio.
+- **`uzuomina`** rodo įkaltį tekste („lašai“, „dreba“), o ne patį atsakymą.
+- **Atsakymai panašaus ilgio**, kad teisingo nebūtų galima atspėti iš pirmos raidės ar
+  ilgio. Teisingas atsakymas negali būti vienintelis ilgiausias.
+- Atsakymai trumpi (1–2 žodžiai), kad tilptų 2 × 2 tinklelyje telefone.
 
 ### Naujas skyrius
 

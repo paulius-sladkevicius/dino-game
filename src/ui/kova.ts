@@ -8,6 +8,7 @@ import type { Zaidimas } from './app';
 import { banga, deme, knygosIkona, manosLasas, sirdele, SPALVOS, ziezirba } from './art';
 import { h, sumazintasJudesys, svg } from './dom';
 import { skaitomasTekstas, uzuominosRibos } from './skaitymas';
+import { zodziuSkaicius } from '../game/text';
 
 export function hud(z: Zaidimas, papildomai?: HTMLElement): HTMLElement {
   const b = z.b;
@@ -112,7 +113,7 @@ export function ekranasKova(z: Zaidimas): HTMLElement {
 
   return h(
     'main',
-    { class: 'ekranas kova', 'data-ekranas': 'kova' },
+    { class: `ekranas kova${zodziuSkaicius(tekstas) > 10 ? ' ilgas-tekstas' : ''}`, 'data-ekranas': 'kova' },
     hud(z),
     h('p', { class: 'skyriaus-uzrasas antraste-ranka' }, `${sk.numeris} skyrius · ${sk.pavadinimas}`),
     h('div', { class: 'arena' }, ziezirbosBurbulas(z, z.zinute), priesas),

@@ -1,7 +1,7 @@
 // Žaidimo turinys: užduotys ir skyrių planai. Naujas skyrius pridedamas čia.
 
 import type { Skyrius, Uzduotis } from '../game/types';
-import { sakiniuSkaicius, zodziuSkaicius, rastiUzuomina } from '../game/text';
+import { sakiniuSkaicius, zodziuSkaicius, rastiUzuomina, zetonai } from '../game/text';
 import uzduotys1 from './skyrius-1/uzduotys.json';
 import skyrius1 from './skyrius-1/skyrius.json';
 
@@ -31,11 +31,29 @@ export function skyrius(t: Turinys, numeris: number): Skyrius {
   return s;
 }
 
-/** Teksto apimtis pagal skyrių (lentelė „Skyriai ir sunkumo progresija“). */
+/**
+ * Teksto apimtis pagal skyrių. 1 skyrius pasunkintas (pagal tėvų pageidavimą):
+ * vietoj scenarijaus „1 sakinys, 3–5 žodžiai“ – 1–3 sakiniai, 8–22 žodžiai.
+ */
 export const TEKSTO_RIBOS: Record<number, { sakiniai: [number, number]; zodziai: [number, number] }> = {
-  1: { sakiniai: [1, 1], zodziai: [3, 5] },
+  1: { sakiniai: [1, 3], zodziai: [8, 22] },
   2: { sakiniai: [1, 2], zodziai: [1, 8] },
 };
+
+const kamienas = (zodis: string) => zodis.toLocaleLowerCase('lt').slice(0, 4);
+
+/**
+ * Teisingo atsakymo žodžiai (4+ raidžių), kurių kamienas (pirmos 4 raidės) yra
+ * tekste. Kova ir bosas turi būti tokie, kad atsakymo nerastum tiesiog ieškodamas
+ * to paties žodžio tekste.
+ */
+export function atsakymasTekste(u: Uzduotis): string[] {
+  const teksto = new Set(zetonai(u.tekstas).filter((z) => z.tipas === 'zodis').map((z) => kamienas(z.tekstas)));
+  const teisingas = u.atsakymai.find((a) => a.teisingas)?.tekstas ?? '';
+  return zetonai(teisingas)
+    .filter((z) => z.tipas === 'zodis' && z.tekstas.length >= 4 && teksto.has(kamienas(z.tekstas)))
+    .map((z) => z.tekstas);
+}
 
 /**
  * Patikrina turinį ir grąžina klaidų sąrašą (tuščias – viskas gerai).
@@ -75,6 +93,8 @@ export function patikrintiTurini(t: Turinys): string[] {
         if (z < ribos.zodziai[0] || z > ribos.zodziai[1]) k(`žodžių ${z}, turi būti ${ribos.zodziai.join('–')}`);
         if (s < ribos.sakiniai[0] || s > ribos.sakiniai[1]) k(`sakinių ${s}, turi būti ${ribos.sakiniai.join('–')}`);
       }
+      const tekste = atsakymasTekste(u);
+      if (tekste.length) k(`teisingas atsakymas kartoja teksto žodį: ${tekste.join(', ')}`);
       // „Atsakymai panašaus ilgio, teisingas neišsiskiria“.
       const ilgiai = u.atsakymai.map((a) => a.tekstas.length);
       const teisingoIlgis = u.atsakymai.find((a) => a.teisingas)?.tekstas.length ?? 0;
