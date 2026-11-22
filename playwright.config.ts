@@ -22,6 +22,7 @@ export default defineConfig({
   projects: [
     { name: 'telefonas', use: { ...devices['Pixel 7'] } },
     { name: 'iphone', use: { ...devices['iPhone 13'], browserName: 'chromium' } },
+    { name: 'mazas-telefonas', use: { ...devices['iPhone SE'], browserName: 'chromium' } },
     { name: 'plansete', use: { ...devices['iPad (gen 7)'], browserName: 'chromium' } },
   ],
 });

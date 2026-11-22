@@ -19,7 +19,7 @@ import { UZRAKTAS_PO_KLAIDOS_MS } from '../game/rules';
 export type Langas =
   | { tipas: 'nugaletas'; zodis: string | null; kardoMana: number; sugautas: boolean; pabeges: boolean }
   | { tipas: 'grobis'; grobis: Grobis }
-  | { tipas: 'lobis'; sirdeles: number; mana: number }
+  | { tipas: 'lobis'; sirdeles: number; mana: number; planuota: { sirdeles: number; mana: number } }
   | { tipas: 'dovana'; dovana: Kosmetika }
   | { tipas: 'durys'; tvarka: number[] }
   | { tipas: 'saleBaigta'; zvaigzdutes: number }
@@ -238,7 +238,7 @@ export class Zaidimas {
         const r = E.atidarytiLobi(this.b, sale.id, this.rng);
         this.busena = r.busena;
         this.saugoti();
-        const langai: Langas[] = [{ tipas: 'lobis', sirdeles: r.sirdeles, mana: r.mana }];
+        const langai: Langas[] = [{ tipas: 'lobis', sirdeles: r.sirdeles, mana: r.mana, planuota: r.planuota }];
         if (r.grobis) langai.push({ tipas: 'grobis', grobis: r.grobis });
         this.rodytiLangus(langai);
         return;

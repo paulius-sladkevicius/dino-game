@@ -362,6 +362,13 @@ describe('salė, sankryža, lobis, slaptos durys', () => {
     expect(vel.mana).toBe(0);
   });
 
+  it('lobis, kai širdelių ir manos jau pilna: rodomas planuotas atlygis, gautas – 0', () => {
+    const r = atidarytiLobi(busena({ sirdeles: 5, mana: 10 }), 's1-sale1', () => 0.9);
+    expect(r.planuota).toEqual({ sirdeles: 2, mana: 3 });
+    expect(r.sirdeles).toBe(0);
+    expect(r.mana).toBe(0);
+  });
+
   it('lobio kambarys su sargu: pirma kova, paskui lobis', () => {
     let b = eitiIKambari(ieitiISale(busena(), T, 's1-sale1'), 's1-sale1', 't2');
     expect(kambarioVeiksmas(b, T)).toEqual({ tipas: 'kova' });

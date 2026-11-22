@@ -61,7 +61,7 @@ export function deme(rusis: 'mazas' | 'vidutinis' | 'bosas' | 'pabeges'): string
 export function ziezirba(ryskumas: number, kepure: boolean, dydis = 64): string {
   const liepsna = ryskumas <= 0 ? ['#a8a3b5', '#d7d2de'] : ['#e8742c', '#f6c344'];
   const kep = kepure
-    ? `<path d="M30 15 L37 0 L44 15 Z" fill="${SPALVOS.raudonas}" stroke="${R}" stroke-width="1.6" stroke-linejoin="round"/><circle cx="37" cy="0.5" r="2.5" fill="${SPALVOS.popieriusSviesus}" stroke="${R}" stroke-width="1"/>`
+    ? `<path d="M19 37 L17 18 L31 30 Z" fill="${SPALVOS.raudonas}" stroke="${R}" stroke-width="1.6" stroke-linejoin="round"/><circle cx="17" cy="18" r="2.5" fill="${SPALVOS.popieriusSviesus}" stroke="${R}" stroke-width="1"/>`
     : '';
   return `<svg width="${dydis}" height="${dydis}" viewBox="-2 -4 76 80" role="img" aria-label="Žiežirba"><path d="M36 30 C40 22 42 16 37 6 C34 14 30 16 30 24 C30 28 32 30 36 30 Z" fill="${liepsna[0]}" stroke="${R}" stroke-width="1.6"/><path d="M36 28 C38 24 38 20 36 16 C34 20 33 24 36 28 Z" fill="${liepsna[1]}"/>${kep}<path d="M37 26 L56 42 L37 62 L18 42 Z" fill="${SPALVOS.popieriusSviesus}" stroke="${R}" stroke-width="2.2" stroke-linejoin="round"/><path d="M18 42 L4 34 L10 46 Z M56 42 L70 34 L64 46 Z" fill="${SPALVOS.melynasSviesus}" stroke="${R}" stroke-width="1.8" stroke-linejoin="round"/><circle cx="31" cy="40" r="2.6" fill="${R}"/><circle cx="43" cy="40" r="2.6" fill="${R}"/><path d="M32 48 Q37 52 42 48" fill="none" stroke="${R}" stroke-width="1.8" stroke-linecap="round"/><path d="M37 62 C34 68 42 70 38 76" fill="none" stroke="${R}" stroke-width="1.8" stroke-linecap="round"/><path d="M33 68 L37 66 L35 71 Z" fill="${SPALVOS.raudonas}"/></svg>`;
 }

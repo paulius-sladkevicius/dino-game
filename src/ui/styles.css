@@ -87,7 +87,7 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--melynas); o
   min-height: 68px;
   width: 100%;
 }
-.antrinis { display: inline-flex; align-items: center; justify-content: center; gap: 8px; flex: 1; }
+.antrinis { display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
 .pagrindinis:disabled, .antrinis:disabled { opacity: 0.45; }
 .pavojingas { background: #f6e1dc; border-color: var(--raudonas-tamsus); color: var(--raudonas-tamsus); width: 100%; }
 
@@ -154,7 +154,7 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--melynas); o
   display: flex;
   align-items: stretch;
   gap: 8px;
-  height: clamp(110px, calc(100dvh - 620px), 230px);
+  height: clamp(100px, calc(100dvh - 590px), 230px);
 }
 .priesas {
   flex: 1 1 0;
@@ -168,8 +168,8 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--melynas); o
 .demes-piesinys { flex: 1 1 0; min-height: 0; width: 100%; display: flex; justify-content: center; }
 .demes-piesinys svg { width: 100%; height: 100%; max-width: none; }
 .demes-seselis svg { width: 180px; height: 10px; }
-.prieso-vardas { display: flex; align-items: center; gap: 8px; }
-.prieso-vardas .antraste-ranka { font-size: 26px; }
+.prieso-vardas { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 2px 8px; }
+.prieso-vardas .antraste-ranka { font-size: 24px; line-height: 1; white-space: nowrap; }
 .gyvybes { display: inline-flex; gap: 3px; }
 .smugis .demes-piesinys { animation: drebeti 450ms ease; }
 .susigeria .demes-piesinys { animation: susigerti 1200ms ease forwards; }
@@ -281,7 +281,7 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--melynas); o
 
 /* ------------------------------------------------------------ Salės žemėlapis */
 .sales-pavadinimas { font-size: 32px; }
-.zemelapis { position: relative; flex: 1; min-height: 360px; }
+.zemelapis { position: relative; flex: 1; min-height: 340px; }
 .keliu-sluoksnis { position: absolute; inset: 38px; }
 .keliu-sluoksnis svg { width: 100%; height: 100%; }
 .kambarys {
@@ -321,6 +321,9 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--melynas); o
   gap: 6px;
 }
 .keliai-mygtukai { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.keliai-mygtukai .aplankytas { background: var(--melynas-sviesus); }
+.keliai-mygtukai .aplankytas::after { content: ' ✓'; color: var(--zalias); }
+.sale.sankryzoje .zenklas { margin-top: 8px; }
 .durys-mygtukas { width: 100%; }
 .sales-apacia { display: flex; flex-direction: column; gap: 12px; }
 
@@ -417,6 +420,9 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--melynas); o
 @media (max-height: 700px) {
   .skyriaus-uzrasas { display: none; }
   .ekranas { gap: 10px; }
+  .tekstas.skaitymas { line-height: 1.4; }
+  .atsakymas { min-height: var(--mygtukas); }
+  .teksto-kortele { padding: 12px 16px; }
 }
 @media (min-width: 700px) {
   :root { --tekstas: 36px; }

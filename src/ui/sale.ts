@@ -83,13 +83,21 @@ export function ekranasSale(z: Zaidimas): HTMLElement {
       h(
         'div',
         { class: 'keliai-mygtukai' },
-        zenklas.atsakymai.map((a, i) =>
-          h(
+        zenklas.atsakymai.map((a, i) => {
+          const tikslas = a.kelias ? dabar.keliai?.[a.kelias] : undefined;
+          const buvo = !!tikslas && sb.aplankyti.includes(tikslas);
+          return h(
             'button',
-            { type: 'button', class: `atsakymas skaitymas kampai-${i}`, 'data-kelias': a.kelias, onclick: () => z.pasirinktiKelia(i) },
+            {
+              type: 'button',
+              class: `atsakymas skaitymas kampai-${i}${buvo ? ' aplankytas' : ''}`,
+              'data-kelias': a.kelias,
+              'aria-label': `${a.tekstas}${buvo ? ' (jau buvai)' : ''}`,
+              onclick: () => z.pasirinktiKelia(i),
+            },
             a.tekstas,
-          ),
-        ),
+          );
+        }),
       ),
       dabar.slaptosDurys
         ? h(
@@ -115,12 +123,14 @@ export function ekranasSale(z: Zaidimas): HTMLElement {
     );
   }
 
+  const sankryzoje = dabar.tipas === 'sankryza';
   return h(
     'main',
-    { class: 'ekranas sale', 'data-ekranas': 'sale' },
+    { class: `ekranas sale${sankryzoje ? ' sankryzoje' : ''}`, 'data-ekranas': 'sale' },
     hud(z),
-    h('h1', { class: 'antraste-ranka sales-pavadinimas' }, sale.pavadinimas),
-    zemelapis,
+    h('h1', { class: 'antraste-ranka sales-pavadinimas' }, sankryzoje ? `${sale.pavadinimas} · Sankryža` : sale.pavadinimas),
+    // Sankryžoje rodomas tik ženklas, kad jo nereikėtų slinkti telefone.
+    sankryzoje ? null : zemelapis,
     apacia,
   );
 }

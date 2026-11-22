@@ -521,14 +521,21 @@ export function atidarytiLobi(
   b: Busena,
   saleId: string,
   rng: Rng,
-): { busena: Busena; sirdeles: number; mana: number; grobis: Grobis | null } {
-  if (salesBusena(b, saleId).lobisPaimtas) return { busena: b, sirdeles: 0, mana: 0, grobis: null };
+): { busena: Busena; sirdeles: number; mana: number; planuota: { sirdeles: number; mana: number }; grobis: Grobis | null } {
+  if (salesBusena(b, saleId).lobisPaimtas)
+    return { busena: b, sirdeles: 0, mana: 0, planuota: { sirdeles: 0, mana: 0 }, grobis: null };
   const kiek = sveikasis(rng, ATLYGIAI.lobis.sirdelesMin, ATLYGIAI.lobis.sirdelesMax);
   const pr = { s: b.sirdeles, m: b.mana };
   let nb = pridetiMana(pridetiSirdeliu(b, kiek), ATLYGIAI.lobis.mana);
   nb = atnaujintiSale(nb, saleId, (s) => ({ ...s, lobisPaimtas: true }));
   const grobis = ridentiGrobi(rng, 'lobis', false, DABARTINIS_SKYRIUS, nb.iranga);
-  return { busena: nb, sirdeles: nb.sirdeles - pr.s, mana: nb.mana - pr.m, grobis };
+  return {
+    busena: nb,
+    sirdeles: nb.sirdeles - pr.s,
+    mana: nb.mana - pr.m,
+    planuota: { sirdeles: kiek, mana: ATLYGIAI.lobis.mana },
+    grobis,
+  };
 }
 
 /** Slaptos durys: teisingai įminus – atsidaro; klaida širdelės neatima. */

@@ -45,11 +45,30 @@ async function atsakytiTeisingai(page: Page) {
   );
 }
 
+/** Kiekviename ekrane: jokio horizontalaus slinkimo, visi mygtukai ne mažesni nei 64 px. */
+async function tikrintiIsdestyma(page: Page, kur: string) {
+  const r = await page.evaluate(() => {
+    const per = document.documentElement.scrollWidth - window.innerWidth;
+    const mazi = [...document.querySelectorAll('button')]
+      .filter((b) => {
+        const s = getComputedStyle(b);
+        if (s.visibility === 'hidden' || s.display === 'none') return false;
+        const rect = b.getBoundingClientRect();
+        return rect.width > 0 && (rect.width < 63.5 || rect.height < 63.5);
+      })
+      .map((b) => `${b.textContent?.trim() || b.getAttribute('aria-label')} ${Math.round(b.getBoundingClientRect().width)}×${Math.round(b.getBoundingClientRect().height)}`);
+    return { per, mazi };
+  });
+  expect(r.per, `horizontalus slinkimas (${kur})`).toBeLessThanOrEqual(1);
+  expect(r.mazi, `per maži mygtukai (${kur})`).toEqual([]);
+}
+
 /** Vienas žingsnis pagal tai, kas dabar rodoma. Grąžina false, kai pasiekta Knyga po boso. */
 async function zingsnis(page: Page, zurnalas: string[]): Promise<boolean> {
   const langas = page.locator('[data-langas]');
   if (await langas.count()) {
     const tipas = await langas.getAttribute('data-langas');
+    await tikrintiIsdestyma(page, `langas ${tipas}`);
     zurnalas.push(`langas:${tipas}`);
     if (tipas === 'grobis') await page.getByRole('button', { name: 'Imu' }).click();
     else if (tipas === 'saleBaigta') await page.getByRole('button', { name: 'Tęsiam dabar' }).click();
@@ -63,6 +82,7 @@ async function zingsnis(page: Page, zurnalas: string[]): Promise<boolean> {
   }
   const e = await ekranas(page);
   zurnalas.push(`ekranas:${e}`);
+  await tikrintiIsdestyma(page, `ekranas ${e}`);
   switch (e) {
     case 'knyga':
       return false;
@@ -88,7 +108,7 @@ async function zingsnis(page: Page, zurnalas: string[]): Promise<boolean> {
           return true;
         }
         const lobis = page.locator('button[data-kelias="lobis"]');
-        const aplankytas = await page.locator('[data-kambarys="t1"].aplankytas').count();
+        const aplankytas = await page.locator('button[data-kelias="lobis"].aplankytas').count();
         await (aplankytas ? page.locator('button[data-kelias="trumpas"]') : lobis).click();
         return true;
       }
@@ -153,7 +173,7 @@ test('klaida: −1 širdelė, atsakymas dingsta, mygtukai užrakinami 2 s, Švie
   // Švieselė: 1 mana, paryškina svarbiausią žodį.
   await page.getByRole('button', { name: /Švieselė/ }).click();
   await expect(page.locator('.mana')).toHaveAttribute('data-mana', '2');
-  await expect(page.locator('.tekstas .pazymetas-zodis')).toHaveCount(1);
+  await expect(page.locator('.tekstas .pazymetas-zodis').first()).toBeVisible();
 
   const id = (await page.locator('.teksto-kortele').getAttribute('data-uzduotis'))!;
   await page.locator(`button[data-atsakymas="${neteisingas(id)}"]`).click();

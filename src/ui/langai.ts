@@ -104,10 +104,19 @@ export function langas(z: Zaidimas, l: Langas): HTMLElement {
           'p',
           { class: 'atlygis' },
           svg(sirdele(true, 24)),
-          `+${l.sirdeles}`,
+          `+${l.planuota.sirdeles}`,
           svg(manosLasas(16)),
-          `+${l.mana}`,
+          `+${l.planuota.mana}`,
         ),
+        l.sirdeles < l.planuota.sirdeles || l.mana < l.planuota.mana
+          ? h(
+              'p',
+              { class: 'mazas-tekstas' },
+              [l.sirdeles < l.planuota.sirdeles ? 'Širdelių jau pilna.' : '', l.mana < l.planuota.mana ? 'Manos jau pilna.' : '']
+                .filter(Boolean)
+                .join(' '),
+            )
+          : null,
         toliau(z),
       );
     case 'dovana':
