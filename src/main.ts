@@ -15,7 +15,20 @@ if (saknis) paleisti(saknis);
 // PWA: žaidimas veikia ir be interneto. Registracija tik produkcinėje versijoje.
 if (import.meta.env.PROD && 'serviceWorker' in navigator && window.isSecureContext) {
   import('virtual:pwa-register')
-    .then(({ registerSW }) => registerSW({ immediate: true }))
+    .then(({ registerSW }) =>
+      registerSW({
+        immediate: true,
+        // Atnaujinimų tikrinama kiekvieną kartą grįžus į žaidimą ir kas valandą.
+        onRegisteredSW(_url, registracija) {
+          if (!registracija) return;
+          const tikrinti = () => void registracija.update().catch(() => undefined);
+          document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) tikrinti();
+          });
+          setInterval(tikrinti, 60 * 60 * 1000);
+        },
+      }),
+    )
     .catch(() => {
       /* be service worker žaidimas vis tiek veikia */
     });

@@ -312,6 +312,10 @@ test('PWA: antrą kartą atsidaro ir be interneto', async ({ page, context }) =>
     await page.reload();
     expect(await page.evaluate(() => !!navigator.serviceWorker.controller)).toBe(true);
   }).toPass({ timeout: 15000 });
+  // Nauja versija turi perimti valdymą iš karto (kitaip telefone liktų sena versija).
+  const sw = await (await page.request.get('/sw.js')).text();
+  expect(sw).toContain('skipWaiting()');
+  expect(sw).toContain('clientsClaim()');
   // Nuo šiol visas tinklas „nutrūksta“: atsakyti gali tik service worker iš talpyklos.
   await context.route('**/*', (route) => route.abort('internetdisconnected'));
   await page.reload();
