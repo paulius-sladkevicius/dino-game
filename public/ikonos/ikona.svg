@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#f3ead8"/>
+  <g stroke="#e6d9bf" stroke-width="4"><path d="M0 128H512M0 192H512M0 256H512M0 320H512M0 384H512M0 448H512"/></g>
+  <g transform="translate(46 70) scale(2)">
+    <circle cx="28" cy="58" r="6" fill="#23223f"/><circle cx="182" cy="48" r="4" fill="#23223f"/><circle cx="190" cy="138" r="5" fill="#23223f"/><circle cx="36" cy="168" r="3" fill="#23223f"/>
+    <path d="M100 30 C130 20 160 40 165 70 C185 80 182 110 165 122 C170 140 150 158 128 150 C122 160 118 186 112 190 C106 186 106 160 104 156 C96 152 88 158 84 160 C70 170 50 160 52 140 C30 136 22 110 38 96 C26 76 44 50 66 52 C72 36 86 32 100 30 Z" fill="#23223f"/>
+    <ellipse cx="85" cy="95" rx="14" ry="16" fill="#fbf6ea"/><ellipse cx="125" cy="95" rx="14" ry="16" fill="#fbf6ea"/>
+    <circle cx="89" cy="100" r="6" fill="#23223f"/><circle cx="129" cy="100" r="6" fill="#23223f"/>
+    <path d="M90 126 Q100 134 108 126 Q114 120 120 128" fill="none" stroke="#fbf6ea" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <text x="392" y="132" font-family="Georgia, serif" font-size="96" font-weight="700" fill="#2f5d9e" transform="rotate(14 392 132)">Ė</text>
+  <text x="70" y="140" font-family="Georgia, serif" font-size="72" font-weight="700" fill="#c2413a" transform="rotate(-12 70 140)">a</text>
+</svg>
