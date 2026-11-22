@@ -112,15 +112,12 @@ async function zingsnis(page: Page, zurnalas: string[]): Promise<boolean> {
         await (aplankytas ? page.locator('button[data-kelias="trumpas"]') : lobis).click();
         return true;
       }
-      // Žemėlapis: pirmiausia neaplankyti kambariai, salės galas – paskiausiai.
-      const galimi = page.locator('button.kambarys.galima');
-      const neaplankytas = page.locator('button.kambarys.galima:not(.aplankytas):not(.tipas-galas)');
-      const atgal = page.locator('button.kambarys.galima.tipas-sankryza');
-      const galas = page.locator('button.kambarys.galima.tipas-galas');
-      if (await neaplankytas.count()) await neaplankytas.first().click();
-      else if (await galas.count()) await galas.click();
-      else if (await atgal.count()) await atgal.click();
-      else await galimi.first().click();
+      // Vaizdas iš šono: „Eiti ▶“, o aklavietėje (slaptas kambarys) – „◀“ atgal.
+      const pirmyn = page.locator('[data-veiksmas="pirmyn"]');
+      const atgal = page.locator('[data-veiksmas="atgal"]');
+      if ((await pirmyn.count()) && (await pirmyn.isEnabled())) await pirmyn.click();
+      else if ((await page.locator('[data-kambarys-dabar="slaptas"]').count()) && (await atgal.isEnabled())) await atgal.click();
+      else await page.waitForTimeout(250); // herojus dar eina
       return true;
     }
     default:
@@ -166,7 +163,7 @@ test('klaida: −1 širdelė, atsakymas dingsta, mygtukai užrakinami 2 s, Švie
   await pradeti(page, 'Jonas', 'Jonai');
   await page.locator('[data-sale="s1-sale1"]').click();
   await page.locator('[data-veiksmas="i-sale"]').click();
-  await page.locator('[data-kambarys="r1"]').click();
+  await page.locator('[data-veiksmas="pirmyn"]').click();
   await expect(page.locator('[data-ekranas="kova"]')).toBeVisible();
   await expect(page.locator('.sirdeles')).toHaveAttribute('data-sirdeles', '5');
 
@@ -196,7 +193,7 @@ test('širdelėms pasibaigus – prie laužo, širdelės vėl 5', async ({ page 
   await pradeti(page);
   await page.locator('[data-sale="s1-sale1"]').click();
   await page.locator('[data-veiksmas="i-sale"]').click();
-  await page.locator('[data-kambarys="r1"]').click();
+  await page.locator('[data-veiksmas="pirmyn"]').click();
   for (let n = 0; n < 20; n++) {
     if (await page.locator('[data-langas="pralaimejimas"]').count()) break;
     const kortele = page.locator('.teksto-kortele[data-uzduotis]');
@@ -246,6 +243,60 @@ test('tėvų skydelis: suaugusiojo klausimas, jungikliai, savi žodžiai', async
   await expect(page.locator('#zaidimas')).toHaveClass(/didziosios/);
   await page.reload();
   await expect(page.locator('#zaidimas')).toHaveClass(/didziosios/);
+  expect(klaidos).toEqual([]);
+});
+
+test('vaizdas iš šono: einama mygtukais, nugalėtas priešas išnyksta, herojus pereina pro duris', async ({ page }) => {
+  const klaidos = stebetiKonsole(page);
+  await pradeti(page);
+  await page.locator('[data-sale="s1-sale1"]').click();
+  await page.locator('[data-veiksmas="i-sale"]').click();
+  await expect(page.locator('[data-kambarys-dabar="r1"]')).toBeVisible();
+  await expect(page.locator('.scena .scenos-priesas')).toHaveCount(1);
+  // Atgal iš pirmo kambario – prie laužo, ir vėl pirmyn.
+  await page.locator('[data-veiksmas="atgal"]').click();
+  await expect(page.locator('[data-ekranas="lauzas"]')).toBeVisible();
+  await page.locator('[data-veiksmas="i-sale"]').click();
+  await page.locator('[data-veiksmas="pirmyn"]').click();
+  await expect(page.locator('[data-ekranas="kova"]')).toBeVisible();
+  await expect(page.locator('.kovos-scena .scenos-herojus')).toHaveCount(1);
+  while (await page.locator('[data-ekranas="kova"]').count()) {
+    if (await page.locator('[data-langas]').count()) break;
+    await atsakytiTeisingai(page);
+  }
+  await expect(page.locator('[data-langas="nugaletas"]')).toBeVisible();
+  while (await page.locator('[data-langas]').count()) {
+    const t = await page.locator('[data-langas]').getAttribute('data-langas');
+    await page.locator(t === 'grobis' ? 'text=Imu' : '[data-langas] button.pagrindinis').click();
+  }
+  // Priešas dingo, herojus pats nueina pro duris į sankryžą.
+  await expect(page.locator('.scena .scenos-priesas')).toHaveCount(0);
+  await expect(page.locator('[data-kambarys-dabar="sankryza"]')).toBeVisible({ timeout: 5000 });
+  // Žemėlapis – tik peržiūrai.
+  await page.locator('[data-zemelapis]').click();
+  await expect(page.locator('[data-langas="zemelapis"] .kambarys.dabar')).toHaveCount(1);
+  await page.locator('[data-langas] button.pagrindinis').click();
+  expect(klaidos).toEqual([]);
+});
+
+test('garsą galima išjungti ir tai išsaugoma; visas ekranas be klaidų', async ({ page }) => {
+  const klaidos = stebetiKonsole(page);
+  await pradeti(page);
+  await page.locator('[data-sale="s1-sale1"]').click();
+  const garsas = page.locator('[data-garsas]');
+  await expect(garsas).toHaveAttribute('data-garsas', 'ijungtas');
+  await garsas.click();
+  await expect(page.locator('[data-garsas]')).toHaveAttribute('data-garsas', 'isjungtas');
+  await page.reload();
+  await page.getByRole('button', { name: 'Žaisti' }).click();
+  await expect(page.locator('[data-garsas]')).toHaveAttribute('data-garsas', 'isjungtas');
+  await page.locator('[data-garsas]').click();
+  await expect(page.locator('[data-garsas]')).toHaveAttribute('data-garsas', 'ijungtas');
+  const visas = page.locator('[data-visas-ekranas]');
+  if (await visas.count()) {
+    await visas.click();
+    await page.waitForTimeout(300);
+  }
   expect(klaidos).toEqual([]);
 });
 

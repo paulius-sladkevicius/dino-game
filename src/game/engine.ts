@@ -76,7 +76,7 @@ export function naujaBusena(vardas: string, t: Turinys): Busena {
     susitikimai: 0,
     uzduotys: {},
     kosmetika: [],
-    nustatymai: { skiemenys: true, didziosios: false, savi: { seimosNarys: '', draugas: '', augintinis: '' } },
+    nustatymai: { skiemenys: true, didziosios: false, garsas: true, savi: { seimosNarys: '', draugas: '', augintinis: '' } },
     statistika: { laikasMs: 0, teisingi: 0, klaidos: 0 },
     istorijaPerskaityta: false,
   };
@@ -471,6 +471,28 @@ export function eitiIKambari(b: Busena, saleId: string, kambarys: string): Busen
     aplankyti: s.aplankyti.includes(kambarys) ? s.aplankyti : [...s.aplankyti, kambarys],
   }));
   return { ...nb, vieta: { kur: 'sale', sale: saleId, kambarys } };
+}
+
+/**
+ * Kryptys žiūrint iš šono: „atgal“ – kambarys arčiau salės pradžios, „pirmyn“ –
+ * kiti kaimynai. Salės gale ir slaptame kambaryje kelio pirmyn nėra.
+ */
+export function kryptys(sale: Sale, kambarysId: string): { atgal: string | null; pirmyn: string[] } {
+  const tevas = new Map<string, string | null>([[sale.pradzia, null]]);
+  const eile = [sale.pradzia];
+  while (eile.length) {
+    const id = eile.shift()!;
+    for (const n of rastiKambari(sale, id).kaimynai) {
+      if (!tevas.has(n)) {
+        tevas.set(n, id);
+        eile.push(n);
+      }
+    }
+  }
+  const k = rastiKambari(sale, kambarysId);
+  const atgal = tevas.get(kambarysId) ?? null;
+  if (k.tipas === 'galas' || k.tipas === 'slaptas') return { atgal, pirmyn: [] };
+  return { atgal, pirmyn: k.kaimynai.filter((n) => n !== atgal) };
 }
 
 /** Sankryžos ženklas: kelias, kurį pasirinko vaikas. */

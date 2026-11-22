@@ -9,6 +9,7 @@ import { deme, herojus, kambarioIkona, kaukas, knygosIkona, lauzas, uzraktas, zv
 import { h, svg } from './dom';
 import { burtoMygtukas, hud, ziezirbosBurbulas } from './kova';
 import { skaitomasTekstas } from './skaitymas';
+import { nustatymuMygtukai } from './kambarys';
 import { ISTORIJA, ZIEZIRBA, atsitiktine } from './tekstai';
 
 const lauzoSpalva = (z: Zaidimas) => (z.b.kosmetika.includes('lauzoSpalva') ? 'melyna' : 'iprasta');
@@ -68,6 +69,7 @@ export function ekranasPradzia(z: Zaidimas): HTMLElement {
       h('button', { type: 'button', class: 'antrinis', onclick: () => z.atidaryti('knyga') }, svg(knygosIkona(28)), 'Knyga'),
       h('button', { type: 'button', class: 'antrinis', onclick: () => z.atidaryti('tevai') }, svg(uzraktas(24)), 'Tėvams'),
     ),
+    h('div', { class: 'mygtuku-eile nustatymai-eile' }, nustatymuMygtukai(z)),
   );
 }
 
@@ -203,7 +205,8 @@ export function ekranasLauzas(z: Zaidimas): HTMLElement {
       'div',
       { class: 'mygtuku-eile' },
       h('button', { type: 'button', class: 'antrinis', onclick: () => z.atidaryti('knyga') }, svg(knygosIkona(28)), 'Knyga'),
-      h('button', { type: 'button', class: 'antrinis', onclick: () => z.iSkyriausZemelapi() }, 'Žemėlapis'),
+      h('button', { type: 'button', class: 'antrinis', onclick: () => z.iSkyriausZemelapi() }, 'Skyrius'),
+      nustatymuMygtukai(z),
     ),
   );
 }
@@ -384,6 +387,9 @@ export function ekranasTevai(z: Zaidimas): HTMLElement {
         z.keistiNustatymus((y) => ({ ...y, nustatymai: { ...y.nustatymai, skiemenys: x } }))),
       jungiklis('t-didziosios', 'Rodyti DIDŽIOSIOMIS raidėmis', b.nustatymai.didziosios, (x) =>
         z.keistiNustatymus((y) => ({ ...y, nustatymai: { ...y.nustatymai, didziosios: x } }))),
+      jungiklis('t-garsas', 'Garso efektai', b.nustatymai.garsas, (x) => {
+        if (x !== b.nustatymai.garsas) z.perjungtiGarsa();
+      }),
     ),
     h(
       'section',

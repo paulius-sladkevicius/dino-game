@@ -19,6 +19,7 @@ import {
 } from './art';
 import { h, svg } from './dom';
 import { skaitomasTekstas } from './skaitymas';
+import { zemelapioVaizdas } from './zemelapis';
 import { ZIEZIRBA } from './tekstai';
 
 let langoNr = 0;
@@ -194,6 +195,8 @@ export function langas(z: Zaidimas, l: Langas): HTMLElement {
         skaitomas(z, ZIEZIRBA.pergale),
         toliau(z),
       );
+    case 'zemelapis':
+      return remas(z, l.tipas, 'Salės žemėlapis', zemelapioVaizdas(z), h('p', { class: 'mazas-tekstas' }, 'Eik mygtukais „◀“ ir „Eiti ▶“.'), toliau(z, 'Uždaryti'));
     case 'daiktai':
       return remas(
         z,

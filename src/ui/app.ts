@@ -8,11 +8,13 @@ import type { Burtas } from '../game/rules';
 import { ikelti, issaugoti, istrinti } from '../game/storage';
 import { istatytiVardus } from '../game/text';
 import type { Busena, Kosmetika } from '../game/types';
-import { isvalyti } from './dom';
+import { isvalyti, sumazintasJudesys } from './dom';
 import { ekranasKnyga, ekranasIstorija, ekranasLauzas, ekranasPradzia, ekranasSkyrius, ekranasTevai } from './ekranai';
 import { ekranasKova, skraidintiRaides } from './kova';
 import { langas } from './langai';
-import { ekranasSale } from './sale';
+import { ekranasKambarys } from './kambarys';
+import { X } from './scena';
+import { groti, nustatytiGarsa, paruostiGarsus, perjungtiVisaEkrana, type Garsas } from './garsai';
 import { atsitiktine, ZIEZIRBA } from './tekstai';
 import { UZRAKTAS_PO_KLAIDOS_MS } from '../game/rules';
 
@@ -25,7 +27,8 @@ export type Langas =
   | { tipas: 'saleBaigta'; zvaigzdutes: number }
   | { tipas: 'pralaimejimas' }
   | { tipas: 'pergale' }
-  | { tipas: 'daiktai' };
+  | { tipas: 'daiktai' }
+  | { tipas: 'zemelapis' };
 
 export type Ekranas = 'pradzia' | 'istorija' | 'zaidimas' | 'knyga' | 'tevai';
 
@@ -47,6 +50,15 @@ export class Zaidimas {
 
   constructor(private readonly saknis: HTMLElement) {
     this.busena = ikelti(this.t);
+    nustatytiGarsa(this.busena?.nustatymai.garsas ?? true);
+    paruostiGarsus();
+    document.addEventListener('fullscreenchange', () => this.render());
+    document.addEventListener('keydown', (e) => {
+      const t = e.target as HTMLElement | null;
+      if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA')) return;
+      if (e.key === 'ArrowRight') this.pirmyn();
+      else if (e.key === 'ArrowLeft') this.atgal();
+    });
     setInterval(() => this.skaiciuotiLaika(), 15000);
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) this.skaiciuotiLaika();
@@ -103,7 +115,7 @@ export class Zaidimas {
     else if (this.ekranas === 'tevai') el = ekranasTevai(this);
     else if (this.kova || this.animKova) el = ekranasKova(this);
     else if (b.vieta.kur === 'skyrius') el = ekranasSkyrius(this);
-    else if (b.vieta.kur === 'sale') el = ekranasSale(this);
+    else if (b.vieta.kur === 'sale') el = ekranasKambarys(this);
     else el = ekranasLauzas(this);
     this.saknis.appendChild(el);
     const pirmas = this.langai[0];
@@ -118,7 +130,21 @@ export class Zaidimas {
 
   // ---------------------------------------------------------------- langai
 
+  private langoGarsas(l: Langas | undefined): void {
+    const g: Partial<Record<Langas['tipas'], Garsas>> = {
+      lobis: 'lobis',
+      grobis: 'grobis',
+      dovana: 'grobis',
+      saleBaigta: 'saleBaigta',
+      pergale: 'saleBaigta',
+      pralaimejimas: 'pralaimejimas',
+    };
+    const garsas = l && g[l.tipas];
+    if (garsas) groti(garsas);
+  }
+
   rodytiLangus(langai: Langas[], poTo: (() => void) | null = null): void {
+    if (this.langai.length === 0) this.langoGarsas(langai[0]);
     this.langai.push(...langai);
     if (poTo) this.poLangu = poTo;
     if (this.langai.length === 0 && this.poLangu) {
@@ -132,6 +158,7 @@ export class Zaidimas {
 
   uzdarytiLanga(): void {
     this.langai.shift();
+    this.langoGarsas(this.langai[0]);
     if (this.langai.length === 0 && this.poLangu) {
       const f = this.poLangu;
       this.poLangu = null;
@@ -201,81 +228,158 @@ export class Zaidimas {
     this.atnaujinti({ ...this.b, vieta: { kur: 'skyrius' } });
   }
 
+  // ---------------------------------------------------------------- ėjimas (vaizdas iš šono)
+
+  /** Herojaus vieta kambaryje (procentais) ir vykstantis ėjimas. */
+  herojusX = X.iejimas;
+  ejimas: { nuo: number; iki: number; trukme: number } | null = null;
+  naujasKambarys = false;
+
+  /** Ar dabar galima valdyti ėjimą (neina, nėra lango ar kovos). */
+  private get laisvas(): boolean {
+    return !this.ejimas && this.langai.length === 0 && !this.kova && !this.animKova && this.ekranas === 'zaidimas';
+  }
+
+  private eiti(iki: number, poTo: () => void): void {
+    if (this.ejimas) return;
+    const nuo = this.herojusX;
+    const trukme = sumazintasJudesys() ? 1 : Math.max(350, Math.abs(iki - nuo) * 13);
+    this.ejimas = { nuo, iki, trukme };
+    this.render();
+    groti('zingsnis');
+    const zingsniai = setInterval(() => groti('zingsnis'), 280);
+    setTimeout(() => {
+      clearInterval(zingsniai);
+      this.ejimas = null;
+      this.herojusX = iki;
+      poTo();
+    }, trukme + 40);
+  }
+
+  /** Įeinama pro duris į kitą kambarį. */
+  private ieiti(b: Busena, x: number): void {
+    groti('durys');
+    this.busena = b;
+    this.saugoti();
+    this.herojusX = x;
+    this.naujasKambarys = true;
+    const veiksmas = E.kambarioVeiksmas(b, this.t);
+    this.zinute =
+      veiksmas.tipas === 'sankryza'
+        ? ZIEZIRBA.zenklas
+        : veiksmas.tipas === 'kova'
+          ? ZIEZIRBA.priekyjeDeme
+          : veiksmas.tipas === 'galas'
+            ? ZIEZIRBA.isejimas
+            : null;
+    this.render();
+  }
+
+  /** Nuo laužo į salę: herojus įeina į pirmą kambarį. */
   ieitiISale(): void {
     const v = this.b.vieta;
     if (v.kur !== 'lauzas') return;
-    this.zinute = 'Paliesk kambarį, į kurį nori eiti.';
-    this.atnaujinti(E.ieitiISale(this.b, this.t, v.sale));
-  }
-
-  eitiIKambari(kambarys: string): void {
-    const v = this.b.vieta;
-    if (v.kur !== 'sale' || !E.galimiEjimai(this.b, this.t).includes(kambarys)) return;
-    this.busena = E.eitiIKambari(this.b, v.sale, kambarys);
-    this.saugoti();
-    this.atvykus();
-  }
-
-  pasirinktiKelia(atsakymas: number): void {
-    this.busena = E.pasirinktiKelia(this.b, this.t, atsakymas);
-    this.saugoti();
-    this.atvykus();
-  }
-
-  /** Kas nutinka atėjus į kambarį. */
-  atvykus(): void {
-    const v = this.b.vieta;
-    if (v.kur !== 'sale') return this.render();
-    const veiksmas = E.kambarioVeiksmas(this.b, this.t);
     const sale = E.rastiSale(this.t, v.sale);
+    const pirmas = E.kryptys(sale, sale.pradzia).pirmyn[0];
+    this.ieiti(E.eitiIKambari(E.ieitiISale(this.b, this.t, v.sale), v.sale, pirmas), X.iejimas);
+  }
+
+  /** „Eiti ▶“: prie priešo, skrynios, kauko arba pro duris į kitą kambarį. */
+  pirmyn(): void {
+    const v = this.b.vieta;
+    if (v.kur !== 'sale' || !this.laisvas) return;
+    const sale = E.rastiSale(this.t, v.sale);
+    const kamb = E.rastiKambari(sale, v.kambarys);
+    const veiksmas = E.kambarioVeiksmas(this.b, this.t);
     switch (veiksmas.tipas) {
-      case 'kova': {
-        const kamb = E.rastiKambari(sale, v.kambarys);
-        this.pradetiKova(E.kovaKambaryje(this.b, this.t, sale, kamb, this.rng));
+      case 'kova':
+        this.eiti(X.priesObjekta, () => this.pradetiKova(E.kovaKambaryje(this.b, this.t, sale, kamb, this.rng)));
         return;
-      }
-      case 'lobis': {
-        const r = E.atidarytiLobi(this.b, sale.id, this.rng);
-        this.busena = r.busena;
-        this.saugoti();
-        const langai: Langas[] = [{ tipas: 'lobis', sirdeles: r.sirdeles, mana: r.mana, planuota: r.planuota }];
-        if (r.grobis) langai.push({ tipas: 'grobis', grobis: r.grobis });
-        this.rodytiLangus(langai);
+      case 'lobis':
+        this.eiti(X.priesObjekta, () => this.atidarytiLobi());
         return;
-      }
       case 'dovana':
-        this.busena = E.paimtiDovana(this.b, veiksmas.dovana);
-        this.saugoti();
-        this.rodytiLangus([{ tipas: 'dovana', dovana: veiksmas.dovana }]);
+        this.eiti(X.priesObjekta, () => {
+          this.busena = E.paimtiDovana(this.b, veiksmas.dovana);
+          this.saugoti();
+          this.rodytiLangus([{ tipas: 'dovana', dovana: veiksmas.dovana }]);
+        });
+        return;
+      case 'galas':
+        this.eiti(X.desineDurys, () => {
+          const r = E.baigtiSale(this.b, this.t, sale.id);
+          this.busena = r.busena;
+          this.saugoti();
+          this.zinute = null;
+          this.herojusX = X.iejimas;
+          this.rodytiLangus([{ tipas: 'saleBaigta', zvaigzdutes: r.zvaigzdutes }]);
+        });
         return;
       case 'sankryza':
-        this.zinute = ZIEZIRBA.zenklas;
-        this.render();
         return;
-      case 'galas': {
-        const r = E.baigtiSale(this.b, this.t, sale.id);
-        this.busena = r.busena;
-        this.saugoti();
+      default: {
+        const kr = E.kryptys(sale, kamb.id);
+        if (kr.pirmyn.length !== 1) return;
+        this.eiti(X.desineDurys, () => this.ieiti(E.eitiIKambari(this.b, sale.id, kr.pirmyn[0]), X.iejimas));
+      }
+    }
+  }
+
+  /** „◀“: atgal į ankstesnį kambarį (iš pirmo kambario – prie laužo). */
+  atgal(): void {
+    const v = this.b.vieta;
+    if (v.kur !== 'sale' || !this.laisvas) return;
+    const sale = E.rastiSale(this.t, v.sale);
+    const atgal = E.kryptys(sale, v.kambarys).atgal;
+    if (!atgal) return;
+    this.eiti(X.kaireDurys, () => {
+      if (atgal === sale.pradzia) {
+        groti('durys');
         this.zinute = null;
-        this.rodytiLangus([{ tipas: 'saleBaigta', zvaigzdutes: r.zvaigzdutes }]);
+        this.herojusX = X.iejimas;
+        this.atnaujinti(E.eitiPrieLauzo(this.b, sale.id));
         return;
       }
-      default:
-        this.zinute = 'Paliesk kambarį, į kurį nori eiti.';
-        this.render();
-    }
+      this.ieiti(E.eitiIKambari(this.b, sale.id, atgal), X.desineDurys - 8);
+    });
+  }
+
+  /** Sankryža: herojus nueina prie pasirinktų durų ir pro jas įeina. */
+  pasirinktiKelia(atsakymas: number): void {
+    if (!this.laisvas) return;
+    this.eiti(atsakymas === 0 ? X.durysA : X.durysB, () => this.ieiti(E.pasirinktiKelia(this.b, this.t, atsakymas), X.iejimas));
+  }
+
+  private atidarytiLobi(poTo: (() => void) | null = () => this.autoPirmyn()): void {
+    const v = this.b.vieta;
+    if (v.kur !== 'sale') return;
+    const r = E.atidarytiLobi(this.b, v.sale, this.rng);
+    this.busena = r.busena;
+    this.saugoti();
+    const langai: Langas[] = [{ tipas: 'lobis', sirdeles: r.sirdeles, mana: r.mana, planuota: r.planuota }];
+    if (r.grobis) langai.push({ tipas: 'grobis', grobis: r.grobis });
+    this.rodytiLangus(langai, poTo);
+  }
+
+  /** Po įveikto kambario herojus pats nueina pro atsidariusias duris. */
+  private autoPirmyn(): void {
+    this.render();
+    setTimeout(() => {
+      if (!this.laisvas || this.b.vieta.kur !== 'sale') return;
+      if (E.kambarioVeiksmas(this.b, this.t).tipas !== 'nieko') return;
+      this.pirmyn();
+    }, 700);
   }
 
   atidarytiDuris(): void {
     const v = this.b.vieta;
-    if (v.kur !== 'sale') return;
+    if (v.kur !== 'sale' || this.ejimas) return;
     const sale = E.rastiSale(this.t, v.sale);
     const kamb = E.rastiKambari(sale, v.kambarys);
     if (!kamb.slaptosDurys) return;
     if (this.b.sales[sale.id]?.durysAtidarytos) {
-      this.busena = E.eitiIKambari(this.b, sale.id, kamb.slaptosDurys.kambarys);
-      this.saugoti();
-      this.atvykus();
+      const tikslas = kamb.slaptosDurys.kambarys;
+      this.eiti(X.slaptos, () => this.ieiti(E.eitiIKambari(this.b, sale.id, tikslas), X.iejimas));
       return;
     }
     const misle = this.t.uzduotys.get(kamb.slaptosDurys.misle);
@@ -288,10 +392,12 @@ export class Zaidimas {
     this.saugoti();
     this.langai.shift();
     if (!r.atidaryta) {
+      groti('klaida');
       this.zinute = ZIEZIRBA.durysUzdarytos;
       this.render();
       return;
     }
+    groti('burtas');
     this.zinute = ZIEZIRBA.durysAtidarytos;
     this.atidarytiDuris();
   }
@@ -300,6 +406,22 @@ export class Zaidimas {
     this.langai.shift();
     if (!tesiam) this.ekranas = 'pradzia';
     this.render();
+  }
+
+  // ---------------------------------------------------------------- garsas ir ekranas
+
+  perjungtiGarsa(): void {
+    const b = this.busena;
+    const naujas = !(b?.nustatymai.garsas ?? true);
+    nustatytiGarsa(naujas);
+    if (b) this.busena = { ...b, nustatymai: { ...b.nustatymai, garsas: naujas } };
+    this.saugoti();
+    if (naujas) setTimeout(() => groti('teisinga'), 50);
+    this.render();
+  }
+
+  perjungtiVisaEkrana(): void {
+    perjungtiVisaEkrana();
   }
 
   // ---------------------------------------------------------------- kova
@@ -330,6 +452,7 @@ export class Zaidimas {
     const tipai = new Set(r.ivykiai.map((i) => i.tipas));
 
     if (tipai.has('klaida')) {
+      groti('klaida');
       this.kova = r.kova;
       const pradzia = tipai.has('salmas') ? `${ZIEZIRBA.salmas} ` : '';
       this.zinute = pradzia + (r.kova.uzuomina === 'sakinys' ? ZIEZIRBA.klaida2 : ZIEZIRBA.klaida1);
@@ -348,6 +471,9 @@ export class Zaidimas {
     this.zinute = this.tekstas(atsitiktine(isPirmo ? ZIEZIRBA.teisingai : ZIEZIRBA.poKlaidos));
     if (tipai.has('serija')) this.zinute += ` ${ZIEZIRBA.serija}`;
     const nugaletas = tipai.has('nugaletas') || tipai.has('bosasNugaletas');
+    groti('teisinga');
+    if (tipai.has('serija')) groti('serija');
+    setTimeout(() => groti(nugaletas ? 'pukst' : 'raides'), 350);
     this.animKova = { kova: k, teisingas: indeksas, nugaletas };
     this.kova = r.kova;
     this.render();
@@ -391,16 +517,19 @@ export class Zaidimas {
     });
   }
 
-  /** Grįžus į žemėlapį: jei tai lobio kambarys su sargu – atidaromas lobis. */
+  /** Po kovos: priešas išnyko, durys atsidaro, herojus eina toliau. Jei tai lobio sargas – atidaroma skrynia. */
   private atvykusPoKovos(): void {
     const v = this.b.vieta;
     if (v.kur !== 'sale') return;
+    this.herojusX = X.priesObjekta;
     const veiksmas = E.kambarioVeiksmas(this.b, this.t);
     if (veiksmas.tipas === 'lobis') {
-      this.atvykus();
+      this.atidarytiLobi();
       return;
     }
-    this.zinute = 'Paliesk kambarį, į kurį nori eiti.';
+    this.zinute = ZIEZIRBA.durysAtsidaro;
+    groti('durys');
+    this.autoPirmyn();
   }
 
   priimtiGrobi(imu: boolean): void {
@@ -424,6 +553,7 @@ export class Zaidimas {
     if (this.animKova) return;
     if (!E.galimaBurta(this.b, this.kova, burtas)) return;
     const r = E.naudotiBurta(this.b, this.kova, burtas);
+    groti('burtas');
     this.kova = r.kova;
     this.zinute = burtas === 'gydymas' ? ZIEZIRBA.gydymas : ZIEZIRBA.sviesele;
     this.atnaujinti(r.busena);

@@ -113,6 +113,8 @@ export interface UzduotiesStatistika {
 export interface Nustatymai {
   skiemenys: boolean;
   didziosios: boolean;
+  /** Garso efektai (galima išjungti). */
+  garsas: boolean;
   savi: { seimosNarys: string; draugas: string; augintinis: string };
 }
 

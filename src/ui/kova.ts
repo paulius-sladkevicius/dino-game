@@ -5,7 +5,8 @@ import { dabartineUzduotis, DABARTINIS_SKYRIUS, galimaBurta } from '../game/engi
 import { maxMana, maxSirdeles } from '../game/equipment';
 import { BURTAI, type Burtas } from '../game/rules';
 import type { Zaidimas } from './app';
-import { banga, deme, knygosIkona, manosLasas, sirdele, SPALVOS, ziezirba } from './art';
+import { knygosIkona, manosLasas, sirdele, SPALVOS, ziezirba } from './art';
+import { scena, X } from './scena';
 import { h, sumazintasJudesys, svg } from './dom';
 import { skaitomasTekstas, uzuominosRibos } from './skaitymas';
 import { zodziuSkaicius } from '../game/text';
@@ -64,26 +65,45 @@ export function ekranasKova(z: Zaidimas): HTMLElement {
   const nustatymai = { skiemenys: z.b.nustatymai.skiemenys };
   const gyvybes = anim ? k.gyvybes - 1 : k.gyvybes;
 
-  const priesas = h(
+  const virsus = h(
     'div',
-    { class: `priesas priesas-${k.rusis}${anim?.nugaletas ? ' susigeria' : ''}${anim && !anim.nugaletas ? ' smugis' : ''}` },
-    svg(deme(k.rusis), 'demes-piesinys'),
-    svg(banga(220), 'demes-seselis'),
+    { class: 'prieso-vardas' },
+    h('span', { class: 'antraste-ranka' }, k.vardas),
     h(
-      'div',
-      { class: 'prieso-vardas' },
-      h('span', { class: 'antraste-ranka' }, k.vardas),
-      h(
-        'span',
-        { class: 'gyvybes', role: 'img', 'aria-label': `${gyvybes} gyvybės iš ${k.maxGyvybes}`, 'data-gyvybes': gyvybes },
-        Array.from({ length: k.maxGyvybes }, (_, i) =>
-          svg(
-            `<svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" fill="${i < gyvybes ? SPALVOS.raudonas : 'none'}" stroke="${SPALVOS.rasalas}" stroke-width="2"/></svg>`,
-          ),
+      'span',
+      { class: 'gyvybes', role: 'img', 'aria-label': `${gyvybes} gyvybės iš ${k.maxGyvybes}`, 'data-gyvybes': gyvybes },
+      Array.from({ length: k.maxGyvybes }, (_, i) =>
+        svg(
+          `<svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" fill="${i < gyvybes ? SPALVOS.raudonas : 'none'}" stroke="${SPALVOS.rasalas}" stroke-width="2"/></svg>`,
         ),
       ),
     ),
   );
+  // Nugalėtas priešas susigeria ir išsitaško rašalo purslais.
+  const purslai = anim?.nugaletas
+    ? Array.from({ length: 10 }, (_, i) => {
+        const kampas = (i / 10) * Math.PI * 2;
+        const el = h('span', { class: 'purslas' });
+        el.style.setProperty('--dx', `${Math.cos(kampas) * 70}px`);
+        el.style.setProperty('--dy', `${Math.sin(kampas) * 50 - 20}px`);
+        return el;
+      })
+    : [];
+  const vaizdas = scena({
+    kaireDurys: k.rusis === 'bosas' ? null : 'atidarytos',
+    desineDurys: k.rusis === 'bosas' ? null : 'uzdarytos',
+    objektas: {
+      tipas: 'deme',
+      rusis: k.rusis,
+      virsus,
+      klases: anim?.nugaletas ? 'susigeria' : anim ? 'smugis' : '',
+    },
+    iranga: z.b.iranga,
+    apsiaustas: z.b.kosmetika.includes('apsiaustas'),
+    herojus: { x: X.kova, klases: anim ? 'puola' : '' },
+    klase: 'kovos-scena',
+  });
+  if (purslai.length) vaizdas.querySelector('.scenos-priesas')?.append(...purslai);
 
   const uzrakinta = Date.now() < z.uzraktasIki;
   const likoMs = Math.max(0, z.uzraktasIki - Date.now());
@@ -116,7 +136,8 @@ export function ekranasKova(z: Zaidimas): HTMLElement {
     { class: `ekranas kova${zodziuSkaicius(tekstas) > 10 ? ' ilgas-tekstas' : ''}`, 'data-ekranas': 'kova' },
     hud(z),
     h('p', { class: 'skyriaus-uzrasas antraste-ranka' }, `${sk.numeris} skyrius · ${sk.pavadinimas}`),
-    h('div', { class: 'arena' }, ziezirbosBurbulas(z, z.zinute), priesas),
+    vaizdas,
+    ziezirbosBurbulas(z, z.zinute),
     h(
       'section',
       { class: 'teksto-kortele', 'aria-label': 'Tekstas', 'data-uzduotis': u.id },

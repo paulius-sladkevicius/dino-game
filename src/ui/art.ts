@@ -149,3 +149,57 @@ export const KOSMETIKOS_VARDAI: Record<Kosmetika, string> = {
   apsiaustas: 'herojaus apsiaustas',
   lauzoSpalva: 'mėlyna laužo ugnis',
 };
+
+// ------------------------------------------------------------------ Vaizdas iš šono
+
+/** Herojus iš šono (žiūri į dešinę). Kojos turi klases, kad galėtų „eiti“. */
+export function herojusSonu(iranga: Iranga, apsiaustas: boolean): string {
+  const m = (d: Daiktas) => MEDZIAGOS[iranga[d]];
+  const zeri = (d: Daiktas) => (iranga[d] === 5 ? `filter="url(#zeri-sonu)"` : '');
+  const aps = apsiaustas
+    ? `<path d="M30 44 C18 60 14 84 12 98 L34 96 L38 46 Z" fill="${SPALVOS.raudonas}" stroke="${R}" stroke-width="2" stroke-linejoin="round"/>`
+    : '';
+  const koja = (klase: string, x: number) =>
+    `<g class="koja ${klase}"><path d="M${x} 82 L${x} 104" stroke="${R}" stroke-width="5" stroke-linecap="round"/><path d="M${x - 5} 102 L${x + 9} 102 L${x + 11} 110 L${x - 5} 110 Z" fill="${m('batai')}" stroke="${R}" stroke-width="2" stroke-linejoin="round" ${zeri('batai')}/></g>`;
+  return `<svg viewBox="0 0 90 114" role="img" aria-label="Herojus"><defs><filter id="zeri-sonu"><feDropShadow dx="0" dy="0" stdDeviation="2.5" flood-color="#7fd3ff"/></filter></defs>${aps}${koja('koja-2', 36)}<path d="M28 46 L52 46 L54 84 L26 84 Z" fill="${m('sarvai')}" stroke="${R}" stroke-width="2.2" stroke-linejoin="round" ${zeri('sarvai')}/>${koja('koja-1', 44)}<circle cx="42" cy="28" r="14" fill="${SPALVOS.popieriusSviesus}" stroke="${R}" stroke-width="2.2"/><path d="M55 28 L60 31 L55 33" fill="${SPALVOS.popieriusSviesus}" stroke="${R}" stroke-width="2" stroke-linejoin="round"/><circle cx="49" cy="26" r="2" fill="${R}"/><path d="M47 35 Q51 37 54 35" fill="none" stroke="${R}" stroke-width="1.6" stroke-linecap="round"/><path d="M27 26 C27 10 57 10 57 24 L57 22 C50 18 34 18 27 22 Z" fill="${m('salmas')}" stroke="${R}" stroke-width="2.2" stroke-linejoin="round" ${zeri('salmas')}/><g class="ranka"><path d="M44 52 L62 62" stroke="${R}" stroke-width="5" stroke-linecap="round"/><path d="M60 64 L86 30" stroke="${m('kardas')}" stroke-width="6" stroke-linecap="round" ${zeri('kardas')}/><path d="M60 64 L86 30" stroke="${R}" stroke-width="1.4" stroke-linecap="round"/><path d="M56 56 L68 66" stroke="${R}" stroke-width="4" stroke-linecap="round"/></g></svg>`;
+}
+
+/** Durys šoninėje sienoje: uždarytos, atidarytos arba šviečiantis išėjimas. */
+export function durys(busena: 'uzdarytos' | 'atidarytos' | 'isejimas'): string {
+  const remas = `<path d="M6 120 V30 C6 4 54 4 54 30 V120" fill="none" stroke="${R}" stroke-width="3"/>`;
+  if (busena === 'isejimas') {
+    return `<svg viewBox="0 0 60 122" role="img" aria-label="Išėjimas"><defs><radialGradient id="sviesa" cx="50%" cy="40%"><stop offset="0" stop-color="#fff6c8"/><stop offset="1" stop-color="#f6c344"/></radialGradient></defs><path d="M6 120 V30 C6 4 54 4 54 30 V120 Z" fill="url(#sviesa)"/>${remas}<path d="M14 120 H46 M18 108 H50 M22 96 H52" stroke="${R}" stroke-width="2.5" stroke-linecap="round"/></svg>`;
+  }
+  if (busena === 'atidarytos') {
+    return `<svg viewBox="0 0 60 122" role="img" aria-label="Atidarytos durys"><path d="M6 120 V30 C6 4 54 4 54 30 V120 Z" fill="#2c2a40"/>${remas}<path d="M6 120 V30 L18 36 V116 Z" fill="#8b5a2b" stroke="${R}" stroke-width="2" stroke-linejoin="round"/></svg>`;
+  }
+  return `<svg viewBox="0 0 60 122" role="img" aria-label="Uždarytos durys"><path d="M6 120 V30 C6 4 54 4 54 30 V120 Z" fill="#9a6a3a" stroke="${R}" stroke-width="3"/><path d="M22 14 V120 M38 14 V120" stroke="${R}" stroke-width="1.5" opacity="0.5"/><circle cx="44" cy="70" r="3" fill="#f6c344" stroke="${R}" stroke-width="1.2"/></svg>`;
+}
+
+/** Slaptos durys sienoje: plyšys su klaustuku arba atsivėrusios durys su žvaigžde. */
+export function slaptosDurys(atidarytos: boolean): string {
+  return atidarytos
+    ? `<svg viewBox="0 0 50 90" role="img" aria-label="Slaptos durys atidarytos"><path d="M5 88 V24 C5 4 45 4 45 24 V88 Z" fill="#2c2a40" stroke="${R}" stroke-width="2.5"/><path d="M25 30 L28 38 L36 38 L30 43 L32 51 L25 46 L18 51 L20 43 L14 38 L22 38 Z" fill="#f6c344"/></svg>`
+    : `<svg viewBox="0 0 50 90" role="img" aria-label="Plyšys sienoje"><path d="M5 88 V24 C5 4 45 4 45 24 V88" fill="none" stroke="${R}" stroke-width="2" stroke-dasharray="4 5" opacity="0.6"/><text x="25" y="58" text-anchor="middle" font-family="Caveat, cursive" font-size="34" font-weight="700" fill="${R}" opacity="0.7">?</text></svg>`;
+}
+
+export function rodykliuStulpas(): string {
+  return `<svg viewBox="0 0 70 110" role="img" aria-label="Kelio ženklas"><path d="M35 20 V108" stroke="#7a4b28" stroke-width="6" stroke-linecap="round"/><path d="M35 22 H62 L68 30 L62 38 H35 Z" fill="#efe0c2" stroke="${R}" stroke-width="2" stroke-linejoin="round"/><path d="M35 46 H8 L2 54 L8 62 H35 Z" fill="#efe0c2" stroke="${R}" stroke-width="2" stroke-linejoin="round"/></svg>`;
+}
+
+export function skrynia(atidaryta: boolean): string {
+  return atidaryta
+    ? `<svg viewBox="0 0 70 56" role="img" aria-label="Atidaryta skrynia"><path d="M5 26 H65 V54 H5 Z" fill="#b8742c" stroke="${R}" stroke-width="2"/><path d="M5 26 L12 4 H58 L65 26" fill="#d79a3c" stroke="${R}" stroke-width="2" stroke-linejoin="round"/><path d="M10 26 H60" stroke="#f6c344" stroke-width="4"/></svg>`
+    : `<svg viewBox="0 0 70 56" role="img" aria-label="Skrynia"><path d="M5 24 H65 V54 H5 Z" fill="#b8742c" stroke="${R}" stroke-width="2"/><path d="M5 24 C5 6 65 6 65 24" fill="#d79a3c" stroke="${R}" stroke-width="2"/><rect x="30" y="26" width="10" height="10" fill="#f6c344" stroke="${R}" stroke-width="1.5"/></svg>`;
+}
+
+/** Urvo fonas iš šono: lubos su varvekliais, siena, grindys. */
+export function urvoFonas(): string {
+  const varvekliai = [8, 22, 37, 55, 70, 86]
+    .map((x, i) => `<path d="M${x - 3} 0 L${x} ${10 + (i % 3) * 6} L${x + 3} 0 Z" fill="${SPALVOS.rasalas}" opacity="0.75"/>`)
+    .join('');
+  const akmenukai = [12, 31, 47, 66, 83]
+    .map((x, i) => `<ellipse cx="${x}" cy="${93 + (i % 2)}" rx="${1.4 + (i % 3) * 0.5}" ry="0.9" fill="${SPALVOS.rasalas}" opacity="0.5"/>`)
+    .join('');
+  return `<svg viewBox="0 0 100 100" preserveAspectRatio="none" class="urvo-fonas"><path d="M0 0 H100 V6 C88 9 78 4 66 7 C52 10 40 5 26 8 C14 10 6 6 0 8 Z" fill="#d9ccb0"/>${varvekliai}<path d="M0 86 C20 84 40 88 60 85 C76 83 90 87 100 85 V100 H0 Z" fill="#e3d6ba"/><path d="M0 86 C20 84 40 88 60 85 C76 83 90 87 100 85" fill="none" stroke="${SPALVOS.rasalas}" stroke-width="2" vector-effect="non-scaling-stroke"/>${akmenukai}</svg>`;
+}

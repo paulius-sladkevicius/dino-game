@@ -15,6 +15,7 @@ import {
   ieitiISale,
   kambarioVeiksmas,
   kovaKambaryje,
+  kryptys,
   naudotiBurta,
   naujaBusena,
   pabegusiDeme,
@@ -322,6 +323,22 @@ describe('bosas', () => {
 });
 
 describe('salė, sankryža, lobis, slaptos durys', () => {
+  it('kryptys iš šono: atgal – link pradžios, pirmyn – kiti keliai', () => {
+    const sale = rastiSale(T, 's1-sale1');
+    expect(kryptys(sale, 'r1')).toEqual({ atgal: 'lauzas', pirmyn: ['sankryza'] });
+    expect(kryptys(sale, 'sankryza')).toEqual({ atgal: 'r1', pirmyn: ['t1', 's1', 'slaptas'] });
+    expect(kryptys(sale, 't1')).toEqual({ atgal: 'sankryza', pirmyn: ['t2'] });
+    expect(kryptys(sale, 't2')).toEqual({ atgal: 't1', pirmyn: ['galas'] });
+    expect(kryptys(sale, 's1')).toEqual({ atgal: 'sankryza', pirmyn: ['galas'] });
+    expect(kryptys(sale, 'slaptas')).toEqual({ atgal: 'sankryza', pirmyn: [] });
+    expect(kryptys(sale, 'galas').pirmyn).toEqual([]);
+    expect(kryptys(sale, 'lauzas')).toEqual({ atgal: null, pirmyn: ['r1'] });
+  });
+
+  it('garsas pagal nutylėjimą įjungtas', () => {
+    expect(naujaBusena('A', T).nustatymai.garsas).toBe(true);
+  });
+
   it('salės atrakinamos paeiliui', () => {
     const b = busena();
     expect(saleAtrakinta(b, T, 's1-sale1')).toBe(true);

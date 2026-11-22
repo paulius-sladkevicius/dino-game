@@ -72,10 +72,25 @@ Jei Playwright neranda naršyklės, nurodykite ją: `PW_CHROMIUM=/kelias/iki/chr
    o Žiežirba kreipiasi šauksmininku („Puiku, Ugne!“).
 2. Trumpa istorija paaiškina, kas yra Dėmės, kaukai, laužai ir lobiai.
 3. Skyriaus žemėlapyje salės atsirakina paeiliui. Kiekviena salė prasideda prie laužo.
-4. Salės žemėlapyje vaikas liečia kambarį, į kurį nori eiti. Sankryžoje reikia perskaityti
-   ženklą ir pasirinkti kelią. Ten taip pat yra slaptos durys su mįsle.
-5. Po trijų salių laukia laužas prieš bosą ir Didžioji Dėmė. Ją nugalėjus, į Knygą grįžta
+4. Salė rodoma **iš šono**: herojus stovi urvo kambaryje, priekyje – Dėmė, skrynia ar durys.
+   Vaikas pats valdo ėjimą mygtukais **„Eiti ▶“** ir **„◀“** (kompiuteryje – rodyklių
+   klavišais). Priėjus prie Dėmės prasideda kova. Nugalėtas priešas išsisklaido rašalo
+   purslais, durys atsidaro, ir herojus pats pereina į kitą kambarį.
+5. Sankryžoje reikia perskaityti ženklą ir pasirinkti kelią – herojus nueina prie
+   pasirinktų durų. Ten pat yra slaptos durys su mįsle. Žemėlapis (mygtukas su kelio
+   ženklu) rodo, kur esi ir kur jau buvai, bet vaikštoma ne per jį.
+6. Po trijų salių laukia laužas prieš bosą ir Didžioji Dėmė. Ją nugalėjus, į Knygą grįžta
    puslapis, kurį galima perskaityti.
+
+**Garsai.** Žingsniai, durys, teisingas atsakymas, klaida, išnykstantis priešas, skrendančios
+raidės, lobis, daiktas, burtai, salės pabaiga. Garsai sintezuojami naršyklėje (Web Audio),
+todėl veikia ir be interneto. Juos galima išjungti garsiakalbio mygtuku arba tėvų skydelyje,
+o pasirinkimas išsaugomas. Žaidimas niekada neperskaito teksto balsu – skaito vaikas.
+
+**Visas ekranas.** Mygtukas su keturiais kampais įjungia viso ekrano režimą (Android,
+planšetės, kompiuteris). „iPhone“ Safari šios galimybės neturi – ten žaidimą reikia pridėti
+prie pagrindinio ekrano („Bendrinti → Pridėti prie pradžios ekrano“), tada jis atsidaro per
+visą ekraną.
 
 ## Taisyklės ir skaičiai
 
@@ -109,7 +124,7 @@ Visi skaičiai surašyti vienoje vietoje: [`src/game/rules.ts`](src/game/rules.t
 - **Sankryža ir keliai:** lobio kelyje 2 priešai ir lobis, trumpame kelyje 1 priešas.
   Slaptos durys atsidaro įminus mįslę. Klaida ten širdelės neatima, o viduje laukia
   kaukų dovana (kosmetinis atlygis: Žiežirbos kepurė, herojaus apsiaustas, mėlyna laužo
-  ugnis). Aplankyti kambariai nuspalvinami. Į praleistą kelią galima grįžti, taip pat ir
+  ugnis). Žemėlapyje aplankyti kambariai nuspalvinami. Į praleistą kelią galima grįžti, taip pat ir
   įveiktą salę pasirinkus skyriaus žemėlapyje.
 - **Didžioji Knyga:** kiekvienas nugalėtas priešas grąžina žodį, bosas – puslapį su
   trumpa istorija.
