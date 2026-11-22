@@ -300,13 +300,14 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--melynas); o
 }
 .zemelapis .kambarys { left: calc(38px + (100% - 76px) * var(--x)); top: calc(38px + (100% - 76px) * var(--y)); }
 .kambarys.aplankytas { border-style: solid; background: var(--melynas-sviesus); }
-.kambarys.iveiktas .piesinys { opacity: 0.4; }
+.kambarys.iveiktas:not(.dabar) .piesinys { opacity: 0.4; }
 .kambarys.dabar { border: 4px solid var(--rasalas); box-shadow: var(--seselis); }
 .kambarys.galima { border-style: solid; background: var(--popierius-sviesus); box-shadow: var(--seselis); }
 .kambarys.galima::after { content: ''; position: absolute; inset: -9px; border-radius: 50%; border: 3px dashed var(--melynas); animation: kviecia 1.4s ease-in-out infinite; pointer-events: none; }
 .kambarys.paslaptis { opacity: 0.6; }
 .klaustukas { font-family: Caveat, cursive; font-size: 40px; font-weight: 700; }
-.herojaus-zyme { position: absolute; right: -16px; top: -26px; pointer-events: none; }
+.herojaus-zyme { pointer-events: none; margin-top: -4px; }
+.kambarys.dabar { background: var(--popierius-sviesus); z-index: 2; }
 @keyframes kviecia { 50% { transform: scale(1.1) rotate(20deg); } }
 
 .zenklas { display: flex; flex-direction: column; gap: 12px; }

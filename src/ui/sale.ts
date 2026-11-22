@@ -55,8 +55,12 @@ export function ekranasSale(z: Zaidimas): HTMLElement {
         'data-kambarys': k.id,
         onclick: () => z.eitiIKambari(k.id),
       },
-      paslaptis ? h('span', { class: 'klaustukas' }, '?') : svg(kambarioIkona(k.tipas)),
-      yraCia ? svg(herojus(b.iranga, b.kosmetika.includes('apsiaustas'), 34), 'herojaus-zyme') : null,
+      // Dabartiniame kambaryje vietoj ženkliuko rodomas pats herojus.
+      yraCia
+        ? svg(herojus(b.iranga, b.kosmetika.includes('apsiaustas'), 46), 'herojaus-zyme')
+        : paslaptis
+          ? h('span', { class: 'klaustukas' }, '?')
+          : svg(kambarioIkona(k.tipas)),
     );
   });
 
