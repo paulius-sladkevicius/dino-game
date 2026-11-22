@@ -39,6 +39,19 @@ npm run preview    # peržiūrėti dist/ adresu http://localhost:4173
 Netlify, savo serverį). Keliai santykiniai, todėl tinka ir poaplankis.
 Service worker (darbui be interneto) veikia tik per HTTPS arba `localhost`.
 
+### GitHub Pages
+
+Kiekvienas įkėlimas į `main` šaką automatiškai sukuria ir paskelbia žaidimą
+(`.github/workflows/pages.yml`). Žaidimo adresas:
+**https://paulius-sladkevicius.github.io/lost-letters-game/**
+
+Vieną kartą reikia įjungti: repozitorijos **Settings → Pages → Build and deployment →
+Source: GitHub Actions**. Tada **Actions** skiltyje paleiskite „GitHub Pages“ iš naujo
+(arba įkelkite naują pakeitimą į `main`).
+
+Telefone atsidarius adresą, naršyklės meniu „Pridėti prie pagrindinio ekrano“ įdiegia
+žaidimą kaip programėlę. Ji veikia ir be interneto.
+
 ### Testai
 
 ```bash
